@@ -11,19 +11,19 @@ using std::string;
  * Draw a single digit in the old school line drawing style.  The
  * size of the glyph is 8x11 or x+(0..7), y+(0..10)
  *************************************************************************/
-void drawDigit(const Position & topLeft, char digit);
+//void drawDigit(const Position & topLeft, char digit);
 
 /*************************************************************************
  * DRAW NUMBER
  * Display an positive integer on the screen using the 7-segment method
  *************************************************************************/
-void drawNumber(const Position & topLeft, unsigned int number);
+//void drawNumber(const Position & topLeft, unsigned int number);
 
 /*************************************************************************
  * DRAW TEXT
  * Draw text using a simple bitmap font
  ************************************************************************/
-void drawText(const Position & topLeft, const char * text);
+//void drawText(const Position & topLeft, const char * text);
 
 /************************************************************************
  * ROTATE
@@ -75,7 +75,7 @@ int    random(int    min, int    max);
 double random(double min, double max);
 
 //draw text but with color!
-void drawTextColor(const Position & topLeft, const char * text);
+//void drawTextColor(const Position & topLeft, const char * text);
 void drawCoolShip(const Position & center, int rotation);
 void drawBigShip(const Position & center, int rotation);
 void drawLesserShip(const Position & center, int rotation);

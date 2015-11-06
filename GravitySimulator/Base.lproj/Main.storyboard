@@ -654,7 +654,7 @@
                     <window key="window" title="Gravity Simulator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="585" y="358" width="480" height="270"/>
+                        <rect key="contentRect" x="228" y="757" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -673,7 +673,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="686"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <openGLView misplaced="YES" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-a5-pe5" customClass="Simulator">
+                            <openGLView misplaced="YES" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-a5-pe5" customClass="SimulatorView">
                                 <rect key="frame" x="250" y="1" width="750" height="686"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="686" id="Zq0-C2-Ckz"/>

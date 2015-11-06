@@ -1,6 +1,6 @@
 /****************************************************
  * Program:
- *   Simulator.mm
+ *   SimulatorView.mm
  * Author:
  *   Samuel Hibbard
  * Summary:
@@ -11,7 +11,7 @@
  ****************************************************/
 
 #import <Foundation/Foundation.h>
-#import "Simulator.h"
+#import "SimulatorView.h"
 #import "sim.h"
 
 // Define the window size for Position
@@ -19,3 +19,16 @@ float Position::xMax = 500;
 float Position::xMin = -500;
 float Position::yMax = 343;
 float Position::yMin = -343;
+
+@implementation SimulatorView
+
+/************************************************
+ * drawRect
+ *  This will draw the shapes to the NSOpenGLView
+ ************************************************/
+- (void) drawRect: (NSRect) bounds
+{
+    
+}
+
+@end

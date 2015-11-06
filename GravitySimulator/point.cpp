@@ -15,7 +15,7 @@
  * POINT : CONSTRUCTOR WITH X,Y
  * Initialize the point to the passed position
  *****************************************/
-Position::Position(float x, float y) : x(0.0), y(0.0), check(false), dead(false), wrap(false), percentage(false)
+Position::Position(float x, float y) : x(0.0), y(0.0), checkNum(false), dead(false), wrap(false), percentage(false)
 {
    setX(x);
    setY(y);
@@ -29,7 +29,7 @@ Position::Position(float x, float y, bool percentage, bool check)
     setX(x);
     setY(y);
     this->percentage = percentage;
-    this->check = check;
+    this->checkNum = check;
 }
 
 /*******************************************
@@ -46,7 +46,7 @@ void Position::setX(float x)
       this->x = x;
       wrapAround();
    }
-   else if (!check || (x >= xMin && x <= xMax))
+   else if (!checkNum || (x >= xMin && x <= xMax))
       this->x = x;
    else
    {
@@ -61,7 +61,7 @@ const Position & Position :: operator = (const Position & rhs)
 {
    x        = rhs.x;
    y        = rhs.y;
-   check    = rhs.check;
+   checkNum    = rhs.checkNum;
    dead     = rhs.dead;
    percentage = rhs.percentage;
 
@@ -82,7 +82,7 @@ void Position::setY(float y)
       this->y = y;
       wrapAround();
    }
-   else if (!check || (y >= yMin && y <= yMax))
+   else if (!checkNum || (y >= yMin && y <= yMax))
       this->y = y;
    else
    {

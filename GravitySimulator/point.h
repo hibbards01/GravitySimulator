@@ -22,17 +22,17 @@ class Position
 {
 public:
    // constructors
-   Position()                            : x(0.0), y(0.0), check(false), dead(false), wrap(false), percentage(false) {}
-   Position(bool check, bool percentage) : x(0.0), y(0.0), check(check), dead(false), wrap(false),
-    percentage(percentage) {}
+   Position() : x(0.0), y(0.0), dead(false), wrap(false), percentage(false), checkNum(false) {}
+   Position(bool check, bool percentage) : x(0.0), y(0.0), dead(false), wrap(false),
+    percentage(percentage), checkNum(check) {}
    Position(float x, float y, bool percentage, bool check);
    Position(float x, float y);
    Position(const Position & point) { *this = point; wrap = false; }
 
    // getters
-   float getX()       const { return (percentage) ? x / xMax : x;              }
-   float getY()       const { return (percentage) ? y / yMax : y;              }
-   bool  getCheck()   const { return check;          }
+   float getX()       const { return (percentage) ? x / xMax : x; }
+   float getY()       const { return (percentage) ? y / yMax : y; }
+   bool  getCheck()   const { return checkNum;       }
    bool  isDead()     const { return dead;           }
    float getXMin()    const { return xMin;           }
    float getXMax()    const { return xMax;           }
@@ -47,7 +47,7 @@ public:
    void setPercent(bool p)  { percentage = p;        }
    void addX(float dx)      { setX(getX() + dx);     }
    void addY(float dy)      { setY(getY() + dy);     }
-   void setCheck(bool f)    { check = f;             }
+   void setCheck(bool f)    { checkNum = f;          }
    const Position & operator = (const Position & rhs);
    //I added this function.
    void setWrap(bool w)            { wrap = w;         }
@@ -60,7 +60,7 @@ public:
 private:
    float x;           // horizontal position
    float y;           // vertical position
-   bool  check;       // do bounds checking
+   bool  checkNum;    // do bounds checking
    bool  dead;        // have we exceed our bounds?
    static float xMin; // minimum extent of the x position
    static float xMax; // maximum extent of the x position

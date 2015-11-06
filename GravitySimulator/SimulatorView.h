@@ -1,6 +1,6 @@
 /****************************************************
  * Program:
- *   Simulator.h
+ *   SimulatorView.h
  * Author:
  *   Samuel Hibbard
  * Summary:
@@ -19,7 +19,7 @@
  * Simulator
  *  Subclass of NSOpenGLView
  ***************************/
-@interface Simulator : NSOpenGLView
+@interface SimulatorView : NSOpenGLView
 {
     NSTimer * renderTimer;
 }

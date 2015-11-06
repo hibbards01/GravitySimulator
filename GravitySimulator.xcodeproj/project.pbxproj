@@ -19,7 +19,7 @@
 		66584B5A1BEC439D002D19C8 /* sim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B511BEC439D002D19C8 /* sim.cpp */; };
 		66584B5B1BEC439D002D19C8 /* uiDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B531BEC439D002D19C8 /* uiDraw.cpp */; };
 		66584B5C1BEC439D002D19C8 /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B551BEC439D002D19C8 /* vector.cpp */; };
-		66584B601BEC4A3B002D19C8 /* Simulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66584B5F1BEC4A3B002D19C8 /* Simulator.mm */; };
+		66584B601BEC4A3B002D19C8 /* SimulatorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66584B5F1BEC4A3B002D19C8 /* SimulatorView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +65,8 @@
 		66584B541BEC439D002D19C8 /* uiDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiDraw.h; sourceTree = "<group>"; };
 		66584B551BEC439D002D19C8 /* vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector.cpp; sourceTree = "<group>"; };
 		66584B561BEC439D002D19C8 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
-		66584B5F1BEC4A3B002D19C8 /* Simulator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Simulator.mm; sourceTree = "<group>"; };
-		66584B611BEC4A4A002D19C8 /* Simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simulator.h; sourceTree = "<group>"; };
+		66584B5F1BEC4A3B002D19C8 /* SimulatorView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimulatorView.mm; sourceTree = "<group>"; };
+		66584B611BEC4A4A002D19C8 /* SimulatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatorView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +119,8 @@
 			children = (
 				66329A681BEC403E0058DE77 /* AppDelegate.h */,
 				66329A691BEC403E0058DE77 /* AppDelegate.m */,
-				66584B611BEC4A4A002D19C8 /* Simulator.h */,
-				66584B5F1BEC4A3B002D19C8 /* Simulator.mm */,
+				66584B611BEC4A4A002D19C8 /* SimulatorView.h */,
+				66584B5F1BEC4A3B002D19C8 /* SimulatorView.mm */,
 				66329A711BEC403E0058DE77 /* Assets.xcassets */,
 				66329A731BEC403E0058DE77 /* Main.storyboard */,
 				66329A761BEC403E0058DE77 /* Info.plist */,
@@ -299,7 +299,7 @@
 				66584B591BEC439D002D19C8 /* point.cpp in Sources */,
 				66584B571BEC439D002D19C8 /* gravity.cpp in Sources */,
 				66584B5B1BEC439D002D19C8 /* uiDraw.cpp in Sources */,
-				66584B601BEC4A3B002D19C8 /* Simulator.mm in Sources */,
+				66584B601BEC4A3B002D19C8 /* SimulatorView.mm in Sources */,
 				66329A6D1BEC403E0058DE77 /* main.m in Sources */,
 				66584B5A1BEC439D002D19C8 /* sim.cpp in Sources */,
 				66584B581BEC439D002D19C8 /* object.cpp in Sources */,

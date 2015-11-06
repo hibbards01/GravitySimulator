@@ -75,36 +75,36 @@ const char NUMBER_OUTLINES[10][20] =
  *   INPUT  topLeft   The top left corner of the character
  *          digit     The digit we are rendering: '0' .. '9'
  *************************************************************************/
-void drawDigit(const Position & topLeft, char digit)
-{
-   // we better be only drawing digits
-   assert(isdigit(digit));
-   if (!isdigit(digit))
-      return;
-
-   // compute the row as specified by the digit
-   int r = digit - '0';
-   assert(r >= 0 && r <= 9);
-
-   // go through each segment.
-   for (int c = 0; c < 20 && NUMBER_OUTLINES[r][c] != -1; c += 4)
-   {
-      assert(NUMBER_OUTLINES[r][c    ] != -1 &&
-             NUMBER_OUTLINES[r][c + 1] != -1 &&
-             NUMBER_OUTLINES[r][c + 2] != -1 &&
-             NUMBER_OUTLINES[r][c + 3] != -1);
-
-      //Draw a line based off of the num structure for each number
-      Position start;
-      start.setX(topLeft.getX() + NUMBER_OUTLINES[r][c]);
-      start.setY(topLeft.getY() - NUMBER_OUTLINES[r][c + 1]);
-      Position end;
-      end.setX(topLeft.getX() + NUMBER_OUTLINES[r][c + 2]);
-      end.setY(topLeft.getY() - NUMBER_OUTLINES[r][c + 3]);
-         
-      drawLine(start, end);
-   }
-}
+//void drawDigit(const Position & topLeft, char digit)
+//{
+//   // we better be only drawing digits
+//   assert(isdigit(digit));
+//   if (!isdigit(digit))
+//      return;
+//
+//   // compute the row as specified by the digit
+//   int r = digit - '0';
+//   assert(r >= 0 && r <= 9);
+//
+//   // go through each segment.
+//   for (int c = 0; c < 20 && NUMBER_OUTLINES[r][c] != -1; c += 4)
+//   {
+//      assert(NUMBER_OUTLINES[r][c    ] != -1 &&
+//             NUMBER_OUTLINES[r][c + 1] != -1 &&
+//             NUMBER_OUTLINES[r][c + 2] != -1 &&
+//             NUMBER_OUTLINES[r][c + 3] != -1);
+//
+//      //Draw a line based off of the num structure for each number
+//      Position start;
+//      start.setX(topLeft.getX() + NUMBER_OUTLINES[r][c]);
+//      start.setY(topLeft.getY() - NUMBER_OUTLINES[r][c + 1]);
+//      Position end;
+//      end.setX(topLeft.getX() + NUMBER_OUTLINES[r][c + 2]);
+//      end.setY(topLeft.getY() - NUMBER_OUTLINES[r][c + 3]);
+//         
+//      drawLine(start, end);
+//   }
+//}
 
 /*************************************************************************
  * DRAW NUMBER
@@ -112,22 +112,22 @@ void drawDigit(const Position & topLeft, char digit)
  *   INPUT  topLeft   The top left corner of the character
  *          digit     The digit we are rendering: '0' .. '9'
  *************************************************************************/
-void drawNumber(const Position & topLeft, unsigned int number)
-{
-   // render the number as text
-   ostringstream sout;
-   sout << number;
-   string text = sout.str();
-
-   // walk through the text one digit at a time
-   Position point = topLeft;
-   for (const char *p = text.c_str(); *p; p++)
-   {
-      assert(isdigit(*p));
-      drawDigit(point, *p);
-      point.addX(11);
-   }
-}
+//void drawNumber(const Position & topLeft, unsigned int number)
+//{
+//   // render the number as text
+//   ostringstream sout;
+//   sout << number;
+//   string text = sout.str();
+//
+//   // walk through the text one digit at a time
+//   Position point = topLeft;
+//   for (const char *p = text.c_str(); *p; p++)
+//   {
+//      assert(isdigit(*p));
+//      drawDigit(point, *p);
+//      point.addX(11);
+//   }
+//}
 
 /*************************************************************************
  * DRAW TEXT
@@ -135,17 +135,17 @@ void drawNumber(const Position & topLeft, unsigned int number)
  *   INPUT  topLeft   The top left corner of the text
  *          text      The text to be displayed
  ************************************************************************/
-void drawText(const Position & topLeft, const char * text)
-{
-   void *pFont = GLUT_BITMAP_HELVETICA_18;  // also try _18
-
-   // prepare to draw the text from the top-left corner
-   glRasterPos2f(topLeft.getX(), topLeft.getY());
-
-   // loop through the text
-   for (const char *p = text; *p; p++)
-      glutBitmapCharacter(pFont, *p);
-}
+//void drawText(const Position & topLeft, const char * text)
+//{
+//   void *pFont = GLUT_BITMAP_HELVETICA_18;  // also try _18
+//
+//   // prepare to draw the text from the top-left corner
+//   glRasterPos2f(topLeft.getX(), topLeft.getY());
+//
+//   // loop through the text
+//   for (const char *p = text; *p; p++)
+//      glutBitmapCharacter(pFont, *p);
+//}
 
 /************************************************************************
  * ROTATE
@@ -469,19 +469,19 @@ double random(double min, double max)
 /*********************************
  * DRAWTEXTCOLOR
  ********************************/
-void drawTextColor(const Position & topLeft, const char * text)
-{
-    void *pFont = GLUT_BITMAP_HELVETICA_12;  // also try _18
-
-    // prepare to draw the text from the top-left corner
-    glRasterPos2f(topLeft.getX(), topLeft.getY());
-    
-    // loop through the text
-    for (const char *p = text; *p; p++)
-    {
-        glutBitmapCharacter(pFont, *p);
-    }
-}
+//void drawTextColor(const Position & topLeft, const char * text)
+//{
+//    void *pFont = GLUT_BITMAP_HELVETICA_12;  // also try _18
+//
+//    // prepare to draw the text from the top-left corner
+//    glRasterPos2f(topLeft.getX(), topLeft.getY());
+//    
+//    // loop through the text
+//    for (const char *p = text; *p; p++)
+//    {
+//        glutBitmapCharacter(pFont, *p);
+//    }
+//}
 
 /************************************************************************
  * DRAW Ship
