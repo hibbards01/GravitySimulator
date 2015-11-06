@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		66329A6A1BEC403E0058DE77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A691BEC403E0058DE77 /* AppDelegate.m */; };
 		66329A6D1BEC403E0058DE77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A6C1BEC403E0058DE77 /* main.m */; };
-		66329A701BEC403E0058DE77 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A6F1BEC403E0058DE77 /* ViewController.m */; };
 		66329A721BEC403E0058DE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66329A711BEC403E0058DE77 /* Assets.xcassets */; };
 		66329A751BEC403E0058DE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66329A731BEC403E0058DE77 /* Main.storyboard */; };
 		66329A801BEC403E0058DE77 /* GravitySimulatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A7F1BEC403E0058DE77 /* GravitySimulatorTests.m */; };
 		66329A8B1BEC403E0058DE77 /* GravitySimulatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A8A1BEC403E0058DE77 /* GravitySimulatorUITests.m */; };
+		66584B571BEC439D002D19C8 /* gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B4B1BEC439D002D19C8 /* gravity.cpp */; };
+		66584B581BEC439D002D19C8 /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B4D1BEC439D002D19C8 /* object.cpp */; };
+		66584B591BEC439D002D19C8 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B4F1BEC439D002D19C8 /* point.cpp */; };
+		66584B5A1BEC439D002D19C8 /* sim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B511BEC439D002D19C8 /* sim.cpp */; };
+		66584B5B1BEC439D002D19C8 /* uiDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B531BEC439D002D19C8 /* uiDraw.cpp */; };
+		66584B5C1BEC439D002D19C8 /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B551BEC439D002D19C8 /* vector.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +43,6 @@
 		66329A681BEC403E0058DE77 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		66329A691BEC403E0058DE77 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		66329A6C1BEC403E0058DE77 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		66329A6E1BEC403E0058DE77 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		66329A6F1BEC403E0058DE77 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		66329A711BEC403E0058DE77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66329A741BEC403E0058DE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66329A761BEC403E0058DE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +52,18 @@
 		66329A861BEC403E0058DE77 /* GravitySimulatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GravitySimulatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66329A8A1BEC403E0058DE77 /* GravitySimulatorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GravitySimulatorUITests.m; sourceTree = "<group>"; };
 		66329A8C1BEC403E0058DE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66584B4B1BEC439D002D19C8 /* gravity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gravity.cpp; sourceTree = "<group>"; };
+		66584B4C1BEC439D002D19C8 /* gravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gravity.h; sourceTree = "<group>"; };
+		66584B4D1BEC439D002D19C8 /* object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object.cpp; sourceTree = "<group>"; };
+		66584B4E1BEC439D002D19C8 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
+		66584B4F1BEC439D002D19C8 /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
+		66584B501BEC439D002D19C8 /* point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = point.h; sourceTree = "<group>"; };
+		66584B511BEC439D002D19C8 /* sim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sim.cpp; sourceTree = "<group>"; };
+		66584B521BEC439D002D19C8 /* sim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sim.h; sourceTree = "<group>"; };
+		66584B531BEC439D002D19C8 /* uiDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uiDraw.cpp; sourceTree = "<group>"; };
+		66584B541BEC439D002D19C8 /* uiDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiDraw.h; sourceTree = "<group>"; };
+		66584B551BEC439D002D19C8 /* vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector.cpp; sourceTree = "<group>"; };
+		66584B561BEC439D002D19C8 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +116,6 @@
 			children = (
 				66329A681BEC403E0058DE77 /* AppDelegate.h */,
 				66329A691BEC403E0058DE77 /* AppDelegate.m */,
-				66329A6E1BEC403E0058DE77 /* ViewController.h */,
-				66329A6F1BEC403E0058DE77 /* ViewController.m */,
 				66329A711BEC403E0058DE77 /* Assets.xcassets */,
 				66329A731BEC403E0058DE77 /* Main.storyboard */,
 				66329A761BEC403E0058DE77 /* Info.plist */,
@@ -114,6 +127,18 @@
 		66329A6B1BEC403E0058DE77 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				66584B561BEC439D002D19C8 /* vector.h */,
+				66584B551BEC439D002D19C8 /* vector.cpp */,
+				66584B541BEC439D002D19C8 /* uiDraw.h */,
+				66584B531BEC439D002D19C8 /* uiDraw.cpp */,
+				66584B521BEC439D002D19C8 /* sim.h */,
+				66584B511BEC439D002D19C8 /* sim.cpp */,
+				66584B501BEC439D002D19C8 /* point.h */,
+				66584B4F1BEC439D002D19C8 /* point.cpp */,
+				66584B4E1BEC439D002D19C8 /* object.h */,
+				66584B4D1BEC439D002D19C8 /* object.cpp */,
+				66584B4C1BEC439D002D19C8 /* gravity.h */,
+				66584B4B1BEC439D002D19C8 /* gravity.cpp */,
 				66329A6C1BEC403E0058DE77 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -266,8 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66329A701BEC403E0058DE77 /* ViewController.m in Sources */,
+				66584B591BEC439D002D19C8 /* point.cpp in Sources */,
+				66584B571BEC439D002D19C8 /* gravity.cpp in Sources */,
+				66584B5B1BEC439D002D19C8 /* uiDraw.cpp in Sources */,
 				66329A6D1BEC403E0058DE77 /* main.m in Sources */,
+				66584B5A1BEC439D002D19C8 /* sim.cpp in Sources */,
+				66584B581BEC439D002D19C8 /* object.cpp in Sources */,
+				66584B5C1BEC439D002D19C8 /* vector.cpp in Sources */,
 				66329A6A1BEC403E0058DE77 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +519,7 @@
 				66329A911BEC403E0058DE77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66329A921BEC403E0058DE77 /* Build configuration list for PBXNativeTarget "GravitySimulatorTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +528,7 @@
 				66329A941BEC403E0058DE77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66329A951BEC403E0058DE77 /* Build configuration list for PBXNativeTarget "GravitySimulatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +537,7 @@
 				66329A971BEC403F0058DE77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
