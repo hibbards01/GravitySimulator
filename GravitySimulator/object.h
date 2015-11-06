@@ -47,7 +47,7 @@ public:
     void setWrap(bool wrap)    { vector.setWrap(wrap); }
 private:
     Vector vector; // This will allow the object to move!
-    double mass;    // This will hold the mass of the object!
+    double mass;   // This will hold the mass of the object!
 };
 
 /*********************************

@@ -31,6 +31,8 @@ public:
     //
     void move();
     void draw();
+    void addObject(Object * obj)    { objects.push_back(obj); }
+    void removeObject(Object * obj) { objects.remove(obj);    }
     
     //
     // Getters

@@ -4,7 +4,8 @@
 * Author:
 *   Samuel Hibbard
 * Summary:
-*   This will hold the class Simulator.
+*   This will hold the class Simulator. This will be designed
+*       to be a SingleTon desgin.
 ***************************************************************/
 
 #include "gravity.h"
@@ -20,15 +21,20 @@ class Simulator
 {
 public:
     //
+    // Methods
+    //
+    static Simulator * getInstance();
+    static void deleteInstanc();
+    void run();
+    void addObject(Object * object)    { gravity.addObject(object);    }
+    void removeObject(Object * object) { gravity.removeObject(object); }
+private:
+    //
     // Constructors
     //
     Simulator();
     Simulator(std::list<Object *> & objects) : gravity(objects) {}
     
-    //
-    // Methods
-    //
-    void run();
-private:
     Gravity gravity; // We need gravity!
+    static Simulator * sim;
 };
