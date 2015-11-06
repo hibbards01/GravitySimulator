@@ -651,10 +651,10 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Gravity Simulator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="585" y="358" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -665,19 +665,33 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--SimulatorView-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" sceneMemberID="viewController">
+                <viewController title="SimulatorView" id="XfG-lQ-9wD" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="686"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <openGLView misplaced="YES" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-a5-pe5" customClass="Simulator">
+                                <rect key="frame" x="250" y="1" width="750" height="686"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="686" id="Zq0-C2-Ckz"/>
+                                    <constraint firstAttribute="width" constant="750" id="uST-yl-W5L"/>
+                                </constraints>
+                                <animations/>
+                            </openGLView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="g6v-a5-pe5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="250" id="JY6-Rg-BNk"/>
+                            <constraint firstItem="g6v-a5-pe5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="RPd-tE-BKo"/>
+                        </constraints>
                         <animations/>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="81" y="932.5"/>
         </scene>
     </scenes>
 </document>
