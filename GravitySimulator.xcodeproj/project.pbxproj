@@ -20,6 +20,7 @@
 		66584B5B1BEC439D002D19C8 /* uiDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B531BEC439D002D19C8 /* uiDraw.cpp */; };
 		66584B5C1BEC439D002D19C8 /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B551BEC439D002D19C8 /* vector.cpp */; };
 		66584B601BEC4A3B002D19C8 /* SimulatorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66584B5F1BEC4A3B002D19C8 /* SimulatorView.mm */; };
+		668DB9EB1BED353C0060E395 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668DB9EA1BED353C0060E395 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		66584B561BEC439D002D19C8 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 		66584B5F1BEC4A3B002D19C8 /* SimulatorView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimulatorView.mm; sourceTree = "<group>"; };
 		66584B611BEC4A4A002D19C8 /* SimulatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatorView.h; sourceTree = "<group>"; };
+		668DB9EA1BED353C0060E395 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				668DB9EB1BED353C0060E395 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +100,7 @@
 		66329A5C1BEC403E0058DE77 = {
 			isa = PBXGroup;
 			children = (
+				668DB9EA1BED353C0060E395 /* OpenGL.framework */,
 				66329A671BEC403E0058DE77 /* GravitySimulator */,
 				66329A7E1BEC403E0058DE77 /* GravitySimulatorTests */,
 				66329A891BEC403E0058DE77 /* GravitySimulatorUITests */,

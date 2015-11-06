@@ -14,6 +14,7 @@
 #define Simulator_h
 
 #import <Cocoa/Cocoa.h>
+#import "sim.h"
 
 /****************************
  * Simulator
@@ -22,6 +23,7 @@
 @interface SimulatorView : NSOpenGLView
 {
     NSTimer * renderTimer;
+    Simulator * sim;
 }
 
 - (void) drawRect: (NSRect) bounds;

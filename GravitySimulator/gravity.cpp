@@ -72,7 +72,7 @@ void Gravity::calculateAccerlation()
             // Find the displacement between the objects
             double xDistance = (*obj2)->getPoint().getX() - (*obj1)->getPoint().getX();
             double yDistance = (*obj2)->getPoint().getY() - (*obj1)->getPoint().getY();
-            double d =  sqrt((xDistance * xDistance) + (yDistance * yDistance)) * METERS5;
+            double d =  sqrt((xDistance * xDistance) + (yDistance * yDistance)) * METERS4;
             
             // Hurry and find their angle
             // This is in radians
@@ -100,8 +100,8 @@ void Gravity::calculateAccerlation()
             //      F
             // a = ---
             //      m
-            double a1 = (f / (*obj1)->getMass()) / METERS5;
-            double a2 = (f / (*obj2)->getMass()) / METERS5;
+            double a1 = (f / (*obj1)->getMass()) / METERS4;
+            double a2 = (f / (*obj2)->getMass()) / METERS4;
             
 //            cout << "a1 = " << a1 << endl;
 //            cout << "a2 = " << a2 << endl;

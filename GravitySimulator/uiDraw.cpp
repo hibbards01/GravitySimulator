@@ -247,6 +247,9 @@ void drawCircle(const Position & center, char radius, int points, int rotation)
       temp.setX(center.getX() + static_cast<int>(radius * cos(i)));
       temp.setY(center.getY() + static_cast<int>(radius * sin(i)));
       rotate(temp, center, rotation);
+       
+      // Now change it to percentage
+      temp.setPercent(true);
       glVertex2f(temp.getX(), temp.getY());
    }
    

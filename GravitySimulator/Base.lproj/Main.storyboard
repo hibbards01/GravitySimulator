@@ -670,21 +670,21 @@
             <objects>
                 <viewController title="SimulatorView" id="XfG-lQ-9wD" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="686"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="750"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <openGLView misplaced="YES" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-a5-pe5" customClass="SimulatorView">
-                                <rect key="frame" x="250" y="1" width="750" height="686"/>
+                            <openGLView useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-a5-pe5" customClass="SimulatorView">
+                                <rect key="frame" x="250" y="0.0" width="750" height="750"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="686" id="Zq0-C2-Ckz"/>
-                                    <constraint firstAttribute="width" constant="750" id="uST-yl-W5L"/>
+                                    <constraint firstAttribute="height" constant="750" id="72i-uS-O3W"/>
+                                    <constraint firstAttribute="width" constant="750" id="ofc-fc-uG4"/>
                                 </constraints>
                                 <animations/>
                             </openGLView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="g6v-a5-pe5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="250" id="JY6-Rg-BNk"/>
-                            <constraint firstItem="g6v-a5-pe5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="RPd-tE-BKo"/>
+                            <constraint firstItem="g6v-a5-pe5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="250" id="dBw-y8-wrx"/>
+                            <constraint firstItem="g6v-a5-pe5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="rem-vb-pTl"/>
                         </constraints>
                         <animations/>
                     </view>

@@ -12,13 +12,13 @@
 
 #import <Foundation/Foundation.h>
 #import "SimulatorView.h"
-#import "sim.h"
+#include <OpenGL/gl.h>
 
 // Define the window size for Position
 float Position::xMax = 500;
 float Position::xMin = -500;
-float Position::yMax = 343;
-float Position::yMin = -343;
+float Position::yMax = 500;
+float Position::yMin = -500;
 
 @implementation SimulatorView
 
@@ -31,6 +31,19 @@ float Position::yMin = -343;
 {
     GLint swapInt = 1;
     [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
+}
+
+
+/*************************************
+ * awakeFromNib
+ *  This will initalize variables at 
+ *      the beginnning.
+ *************************************/
+- (void) awakeFromNib
+{
+    sim = Simulator::getInstance();
+    renderTimer = nil;
+//    [self runTimer];
 }
 
 /*************************************
@@ -57,7 +70,7 @@ float Position::yMin = -343;
 
 /*************************************
  * stopTimer
- *  What the name implies
+ *  What the name implies.
  *************************************/
 - (void) stopTimer
 {
@@ -81,7 +94,17 @@ float Position::yMin = -343;
  ************************************************/
 - (void) drawRect: (NSRect) bounds
 {
+    // Draw the background to black
+    glClearColor(0, 0, 0, 0);
     
+    // Clear the color bufer in preparation for drawing
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    // Now draw everything!
+    sim->run();
+    
+    // Draws the content provided by your routine to the view
+    glFlush();
 }
 
 @end
