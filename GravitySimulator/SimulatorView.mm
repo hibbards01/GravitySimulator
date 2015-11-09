@@ -15,6 +15,9 @@
 #include <OpenGL/gl.h>
 
 // Define the window size for Position
+// *** Warning ***
+// This points are in accordance to the NSOpenGLView window size.
+// If view is changed then these need to be changed as well.
 float Position::xMax = 500;
 float Position::xMin = -500;
 float Position::yMax = 500;
@@ -105,6 +108,17 @@ float Position::yMin = -500;
     
     // Draws the content provided by your routine to the view
     glFlush();
+}
+
+
+/*************************************
+ * dealloc
+ *  Delete the pointer within the 
+ *      class Simulator.
+ *************************************/
+- (void) dealloc
+{
+    Simulator::deleteInstanc();
 }
 
 @end

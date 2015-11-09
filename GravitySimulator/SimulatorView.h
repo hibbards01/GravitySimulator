@@ -28,6 +28,10 @@
 
 - (void) drawRect: (NSRect) bounds;
 
+- (void) addPlanet: (int) objID name:(NSString *) name size:(float) size mass:(float) mass;
+
+- (void) addVector: (int) vectorID name:(NSString *) name magnitude:(float) mag angle:(float) angle object:(int) objID;
+
 @end
 
 #endif /* Simulator_h */

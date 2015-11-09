@@ -20,7 +20,9 @@
 		66584B5B1BEC439D002D19C8 /* uiDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B531BEC439D002D19C8 /* uiDraw.cpp */; };
 		66584B5C1BEC439D002D19C8 /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66584B551BEC439D002D19C8 /* vector.cpp */; };
 		66584B601BEC4A3B002D19C8 /* SimulatorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66584B5F1BEC4A3B002D19C8 /* SimulatorView.mm */; };
+		666710021BF11A6B006753D4 /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666710011BF11A6B006753D4 /* CreateViewController.m */; };
 		668DB9EB1BED353C0060E395 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668DB9EA1BED353C0060E395 /* OpenGL.framework */; };
+		668DB9F11BED581F0060E395 /* SimulatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668DB9F01BED581F0060E395 /* SimulatorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +70,11 @@
 		66584B561BEC439D002D19C8 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 		66584B5F1BEC4A3B002D19C8 /* SimulatorView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimulatorView.mm; sourceTree = "<group>"; };
 		66584B611BEC4A4A002D19C8 /* SimulatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatorView.h; sourceTree = "<group>"; };
+		666710001BF11A19006753D4 /* CreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
+		666710011BF11A6B006753D4 /* CreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
 		668DB9EA1BED353C0060E395 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		668DB9F01BED581F0060E395 /* SimulatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulatorViewController.m; sourceTree = "<group>"; };
+		668DB9F21BED58350060E395 /* SimulatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatorViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,10 @@
 				66329A691BEC403E0058DE77 /* AppDelegate.m */,
 				66584B611BEC4A4A002D19C8 /* SimulatorView.h */,
 				66584B5F1BEC4A3B002D19C8 /* SimulatorView.mm */,
+				668DB9F21BED58350060E395 /* SimulatorViewController.h */,
+				668DB9F01BED581F0060E395 /* SimulatorViewController.m */,
+				666710001BF11A19006753D4 /* CreateViewController.h */,
+				666710011BF11A6B006753D4 /* CreateViewController.m */,
 				66329A711BEC403E0058DE77 /* Assets.xcassets */,
 				66329A731BEC403E0058DE77 /* Main.storyboard */,
 				66329A761BEC403E0058DE77 /* Info.plist */,
@@ -306,7 +316,9 @@
 				66584B601BEC4A3B002D19C8 /* SimulatorView.mm in Sources */,
 				66329A6D1BEC403E0058DE77 /* main.m in Sources */,
 				66584B5A1BEC439D002D19C8 /* sim.cpp in Sources */,
+				666710021BF11A6B006753D4 /* CreateViewController.m in Sources */,
 				66584B581BEC439D002D19C8 /* object.cpp in Sources */,
+				668DB9F11BED581F0060E395 /* SimulatorViewController.m in Sources */,
 				66584B5C1BEC439D002D19C8 /* vector.cpp in Sources */,
 				66329A6A1BEC403E0058DE77 /* AppDelegate.m in Sources */,
 			);
