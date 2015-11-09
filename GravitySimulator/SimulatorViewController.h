@@ -42,7 +42,6 @@
 @property (weak) IBOutlet NSOpenGLView *simulator;
 
 // Member methods
-- (IBAction) createNewObject: (NSStoryboardSegue *) segue;
 
 @end
 

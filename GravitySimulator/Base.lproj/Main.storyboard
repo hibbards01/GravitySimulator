@@ -947,7 +947,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="MJp-Qw-McP" kind="sheet" id="2xh-zm-0m9"/>
+                                    <action selector="clickedNew:" target="XfG-lQ-9wD" id="c49-nY-G0o"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -980,7 +980,7 @@
         <!--Create -->
         <scene sceneID="Ygv-Ur-nvf">
             <objects>
-                <viewController id="MJp-Qw-McP" customClass="CreateViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateView" id="MJp-Qw-McP" customClass="CreateViewController" sceneMemberID="viewController">
                     <string key="title">Create
 </string>
                     <view key="view" id="Zaq-tz-BDt">

@@ -13,17 +13,17 @@
 
 #import <Foundation/Foundation.h>
 #import "SimulatorViewController.h"
+#import "CreateViewController.h"
 
 @implementation SimulatorViewController
 
 /*************************************
- * createNewObject
- *  This will create a new object from
- *      the CreateViewController data.
- *************************************/
-- (void) createNewObject: (NSStoryboardSegue *) segue
+ * grabData
+ *  The data will be sent to this funciton.
+ ************************************/
+- (void) grabData: (NSDictionary *) data
 {
-    
+    NSLog(@"you made it!");
 }
 
 /*************************************
@@ -31,7 +31,7 @@
  *  This grabs the event of when this
  *      button was clicked.
  *************************************/
-- (IBAction)clickedRun:(id)sender
+- (IBAction)clickedRun: (id)sender
 {
     
 }
@@ -40,7 +40,7 @@
  * clickedReset
  *  Grab the click event for reset.
  *************************************/
-- (IBAction)clickedReset:(id)sender
+- (IBAction)clickedReset: (id)sender
 {
     
 }
@@ -49,7 +49,7 @@
  * clickedClear
  *  Grab the click event for the clear.
  *************************************/
-- (IBAction)clickedClear:(id)sender
+- (IBAction)clickedClear: (id)sender
 {
     
 }
@@ -58,9 +58,21 @@
  * clickedDelete
  *  Grab the click event for the delete.
  *************************************/
-- (IBAction)clickedDelete:(id)sender
+- (IBAction)clickedDelete: (id)sender
 {
     
+}
+
+/*************************************
+ * clickedNew
+ *  Grab the click event for the new.
+ *************************************/
+- (IBAction)clickedNew: (id)sender
+{
+    CreateViewController *view = (CreateViewController *) [self.storyboard instantiateControllerWithIdentifier:@"CreateView"];
+    view.delegate = self;
+    [self presentViewControllerAsSheet: view];
+    NSLog(@"Delegated");
 }
 
 @end

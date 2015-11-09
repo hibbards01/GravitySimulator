@@ -15,6 +15,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+// Define the protocol
+@protocol sendDataProtocol <NSObject>
+
+- (void) grabData: (NSDictionary *) data;
+
+@end
+
 @interface CreateViewController : NSViewController
 {
     // Private variables
@@ -32,6 +39,9 @@
 // Grab all the buttons
 @property (weak) IBOutlet NSButton *cancel;
 @property (weak) IBOutlet NSButton *create;
+
+// This will hold the delegate
+@property(nonatomic,assign) id delegate;
 
 @end
 

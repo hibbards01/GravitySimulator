@@ -23,7 +23,9 @@
  *      change the other labels, depending
  *      on what was clicked.
  *************************************/
-- (IBAction)clickedWhichObj:(id)sender {
+- (IBAction)clickedWhichObj:(id)sender
+{
+    
 }
 
 /*************************************
@@ -62,6 +64,10 @@
     
     // Check the data
     valid = (name.length > 0) ? YES : NO;
+    
+    self->newObj = [[NSDictionary alloc] init];
+    [self.delegate grabData:self->newObj];
+    [self dismissViewController:self];
 //    valid = ()
 }
 
