@@ -1060,12 +1060,12 @@
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRj-pQ-Ltv">
                                 <rect key="frame" x="152" y="347" width="76" height="26"/>
                                 <animations/>
-                                <popUpButtonCell key="cell" type="push" title="Planet" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="DNZ-0n-kfJ" id="t6y-Wm-wiO">
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="t6y-Wm-wiO">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="XS3-SI-lfm">
                                         <items>
-                                            <menuItem title="Planet" state="on" id="DNZ-0n-kfJ"/>
+                                            <menuItem title="Planet" id="DNZ-0n-kfJ"/>
                                             <menuItem title="Vector" id="ZeY-Ho-Edt"/>
                                         </items>
                                     </menu>
@@ -1171,6 +1171,7 @@ Gw
                         <outlet property="massOrAngleInput" destination="N50-tX-V9Z" id="XR8-Ay-JUu"/>
                         <outlet property="nameInput" destination="PaE-Vu-rhR" id="1Ls-4m-Fiu"/>
                         <outlet property="objBtn" destination="HqJ-u4-Ecv" id="n1E-b6-043"/>
+                        <outlet property="objectLabel" destination="KT5-Gz-GLf" id="4y3-nZ-Ogr"/>
                         <outlet property="whichObjectBtn" destination="hRj-pQ-Ltv" id="kUE-Mo-9xa"/>
                     </connections>
                 </viewController>

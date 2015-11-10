@@ -23,10 +23,6 @@
 @end
 
 @interface CreateViewController : NSViewController
-{
-    // Private variables
-    NSDictionary *newObj;
-}
 
 // Grab all the input tags
 @property (weak) IBOutlet NSPopUpButton *whichObjectBtn;
@@ -39,6 +35,9 @@
 // Grab all the buttons
 @property (weak) IBOutlet NSButton *cancel;
 @property (weak) IBOutlet NSButton *create;
+
+// And one label
+@property (weak) IBOutlet NSTextField *objectLabel;
 
 // This will hold the delegate
 @property(nonatomic,assign) id delegate;

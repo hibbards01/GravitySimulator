@@ -17,6 +17,7 @@
 #define SimulatorViewController_h
 
 #import <Cocoa/Cocoa.h>
+//#import "sim.h"
 
 /*************************************
  * SimulatorViewController
@@ -24,9 +25,13 @@
  *      inside the view.
  *************************************/
 @interface SimulatorViewController : NSViewController
-@property (weak) IBOutlet NSButton *newbtn;
+{
+    // Private Members
+    //Simulator * sim;
+}
 
 // Here are all the actions that are needed to be controlled.
+@property (weak) IBOutlet NSButton *newbtn;
 @property (weak) IBOutlet NSScrollView *treeTable;
 @property (weak) IBOutlet NSTextField *editTitle;
 @property (weak) IBOutlet NSTextField *formLabel1;

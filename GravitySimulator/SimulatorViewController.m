@@ -14,6 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "SimulatorViewController.h"
 #import "CreateViewController.h"
+#include <OpenGL/gl.h>
 
 @implementation SimulatorViewController
 
@@ -72,7 +73,6 @@
     CreateViewController *view = (CreateViewController *) [self.storyboard instantiateControllerWithIdentifier:@"CreateView"];
     view.delegate = self;
     [self presentViewControllerAsSheet: view];
-    NSLog(@"Delegated");
 }
 
 @end
