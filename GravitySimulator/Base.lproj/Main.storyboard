@@ -668,12 +668,12 @@
         <!--SimulatorView-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="SimulatorView" id="XfG-lQ-9wD" customClass="SimulatorViewController" sceneMemberID="viewController">
+                <viewController title="SimulatorView" storyboardIdentifier="SimulatorView" id="XfG-lQ-9wD" customClass="SimulatorViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="750"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <openGLView useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-a5-pe5" customClass="SimulatorView">
+                            <openGLView useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6v-a5-pe5" customClass="GravityViewController">
                                 <rect key="frame" x="250" y="0.0" width="750" height="750"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="750" id="72i-uS-O3W"/>
@@ -859,7 +859,7 @@
                                 </clipView>
                                 <animations/>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="v55-07-t9J">
-                                    <rect key="frame" x="1" y="273" width="232" height="16"/>
+                                    <rect key="frame" x="1" y="7" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </scroller>
@@ -1177,7 +1177,7 @@ Gw
                 </viewController>
                 <customObject id="pOj-1B-ZIR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81.5" y="1689"/>
+            <point key="canvasLocation" x="-296.5" y="1676"/>
         </scene>
     </scenes>
 </document>

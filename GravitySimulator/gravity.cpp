@@ -14,14 +14,11 @@ using namespace std;
 
 // Set the gravitational constant
 double Gravity::gravitationalConstant = .0000000000667;
+int Gravity::indexMeters = 0;
 
 #define deg2rad(value) ((M_PI / 180) * (value))
 #define PI 3.14159265
 #define rad2deg(value) (value * 180 / PI)
-#define MILLMETERS 1000000
-#define METERS5    100000
-#define METERS4    10000
-#define KILOMETERS 1000
 
 /******************************
  * Non-defualt Constructor

@@ -15,8 +15,18 @@
 #import "SimulatorViewController.h"
 #import "CreateViewController.h"
 #include <OpenGL/gl.h>
+#import "GravityViewController.h"
 
 @implementation SimulatorViewController
+
+/*************************************
+ * viewDidLoad
+ ************************************/
+- (void) viewDidLoad
+{
+    // Add the delegation for the GravityViewController
+    self.delegate = self.simulator;
+}
 
 /*************************************
  * grabData
@@ -24,7 +34,9 @@
  ************************************/
 - (void) grabData: (NSDictionary *) data
 {
-    NSLog(@"you made it!");
+    NSLog(@"HERE!");
+    // Send the data to the GravityViewController
+    [self.delegate addObject:data];
 }
 
 /*************************************

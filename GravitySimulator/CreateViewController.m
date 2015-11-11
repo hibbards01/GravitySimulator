@@ -121,8 +121,8 @@
         NSDictionary *newObj = @{
                                  @"object"    : obj,
                                  @"name"      : name,
-                                 diamOrMagKey : [NSNumber numberWithFloat:[diamOrMag floatValue]],
-                                 massOrAngleKey : [NSNumber numberWithFloat:[massOrAngle floatValue]],
+                                 diamOrMagKey : [NSNumber numberWithFloat:[diamOrMag doubleValue]],
+                                 massOrAngleKey : [NSNumber numberWithFloat:[massOrAngle doubleValue]],
                                  @"objName"   : objName
                                  };
         

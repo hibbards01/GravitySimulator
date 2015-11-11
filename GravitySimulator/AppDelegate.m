@@ -4,7 +4,7 @@
 * Author:
 *   Samuel Hibbard
 * Summary:
-*   I don't know.
+*   This is the main controller of the osx app.
 *
 * Created by Samuel Hibbard on 11/5/15.
 * Copyright © 2015 samIAm. All rights reserved.

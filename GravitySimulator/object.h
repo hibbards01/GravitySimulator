@@ -9,6 +9,9 @@
 *************************************************************/
 
 #include "vector.h"
+#include <string>
+
+static int identifier = 1;
 
 /**********************************
  * Objects
@@ -22,7 +25,11 @@ public:
     // Constructors
     //
     Object() : vector(), mass(0.0) {}
-    Object(float x, float y, float dx, float dy, double m) : vector(x, y, dx, dy), mass(m) {}
+    Object(float x, float y, float dx, float dy, double m, std::string n) : vector(x, y, dx, dy),
+    mass(m), name(n)
+    {
+        id = identifier++;
+    }
     
     //
     // Methods
@@ -38,6 +45,7 @@ public:
     float getMass()      const { return mass;              }
     Position getPoint()  const { return vector.getPoint(); }
     Vector & getVector()       { return vector;            }
+    int getId()          const { return id;                }
     
     //
     // Setters
@@ -46,8 +54,10 @@ public:
     void setMass(float m)      { mass = m;             }
     void setWrap(bool wrap)    { vector.setWrap(wrap); }
 private:
-    Vector vector; // This will allow the object to move!
-    double mass;   // This will hold the mass of the object!
+    Vector vector;    // This will allow the object to move!
+    double mass;      // This will hold the mass of the object!
+    int id;           // This will help identify it!
+    std::string name; // This is the name of the object.
 };
 
 /*********************************
@@ -61,7 +71,8 @@ public:
     //
     // Constructors
     //
-    Planet(float x, float y, float dx, float dy, double m, int r, int s) : radius(r), Object(x, y, dx, dy, m), rotationSpeed(s) {}
+    Planet() : Object(), radius(0), rotationSpeed(0) {}
+    Planet(float x, float y, float dx, float dy, double m, int r, int s, std::string n) : radius(r), Object(x, y, dx, dy, m, n), rotationSpeed(s) {}
     
     //
     // Methods
@@ -89,7 +100,7 @@ public:
     //
     // Constructors
     //
-    Ship(float x, float y, float dx, float dy, double m, int r) : Object(x, y, dx, dy, m) {}
+    Ship(float x, float y, float dx, float dy, double m, int r, std::string n) : Object(x, y, dx, dy, m, n) {}
     
     //
     // Methods

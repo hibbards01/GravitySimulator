@@ -17,7 +17,13 @@
 #define SimulatorViewController_h
 
 #import <Cocoa/Cocoa.h>
-//#import "sim.h"
+
+@protocol sendObjectProtocol <NSObject>
+
+- (void) addObject: (NSDictionary *) data;
+- (void) editObject: (NSDictionary *) data;
+
+@end
 
 /*************************************
  * SimulatorViewController
@@ -25,10 +31,6 @@
  *      inside the view.
  *************************************/
 @interface SimulatorViewController : NSViewController
-{
-    // Private Members
-    //Simulator * sim;
-}
 
 // Here are all the actions that are needed to be controlled.
 @property (weak) IBOutlet NSButton *newbtn;
@@ -46,7 +48,8 @@
 @property (weak) IBOutlet NSButton *run;
 @property (weak) IBOutlet NSOpenGLView *simulator;
 
-// Member methods
+// This will hold the delegate
+@property(nonatomic,assign) id delegate;
 
 @end
 

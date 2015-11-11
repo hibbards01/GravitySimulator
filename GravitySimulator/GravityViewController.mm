@@ -1,6 +1,6 @@
 /****************************************************
  * Program:
- *   SimulatorView.mm
+ *   GravityViewController.mm
  * Author:
  *   Samuel Hibbard
  * Summary:
@@ -11,8 +11,9 @@
  ****************************************************/
 
 #import <Foundation/Foundation.h>
-#import "SimulatorView.h"
+#import "GravityViewController.h"
 #include <OpenGL/gl.h>
+#import "SimulatorViewController.h"
 
 // Define the window size for Position
 // *** Warning ***
@@ -23,7 +24,7 @@ float Position::xMin = -500;
 float Position::yMax = 500;
 float Position::yMin = -500;
 
-@implementation SimulatorView
+@implementation GravityViewController
 
 /************************************************
  * perpareOpenGL
@@ -46,8 +47,37 @@ float Position::yMin = -500;
 {
     sim = Simulator::getInstance();
     renderTimer = nil;
-//    [self runTimer];
+    ids = [[NSMutableArray alloc] init];
 }
+
+/*************************************
+ * addObject
+ *  Add an object.
+ *************************************/
+- (void) addObject: (NSDictionary *)data
+{
+    // See which object that we should make
+    if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
+    {
+        // Change the radius to what it should be for the view
+        int radius = [[data objectForKey:@"diam"] doubleValue] / sim->getGravity().getMeter();
+        
+        // Create new object
+        Object * object = new Planet(0, 0, 0, 0, [[data objectForKey:@"mass"] doubleValue], radius, 0, [[data objectForKey:@"name"] UTF8String]);
+        
+        // Grab the id from the new object and save it.
+        
+    }
+    else
+    {
+        // Create new vector
+    }
+}
+
+/*************************************
+ * addObject
+ *  Edit an object.
+ *************************************/
 
 /*************************************
  * runTimer

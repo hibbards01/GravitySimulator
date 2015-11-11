@@ -28,6 +28,11 @@ public:
     void run();
     void addObject(Object * object)    { gravity.addObject(object);    }
     void removeObject(Object * object) { gravity.removeObject(object); }
+    
+    //
+    // Getters
+    //
+    Gravity & getGravity() { return gravity; }
 private:
     //
     // Constructors
@@ -35,6 +40,6 @@ private:
     Simulator();
     Simulator(std::list<Object *> & objects) : gravity(objects) {}
     
-    Gravity gravity; // We need gravity!
-    static Simulator * sim;
+    Gravity gravity;        // We need gravity!
+    static Simulator * sim; // This creates our singleton.
 };

@@ -1,6 +1,6 @@
 /****************************************************
  * Program:
- *   SimulatorView.h
+ *   GravityViewController.h
  * Author:
  *   Samuel Hibbard
  * Summary:
@@ -17,20 +17,17 @@
 #import "sim.h"
 
 /****************************
- * Simulator
+ * GravityViewController
  *  Subclass of NSOpenGLView
  ***************************/
-@interface SimulatorView : NSOpenGLView
+@interface GravityViewController : NSOpenGLView
 {
-    NSTimer * renderTimer;
-    Simulator * sim;
+    NSTimer * renderTimer; // This helps with the drawing
+    Simulator * sim;       // This is to add objects to the simulator
+    NSMutableArray *ids;   // These are the ids of the objects.
 }
 
 - (void) drawRect: (NSRect) bounds;
-
-- (void) addPlanet: (int) objID name:(NSString *) name size:(float) size mass:(float) mass;
-
-- (void) addVector: (int) vectorID name:(NSString *) name magnitude:(float) mag angle:(float) angle object:(int) objID;
 
 @end
 
