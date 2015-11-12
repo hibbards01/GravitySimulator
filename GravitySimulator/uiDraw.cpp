@@ -255,7 +255,158 @@ void drawCircle(const Position & center, char radius, int points, int rotation)
    
    // complete drawing
    glEnd();
+}
 
+/*****************************************************************
+ * drawBrackets
+ *  This will allow the user to know that the object has been 
+ *      selected by the user.
+ ****************************************************************/
+void drawBrackets(const Position & center, char radius)
+{
+    // Change the color
+    glColor3f(0.5373, 0.5373, 0.3608);
+    
+    // Grab the points
+    int x = center.getX() + static_cast<int>(radius) + 10;
+    int y = center.getY() + static_cast<int>(radius) + 10;
+    
+    // Start the points in the top right corner
+    Position tR(x, y, true, true);
+    Position mM(x, y - 4, true, true);
+    Position bR(x, y - 10, true, true);
+    Position bL(x - 5, y - 10, true, true);
+    Position mL(x - 11, y - 4, true, true);
+    Position tL(x - 11, y, true, true);
+    Position tM(x - 5, y, true, true);
+    
+    // Now draw it
+    glBegin(GL_TRIANGLES);
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(tL.getX(), tL.getY());
+        glVertex2f(mL.getX(), mL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(mM.getX(), mM.getY());
+        glVertex2f(mL.getX(), mL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(bR.getX(), bR.getY());
+        glVertex2f(bL.getX(), bL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(tM.getX(), tM.getY());
+        glVertex2f(bL.getX(), bL.getY());
+    }
+    glEnd();
+    
+    // Change the points to the bottom right corner
+    y = center.getY() - static_cast<int>(radius) - 10;
+    tR.setY(y);
+    mM.setY(y + 4);
+    bR.setY(y + 10);
+    bL.setY(y + 10);
+    mL.setY(y + 4);
+    tL.setY(y);
+    tM.setY(y);
+    
+    // Now draw the bottom right corner
+    glBegin(GL_TRIANGLES);
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(tL.getX(), tL.getY());
+        glVertex2f(mL.getX(), mL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(mM.getX(), mM.getY());
+        glVertex2f(mL.getX(), mL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(bR.getX(), bR.getY());
+        glVertex2f(bL.getX(), bL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(tM.getX(), tM.getY());
+        glVertex2f(bL.getX(), bL.getY());
+    }
+    glEnd();
+    
+    // Now change the points to the bottom left
+    x = center.getX() - static_cast<int>(radius) - 10;
+    tR.setX(x);
+    mM.setX(x);
+    bR.setX(x);
+    bL.setX(x + 5);
+    mL.setX(x + 10);
+    tL.setX(x + 10);
+    tM.setX(x + 5);
+    
+    // Now draw it
+    glBegin(GL_TRIANGLES);
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(tL.getX(), tL.getY());
+        glVertex2f(mL.getX(), mL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(mM.getX(), mM.getY());
+        glVertex2f(mL.getX(), mL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(bR.getX(), bR.getY());
+        glVertex2f(bL.getX(), bL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(tM.getX(), tM.getY());
+        glVertex2f(bL.getX(), bL.getY());
+    }
+    glEnd();
+    
+    // Now draw the top left corner
+    y = center.getY() + static_cast<int>(radius) + 10;
+    tR.setY(y);
+    mM.setY(y - 4);
+    bR.setY(y - 10);
+    bL.setY(y - 10);
+    mL.setY(y - 4);
+    tL.setY(y);
+    tM.setY(y);
+    
+    // Draw it
+    glBegin(GL_TRIANGLES);
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(tL.getX(), tL.getY());
+        glVertex2f(mL.getX(), mL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(mM.getX(), mM.getY());
+        glVertex2f(mL.getX(), mL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(bR.getX(), bR.getY());
+        glVertex2f(bL.getX(), bL.getY());
+    }
+    {
+        glVertex2f(tR.getX(), tR.getY());
+        glVertex2f(tM.getX(), tM.getY());
+        glVertex2f(bL.getX(), bL.getY());
+    }
+    glEnd();
+    
+    glColor3f(1.0, 1.0, 1.0);
 }
 
 /************************************************************************

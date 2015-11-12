@@ -34,9 +34,10 @@ public:
     //
     // Methods
     //
-    virtual void move();         // Virtual function
-    virtual void draw() = 0;     // Pure virtual function
-    void addVectors(Vector & v); // Add two vectors together
+    virtual void move();                       // Virtual function
+    virtual void draw() = 0;                   // Pure virtual function
+    void addVectors(Vector & v);               // Add two vectors together
+    virtual void showHelpers(bool helper) = 0; // Show the helpers for the object?
     
     //
     // Getters
@@ -71,22 +72,24 @@ public:
     //
     // Constructors
     //
-    Planet() : Object(), radius(0), rotationSpeed(0) {}
-    Planet(float x, float y, float dx, float dy, double m, int r, int s, std::string n) : radius(r), Object(x, y, dx, dy, m, n), rotationSpeed(s) {}
+    Planet() : Object(), radius(0), rotationSpeed(0), brackets(false) {}
+    Planet(float x, float y, float dx, float dy, double m, int r, int s, std::string n) : radius(r), Object(x, y, dx, dy, m, n), rotationSpeed(s), brackets(true) {}
     
     //
     // Methods
     //
     void draw();
     void rotate();
+    void showHelpers(bool helper) { brackets = helper; }
     
     //
     // Setters
     //
     void setRotationSpeed(int s) { rotationSpeed = s; }
 private:
-    int radius;        // This is the radius of the planet.
-    int rotationSpeed; // This will rotate the planet.
+    int radius;           // This is the radius of the planet.
+    int rotationSpeed;    // This will rotate the planet.
+    bool brackets;        // Do we draw brackets or not?
 };
 
 /*********************************
@@ -106,5 +109,7 @@ public:
     // Methods
     //
     void draw();
+    void showHelpers(bool helper) { brackets = helper; }
 private:
+    bool brackets; // Show the brackets for the ship/
 };

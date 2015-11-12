@@ -20,8 +20,8 @@
 
 @protocol sendObjectProtocol <NSObject>
 
-- (void) addObject: (NSDictionary *) data;
-- (void) editObject: (NSDictionary *) data;
+- (NSNumber *) addToViewObject: (NSDictionary *) data;
+- (void) editObject: (NSDictionary *) data id:(NSNumber *)id;
 
 @end
 
@@ -31,10 +31,13 @@
  *      inside the view.
  *************************************/
 @interface SimulatorViewController : NSViewController
+{
+    NSMutableArray *ids;   // These are the ids of the objects
+    NSMutableArray *names; // Save the names for the list
+    int currentlySelected; // Current selected item
+}
 
 // Here are all the actions that are needed to be controlled.
-@property (weak) IBOutlet NSButton *newbtn;
-@property (weak) IBOutlet NSScrollView *treeTable;
 @property (weak) IBOutlet NSTextField *editTitle;
 @property (weak) IBOutlet NSTextField *formLabel1;
 @property (weak) IBOutlet NSTextField *formLabel2;

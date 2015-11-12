@@ -47,15 +47,16 @@ float Position::yMin = -500;
 {
     sim = Simulator::getInstance();
     renderTimer = nil;
-    ids = [[NSMutableArray alloc] init];
 }
 
 /*************************************
  * addObject
  *  Add an object.
  *************************************/
-- (void) addObject: (NSDictionary *)data
+- (NSNumber *) addToViewObject: (NSDictionary *)data
 {
+    NSNumber *newID; // Grab the object id or vector id.
+    
     // See which object that we should make
     if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
     {
@@ -65,19 +66,31 @@ float Position::yMin = -500;
         // Create new object
         Object * object = new Planet(0, 0, 0, 0, [[data objectForKey:@"mass"] doubleValue], radius, 0, [[data objectForKey:@"name"] UTF8String]);
         
-        // Grab the id from the new object and save it.
+        // Now save it to the simulator
+        sim->addObject(object);
         
+        // Grab the id
+        newID = [NSNumber numberWithInt:object->getId()];
     }
     else
     {
         // Create new vector
     }
+    
+    // Redraw the view
+    [self setNeedsDisplay:YES];
+    
+    return newID;
 }
 
 /*************************************
- * addObject
+ * editObject
  *  Edit an object.
  *************************************/
+- (void) editObject: (NSDictionary *) data id:(NSNumber *)id
+{
+    
+}
 
 /*************************************
  * runTimer

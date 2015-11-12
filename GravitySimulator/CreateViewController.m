@@ -57,16 +57,6 @@
 }
 
 /*************************************
- * clickedExisting
- *  This will add values to the input
- *      tags.
- *************************************/
-- (IBAction)clickedExisting:(id)sender
-{
-    
-}
-
-/*************************************
  * validNumber
  *  This will check if the string is 
  *      a valid number.

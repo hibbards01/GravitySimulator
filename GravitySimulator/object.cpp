@@ -38,10 +38,16 @@ void Object::move()
 void Planet::draw()
 {
     // Rotate the planet
-//    getVector().rotate(rotationSpeed);
+    getVector().rotate(rotationSpeed);
     
     // Draw the planet!
     drawCircle(getPoint(), radius, 8, getVector().getAngle());
+    
+    // Show the brackets if needed
+    if (brackets)
+    {
+        drawBrackets(getPoint(), radius);
+    }
     
     return;
 }

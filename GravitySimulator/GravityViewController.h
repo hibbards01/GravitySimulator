@@ -24,7 +24,6 @@
 {
     NSTimer * renderTimer; // This helps with the drawing
     Simulator * sim;       // This is to add objects to the simulator
-    NSMutableArray *ids;   // These are the ids of the objects.
 }
 
 - (void) drawRect: (NSRect) bounds;

@@ -46,6 +46,13 @@ void drawRect(const Position & center, char width, char height, int rotation);
  *************************************************************************/
 void drawCircle(const Position & center, char radius, int points, int rotation);
 
+/*****************************************************************
+ * drawBrackets
+ *  This will allow the user to know that the object has been
+ *      selected by the user.
+ ****************************************************************/
+void drawBrackets(const Position & center, char radius);
+
 /************************************************************************
  * DRAW LINE
  * Draw a line on the screen from the beginning to the end.

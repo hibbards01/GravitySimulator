@@ -67,7 +67,7 @@ private:
    static float yMin; // minimum extent of the y position
    static float yMax; // maximum extent of the y position
    bool wrap;         // do we wrap around? Added this variable also!
-    bool percentage; // Do we want the return value of x and y to be a percentage to the window size?
+   bool percentage;   // Do we want the return value of x and y to be a percentage to the window size?
 };
 
 // stream I/O useful for debugging
