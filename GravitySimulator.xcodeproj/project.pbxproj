@@ -13,7 +13,6 @@
 		66329A8B1BEC403E0058DE77 /* GravitySimulatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A8A1BEC403E0058DE77 /* GravitySimulatorUITests.m */; };
 		668DB9EB1BED353C0060E395 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668DB9EA1BED353C0060E395 /* OpenGL.framework */; };
 		66DE11871BF2B086009D514B /* GravityViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66584B5F1BEC4A3B002D19C8 /* GravityViewController.mm */; };
-		66DE11881BF2B086009D514B /* gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66DE116A1BF2AEA2009D514B /* gravity.cpp */; };
 		66DE11891BF2B086009D514B /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66DE116C1BF2AEA2009D514B /* object.cpp */; };
 		66DE118A1BF2B086009D514B /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66DE116E1BF2AEA2009D514B /* point.cpp */; };
 		66DE118B1BF2B086009D514B /* sim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66DE11701BF2AEA2009D514B /* sim.cpp */; };
@@ -63,8 +62,6 @@
 		668DB9EA1BED353C0060E395 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		668DB9F01BED581F0060E395 /* SimulatorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimulatorViewController.mm; sourceTree = "<group>"; };
 		668DB9F21BED58350060E395 /* SimulatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatorViewController.h; sourceTree = "<group>"; };
-		66DE116A1BF2AEA2009D514B /* gravity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gravity.cpp; sourceTree = "<group>"; };
-		66DE116B1BF2AEA2009D514B /* gravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gravity.h; sourceTree = "<group>"; };
 		66DE116C1BF2AEA2009D514B /* object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object.cpp; sourceTree = "<group>"; };
 		66DE116D1BF2AEA2009D514B /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
 		66DE116E1BF2AEA2009D514B /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
@@ -173,8 +170,6 @@
 		66DE11691BF2AE76009D514B /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				66DE116A1BF2AEA2009D514B /* gravity.cpp */,
-				66DE116B1BF2AEA2009D514B /* gravity.h */,
 				66DE116C1BF2AEA2009D514B /* object.cpp */,
 				66DE116D1BF2AEA2009D514B /* object.h */,
 				66DE116E1BF2AEA2009D514B /* point.cpp */,
@@ -319,7 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				66DE118E1BF2B086009D514B /* main.m in Sources */,
-				66DE11881BF2B086009D514B /* gravity.cpp in Sources */,
 				66DE11891BF2B086009D514B /* object.cpp in Sources */,
 				66DE118A1BF2B086009D514B /* point.cpp in Sources */,
 				66DE118B1BF2B086009D514B /* sim.cpp in Sources */,

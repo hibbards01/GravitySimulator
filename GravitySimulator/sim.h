@@ -5,11 +5,17 @@
 *   Samuel Hibbard
 * Summary:
 *   This will hold the class Simulator. This will be designed
-*       to be a SingleTon desgin.
+*       to be a SingleTon desgin. This will also keep track of
+*       the gravity between objects.
 ***************************************************************/
 
-#include "gravity.h"
 #include <list>
+#include "object.h"
+
+#define MILLMETERS 1000000
+#define METERS5    100000
+#define METERS4    10000
+#define KILOMETERS 1000
 
 /**********************************
  * Simulator
@@ -24,22 +30,55 @@ public:
     // Methods
     //
     static Simulator * getInstance();
-    static void deleteInstanc();
+    static void deleteInstance();
     void run();
-    void addObject(Object * object)    { gravity.addObject(object);    }
-    void removeObject(Object * object) { gravity.removeObject(object); }
+    void addObject(Object * object)    { objects.push_back(object); }
+    void removeObject(Object * object);
+    bool clickedObject(int x, int y, int & id);
+    
+    //
+    // Methods
+    //
+    bool hitObject(int x, int y, int & id);
     
     //
     // Getters
     //
-    Gravity & getGravity() { return gravity; }
+    std::list<Object *> & getObjects() { return objects; }
+    
+    //
+    // Setters
+    //
+    void setObjects(std::list<Object *> & objs) { objects = objs; }
+    void setWrap(bool wrap);
+    
+    // Static functions
+    static double getMeter()
+    {
+        double meter[4];
+        meter[0] = METERS4;
+        meter[1] = METERS5;
+        meter[2] = MILLMETERS;
+        meter[3] = KILOMETERS;
+        
+        return meter[indexMeters];
+    }
+    static void setMeter(int i) { indexMeters = i; }
 private:
     //
     // Constructors
     //
     Simulator();
-    Simulator(std::list<Object *> & objects) : gravity(objects) {}
-    
-    Gravity gravity;        // We need gravity!
+    Simulator(std::list<Object *> & objects) : objects(objects) {}
     static Simulator * sim; // This creates our singleton.
+    
+    // Private methods
+    void move();
+    void draw();
+    void calculateAccerlation();         // This will calculate the force for all the objects
+    
+    // Member variables
+    std::list<Object *> objects;         // This will hold all the objects.
+    static double gravitationalConstant; // This will hold the gravitational constant
+    static int indexMeters;              // This is set by gravity to 1 for METERS4, unless it is changed.
 };

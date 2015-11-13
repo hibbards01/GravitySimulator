@@ -24,6 +24,7 @@
 {
     NSTimer * renderTimer; // This helps with the drawing
     Simulator * sim;       // This is to add objects to the simulator
+    BOOL dragging;         // Allow the user to drag an object
 }
 
 - (void) drawRect: (NSRect) bounds;

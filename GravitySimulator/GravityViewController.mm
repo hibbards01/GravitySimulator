@@ -19,10 +19,10 @@
 // *** Warning ***
 // This points are in accordance to the NSOpenGLView window size.
 // If view is changed then these need to be changed as well.
-float Position::xMax = 500;
-float Position::xMin = -500;
-float Position::yMax = 500;
-float Position::yMin = -500;
+float Position::xMax = 375;
+float Position::xMin = -375;
+float Position::yMax = 375;
+float Position::yMin = -375;
 
 @implementation GravityViewController
 
@@ -47,6 +47,7 @@ float Position::yMin = -500;
 {
     sim = Simulator::getInstance();
     renderTimer = nil;
+    dragging = NO;
 }
 
 /*************************************
@@ -61,7 +62,7 @@ float Position::yMin = -500;
     if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
     {
         // Change the radius to what it should be for the view
-        int radius = [[data objectForKey:@"diam"] doubleValue] / sim->getGravity().getMeter();
+        int radius = [[data objectForKey:@"diam"] doubleValue] / sim->getMeter();
         
         // Create new object
         Object * object = new Planet(0, 0, 0, 0, [[data objectForKey:@"mass"] doubleValue], radius, 0, [[data objectForKey:@"name"] UTF8String]);
@@ -81,6 +82,58 @@ float Position::yMin = -500;
     [self setNeedsDisplay:YES];
     
     return newID;
+}
+
+/*************************************
+ * mouseDown
+ *  This will check if the user can
+ *      can drag the element.
+ ************************************/
+- (void) mouseDown: (NSEvent *) event
+{
+    // See if this event is over an object
+    // Grab where the mouse was clicked on.
+    NSPoint event_location = event.locationInWindow;
+    NSPoint location = [self convertPoint:event_location fromView:nil];
+    float x = [self changeX: location.x];
+    float y = [self changeY: location.y];
+    
+    // Now see if an object was clicked on
+    int id = -1;
+    if (sim->clickedObject(x, y, id))
+    {
+        // If so then we need to allow dragging.
+        dragging = YES;
+    }
+}
+
+/*************************************
+ * chagneX
+ *  This will change the x coordinate
+ *      to the coordinate in the OpenGl
+ ************************************/
+- (float) changeX: (float) x
+{
+    return x - 375;
+}
+
+/*************************************
+ * chagneY
+ *  This will change the y coordinate
+ *      to the coordinate in the OpenGl
+ ************************************/
+- (float) changeY: (float) y
+{
+    return y - 375;
+}
+
+/*************************************
+ * mouseDragged
+ *  This will then move the object
+ *      with the mouse.
+ ************************************/
+- (void) mouseDragged: (NSEvent *) event
+{
 }
 
 /*************************************
@@ -151,6 +204,8 @@ float Position::yMin = -500;
     
     // Draws the content provided by your routine to the view
     glFlush();
+    
+    NSLog(@"DRAWING");
 }
 
 
@@ -161,7 +216,7 @@ float Position::yMin = -500;
  *************************************/
 - (void) dealloc
 {
-    Simulator::deleteInstanc();
+    Simulator::deleteInstance();
 }
 
 @end

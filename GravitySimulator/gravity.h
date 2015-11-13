@@ -38,6 +38,7 @@ public:
     void draw();
     void addObject(Object * obj)    { objects.push_back(obj); }
     void removeObject(Object * obj) { objects.remove(obj);    }
+    bool hitObject(int x, int y, int & id);
     
     //
     // Getters
