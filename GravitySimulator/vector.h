@@ -53,6 +53,11 @@ public:
     void setDy(float dy)            { this->dy = dy;          }
     void setAngle(float a)          { this->angle = a;        }
     void setPosition(Position & pt) { this->position = pt;    }
+    void setPosition(float x, float y)
+    {
+        position.setX(x);
+        position.setY(y);
+    }
     void setWrap(bool wrap)         { position.setWrap(wrap); }
 private:
     float dx;

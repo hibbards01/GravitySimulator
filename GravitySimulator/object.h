@@ -38,6 +38,7 @@ public:
     virtual void draw() = 0;                   // Pure virtual function
     void addVectors(Vector & v);               // Add two vectors together
     virtual void showHelpers(bool helper) = 0; // Show the helpers for the object?
+    virtual int getSize() = 0;                 // Get the size of the object
     
     //
     // Getters
@@ -81,6 +82,7 @@ public:
     void draw();
     void rotate();
     void showHelpers(bool helper) { brackets = helper; }
+    int getSize()                 { return radius;     }
     
     //
     // Setters
@@ -110,6 +112,7 @@ public:
     //
     void draw();
     void showHelpers(bool helper) { brackets = helper; }
+    int getSize()                 { return 0;          }
 private:
     bool brackets; // Show the brackets for the ship/
 };

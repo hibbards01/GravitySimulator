@@ -31,15 +31,11 @@ public:
     //
     static Simulator * getInstance();
     static void deleteInstance();
-    void run();
-    void addObject(Object * object)    { objects.push_back(object); }
-    void removeObject(Object * object);
-    bool clickedObject(int x, int y, int & id);
-    
-    //
-    // Methods
-    //
-    bool hitObject(int x, int y, int & id);
+    void run(bool movingObjects);
+    void addObject(Object * object, int id);
+    void removeObject(int id);
+    bool clickedObject(float x, float y, int & id);
+    void moveObject(float x, float y, int id);
     
     //
     // Getters
@@ -76,9 +72,10 @@ private:
     void move();
     void draw();
     void calculateAccerlation();         // This will calculate the force for all the objects
+    Object * grabObject(int id);         // This will grab the object
     
     // Member variables
     std::list<Object *> objects;         // This will hold all the objects.
     static double gravitationalConstant; // This will hold the gravitational constant
-    static int indexMeters;              // This is set by gravity to 1 for METERS4, unless it is changed.
+    static int indexMeters;              // This is set by gravity to 1 for METERS4, unless it is changed
 };

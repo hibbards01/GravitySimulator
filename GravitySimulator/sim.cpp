@@ -76,15 +76,39 @@ void Simulator::deleteInstance()
  * run
  *  This will run the Simulator
  *******************************/
-void Simulator::run()
+void Simulator::run(bool movingObjects)
 {
     // First move the objects.
-    move();
+    // Only move them if running the simulation
+    if (!movingObjects)
+    {
+        move();
+    }
     
     // Now draw them.
     draw();
     
     return;
+}
+
+/*************************************
+ * addObject
+ *  This will add the object and make
+ *      it looked like it was selected.
+ *      Anything that was selected will
+ *      not be anymore.
+ ************************************/
+void Simulator::addObject(Object * object, int id)
+{
+    // See if this is the first one
+    if (id != -1)
+    {
+        // Then deselect it
+        this->grabObject(id)->showHelpers(false);
+    }
+    
+    // Add to the list
+    objects.push_back(object);
 }
 
 /*************************************
@@ -94,9 +118,72 @@ void Simulator::run()
  *      the id number with the object
  *      that was clicked on.
  ************************************/
-bool Simulator::clickedObject(int x, int y, int & id)
+bool Simulator::clickedObject(float x, float y, int & id)
 {
-    return true;
+    bool clicked = false;
+    
+    // Now run through all the objects
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        if (!clicked)
+        {
+            // Grab the distance between them
+            float xDist = x - (*it)->getPoint().getX();
+            float yDist = y - (*it)->getPoint().getY();
+            
+            float dist = sqrtf((xDist * xDist) + (yDist * yDist));
+            
+            // Now see if that is within the radius
+            if (dist < (*it)->getSize())
+            {
+                // Make clicked equal true
+                clicked = true;
+                
+                // Take away the helpers for the other object
+                if (id != -1)
+                {
+                    this->grabObject(id)->showHelpers(false);
+                }
+                
+                // Grab the id!
+                id = (*it)->getId();
+                
+                // Show the helpers for it!
+                (*it)->showHelpers(true);
+            }
+        }
+    }
+    
+    return clicked;
+}
+
+/***********************************
+ * grabObject
+ *  This will grab the object that
+ *      has the given id.
+ **********************************/
+Object * Simulator::grabObject(int id)
+{
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        if (id == (*it)->getId())
+        {
+            return *it;
+        }
+    }
+    
+    return NULL;
+}
+
+/***********************************
+ * moveObject
+ *  This will move the object if being
+ *      dragged by the user.
+ **********************************/
+void Simulator::moveObject(float x, float y, int id)
+{
+    // Find the object to move
+    this->grabObject(id)->getVector().setPosition(x, y);
 }
 
 /******************************

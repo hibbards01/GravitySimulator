@@ -48,6 +48,7 @@ float Position::yMin = -375;
     sim = Simulator::getInstance();
     renderTimer = nil;
     dragging = NO;
+    id = -1;
 }
 
 /*************************************
@@ -68,10 +69,11 @@ float Position::yMin = -375;
         Object * object = new Planet(0, 0, 0, 0, [[data objectForKey:@"mass"] doubleValue], radius, 0, [[data objectForKey:@"name"] UTF8String]);
         
         // Now save it to the simulator
-        sim->addObject(object);
+        sim->addObject(object, id);
         
         // Grab the id
-        newID = [NSNumber numberWithInt:object->getId()];
+        id = object->getId();
+        newID = [NSNumber numberWithInt: id];
     }
     else
     {
@@ -99,11 +101,41 @@ float Position::yMin = -375;
     float y = [self changeY: location.y];
     
     // Now see if an object was clicked on
-    int id = -1;
     if (sim->clickedObject(x, y, id))
     {
         // If so then we need to allow dragging.
         dragging = YES;
+    }
+    else
+    {
+        dragging = NO;
+    }
+    
+    [self setNeedsDisplay:YES];
+}
+
+/*************************************
+ * mouseDragged
+ *  This will then move the object
+ *      with the mouse.
+ ************************************/
+- (void) mouseDragged: (NSEvent *) event
+{
+    // Make sure an object was clicked on
+    if (dragging)
+    {
+        // Now move the object
+        // Grab the points
+        NSPoint event_location = event.locationInWindow;
+        NSPoint location = [self convertPoint:event_location fromView:nil];
+        float x = [self changeX: location.x];
+        float y = [self changeY: location.y];
+        
+        // Move the object to that point
+        sim->moveObject(x, y, id);
+        
+        // Now redraw the picture
+        [self setNeedsDisplay:YES];
     }
 }
 
@@ -125,15 +157,6 @@ float Position::yMin = -375;
 - (float) changeY: (float) y
 {
     return y - 375;
-}
-
-/*************************************
- * mouseDragged
- *  This will then move the object
- *      with the mouse.
- ************************************/
-- (void) mouseDragged: (NSEvent *) event
-{
 }
 
 /*************************************
@@ -200,12 +223,10 @@ float Position::yMin = -375;
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Now draw everything!
-    sim->run();
+    sim->run(dragging);
     
     // Draws the content provided by your routine to the view
     glFlush();
-    
-    NSLog(@"DRAWING");
 }
 
 
