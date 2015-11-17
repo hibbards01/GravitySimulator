@@ -257,6 +257,56 @@ void drawCircle(const Position & center, char radius, int points, int rotation)
    glEnd();
 }
 
+/******************************************************************
+ * drawArrow
+ *  This will draw an arrow. This will help indicate the direction
+ *      and magnitude of the vector.
+ *****************************************************************/
+void drawArrow(const Position & center, float dx, float dy, int angle)
+{
+    // Amplify the mag
+    dx *= 20;
+    dy *= 20;
+    
+    // Make the arrow red
+    glColor3f(1.0, 0.0, 0.0);
+    
+    // Create the points
+    Position point(dx, dy);
+    
+    // Change line width
+    glLineWidth(5.0);
+    
+    // Now draw it
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(center.getX(), center.getY());
+    glVertex2f(point.getX(), point.getY());
+    glEnd();
+    
+    // Change the line width back to normal
+    glLineWidth(1.0);
+    
+    // Start the cone of the arrow
+    Position tip(point.getX() + 10, point.getY());
+    Position rightTip(point.getX() - 9, point.getY() - 8);
+    Position leftTip(point.getX() - 9, point.getY() + 8);
+    
+    // Now rotate them
+    rotate(tip, point, angle);
+    rotate(rightTip, point, angle);
+    rotate(leftTip, point, angle);
+    
+    // Now draw the triangle
+    glBegin(GL_TRIANGLES);
+    glVertex2f(tip.getX(), tip.getY());
+    glVertex2f(rightTip.getX(), rightTip.getY());
+    glVertex2f(leftTip.getX(), leftTip.getY());
+    glEnd();
+    
+    // Change the color back to white
+    glColor3f(1.0, 1.0, 1.0);
+}
+
 /*****************************************************************
  * drawBrackets
  *  This will allow the user to know that the object has been 

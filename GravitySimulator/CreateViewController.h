@@ -23,10 +23,13 @@
 @end
 
 @interface CreateViewController : NSViewController
+{
+    NSMutableArray *ids;   // These are the ids of the objects
+    NSMutableArray *names; // Save the names for the list
+}
 
 // Grab all the input tags
 @property (weak) IBOutlet NSPopUpButton *whichObjectBtn;
-@property (weak) IBOutlet NSPopUpButton *existingBtn;
 @property (weak) IBOutlet NSTextField *nameInput;
 @property (weak) IBOutlet NSTextField *diamOrMagInput;
 @property (weak) IBOutlet NSTextField *massOrAngleInput;
@@ -38,9 +41,13 @@
 
 // And one label
 @property (weak) IBOutlet NSTextField *objectLabel;
+@property (weak) IBOutlet NSTextField *label2;
+@property (weak) IBOutlet NSTextField *label3;
 
 // This will hold the delegate
 @property(nonatomic,assign) id delegate;
+
+- (void) sendObjects: (NSMutableArray *) sentIds names: (NSMutableArray *) sentNames;
 
 @end
 

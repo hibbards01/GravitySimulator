@@ -13,7 +13,6 @@
 #import <Foundation/Foundation.h>
 #import "GravityViewController.h"
 #include <OpenGL/gl.h>
-#import "SimulatorViewController.h"
 
 // Define the window size for Position
 // *** Warning ***
@@ -52,6 +51,15 @@ float Position::yMin = -375;
 }
 
 /*************************************
+ * sendSelf
+ *  This grabs the SimulatorViewController.
+ ************************************/
+- (void) sendSelf: (SimulatorViewController *) c
+{
+    controller = c;
+}
+
+/*************************************
  * addObject
  *  Add an object.
  *************************************/
@@ -63,10 +71,13 @@ float Position::yMin = -375;
     if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
     {
         // Change the radius to what it should be for the view
-        int radius = [[data objectForKey:@"diam"] doubleValue] / sim->getMeter();
+        double radius = [[data objectForKey:@"radius"] doubleValue];
+        int drawRadius = radius / sim->getMeter();
+        double mass = [[data objectForKey:@"mass"] doubleValue];
+        std::string name = [[data objectForKey:@"name"] UTF8String];
         
         // Create new object
-        Object * object = new Planet(0, 0, 0, 0, [[data objectForKey:@"mass"] doubleValue], radius, 0, [[data objectForKey:@"name"] UTF8String]);
+        Object * object = new Planet(0, 0, 0, 0, mass, drawRadius, radius, 0, name);
         
         // Now save it to the simulator
         sim->addObject(object, id);
@@ -84,6 +95,28 @@ float Position::yMin = -375;
     [self setNeedsDisplay:YES];
     
     return newID;
+}
+
+/*************************************
+ * grabData
+ *  This will grab the data and convert
+ *      it to NSDictionary form.
+ ************************************/
+- (NSDictionary *) grabData
+{
+    // Grab the object!
+    Object *obj = sim->grabObject(id);
+    
+    // Now grab the data
+    NSDictionary *editObj = @{
+                             @"object"  : @"Planet",
+                             @"name"    : [NSString stringWithUTF8String:obj->getName().c_str()],
+                             @"radius"  : [NSNumber numberWithDouble: obj->getSize()],
+                             @"mass"    : [NSNumber numberWithDouble: obj->getMass()],
+                             @"objName" : @"none"
+                             };
+    
+    return editObj;
 }
 
 /*************************************
@@ -105,13 +138,17 @@ float Position::yMin = -375;
     {
         // If so then we need to allow dragging.
         dragging = YES;
+        
+        // Tell the main view to change it's edit form
+        [controller addValuesToEditForm: [self grabData] selectedID:id]; 
+        
+        // Draw the brackets!
+        [self setNeedsDisplay:YES];
     }
     else
     {
         dragging = NO;
     }
-    
-    [self setNeedsDisplay:YES];
 }
 
 /*************************************

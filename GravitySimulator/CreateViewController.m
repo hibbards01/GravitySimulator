@@ -31,6 +31,28 @@
 }
 
 /*************************************
+ * sendObjects
+ *  This is where the objects are to 
+ *      sent to this controller from
+ *      the SimulatorViewController.
+ ************************************/
+- (void) sendObjects: (NSMutableArray *) sentIds names: (NSMutableArray *) sentNames
+{
+    // Grab the values
+    ids = sentIds;
+    names = sentNames;
+    
+    // Remove the old labels in the object label button
+    [_objBtn removeAllItems];
+    
+    // Now update the object label
+    for (int i = 0; i < [sentNames count]; i++)
+    {
+        [_objBtn addItemWithTitle: [names objectAtIndex:i]];
+    }
+}
+
+/*************************************
  * clickedWhichObj
  *  This is the pop up button. This will
  *      change the other labels, depending
@@ -45,15 +67,46 @@
     if ([obj isEqualToString:@"Planet"])
     {
         // Hide the label and button
-        self.objectLabel.hidden = YES;
-        self.objBtn.hidden = YES;
+        [self enableDisableForm:YES hide:YES];
+        
+        // Change the label
+        self.label2.cell.title = @"Radius (m)";
+        self.label3.cell.title = @"Mass (kg)";
     }
     else
     {
-        // Show the extra label and button
-        self.objectLabel.hidden = NO;
-        self.objBtn.hidden = NO;
+        // Disable the text fields and buttons if there are no planets
+        // on the screen.
+        if ([ids count] == 0)
+        {
+            [self enableDisableForm:NO hide:NO];
+        }
+        else
+        {
+            [self enableDisableForm:YES hide:NO];
+        }
+        
+        // Change two of the labels
+        self.label2.cell.title = @"Magnitude (m/s)";
+        self.label3.cell.title = @"Angle (°)";
     }
+}
+
+/*************************************
+ * enableDisableForm
+ ************************************/
+- (void) enableDisableForm: (BOOL) enable hide: (BOOL) hidden
+{
+    // Enable the forms
+    self.nameInput.enabled = enable;
+    self.diamOrMagInput.enabled = enable;
+    self.massOrAngleInput.enabled = enable;
+    self.objectLabel.enabled = enable;
+    self.objBtn.enabled = enable;
+    
+    // Hide the last question
+    self.objectLabel.hidden = hidden;
+    self.objBtn.hidden = hidden;
 }
 
 /*************************************
@@ -104,15 +157,15 @@
     if (valid == 0)
     {
         // Create the keys
-        NSString *diamOrMagKey = ([obj isEqualToString:@"Planet"]) ? @"diam" : @"mag";
+        NSString *diamOrMagKey = ([obj isEqualToString:@"Planet"]) ? @"radius" : @"mag";
         NSString *massOrAngleKey  = ([obj isEqualToString:@"Planet"]) ? @"mass" : @"angle";
         
         // Now save the values and keys into newObj
         NSDictionary *newObj = @{
                                  @"object"    : obj,
                                  @"name"      : name,
-                                 diamOrMagKey : [NSNumber numberWithFloat:[diamOrMag doubleValue]],
-                                 massOrAngleKey : [NSNumber numberWithFloat:[massOrAngle doubleValue]],
+                                 diamOrMagKey : [NSNumber numberWithDouble:[diamOrMag doubleValue]],
+                                 massOrAngleKey : [NSNumber numberWithDouble:[massOrAngle doubleValue]],
                                  @"objName"   : objName
                                  };
         

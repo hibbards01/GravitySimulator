@@ -36,6 +36,7 @@ public:
     void removeObject(int id);
     bool clickedObject(float x, float y, int & id);
     void moveObject(float x, float y, int id);
+    Object * grabObject(int id);                        // This will grab the object
     
     //
     // Getters
@@ -72,7 +73,6 @@ private:
     void move();
     void draw();
     void calculateAccerlation();         // This will calculate the force for all the objects
-    Object * grabObject(int id);         // This will grab the object
     
     // Member variables
     std::list<Object *> objects;         // This will hold all the objects.

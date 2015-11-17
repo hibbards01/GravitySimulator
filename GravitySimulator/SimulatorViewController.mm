@@ -38,6 +38,9 @@
     // Hide one label and button
     _formLabel3.hidden = YES;
     _formSelectBtn.hidden = YES;
+    
+    // Send self to GravityViewControlller
+    [self.delegate sendSelf:self];
 }
 
 /*************************************
@@ -52,18 +55,15 @@
     [ids addObject:currentID];
     [names addObject:[data objectForKey:@"name"]];
     
-    // Set the id that is selected
-    currentlySelected = [currentID intValue];
-    
     // Now change the edit form
-    [self addValuesToEditForm:data];
+    [self addValuesToEditForm: data selectedID:[currentID intValue]];
 }
 
 /*************************************
  * addValuesToEditForm
  *  This will add the values to the form.
  ************************************/
-- (void) addValuesToEditForm: (NSDictionary *) data
+- (void) addValuesToEditForm: (NSDictionary *) data selectedID: (int) id
 {
     // Change the inputs and labels to the data
     if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
@@ -74,7 +74,7 @@
         [[_formLabel2 cell] setTitle:@"Mass (kg)"];
         
         // Now the input fields
-        [[_formInputTextField1 cell] setTitle: [data objectForKey:@"diam"]];
+        [[_formInputTextField1 cell] setTitle: [data objectForKey:@"radius"]];
         [[_formInputTextField2 cell] setTitle: [data objectForKey:@"mass"]];
         
         // Make the last question disappear
@@ -85,7 +85,12 @@
     {
         
     }
+    
+    // Set the id that is selected
+    currentlySelected = id;
 }
+
+
 
 /*************************************
  * clickedRun
@@ -132,9 +137,17 @@
  *************************************/
 - (IBAction)clickedNew: (id)sender
 {
+    // Grab the controller
     CreateViewController *view = (CreateViewController *) [self.storyboard instantiateControllerWithIdentifier:@"CreateView"];
+    
+    // Delegate itself to the controller
     view.delegate = self;
+    
+    // Present the controller
     [self presentViewControllerAsSheet: view];
+    
+    // Send it some data.
+    [view sendObjects: ids names: names];
 }
 
 @end

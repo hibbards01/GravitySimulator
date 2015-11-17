@@ -18,13 +18,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@protocol sendObjectProtocol <NSObject>
-
-- (NSNumber *) addToViewObject: (NSDictionary *) data;
-- (void) editObject: (NSDictionary *) data id:(NSNumber *)id;
-
-@end
-
 /*************************************
  * SimulatorViewController
  *  This is what will control everything
@@ -53,6 +46,17 @@
 
 // This will hold the delegate
 @property(nonatomic,assign) id delegate;
+
+// Member methods
+- (void) addValuesToEditForm: (NSDictionary *) data selectedID: (int) id;
+
+@end
+
+@protocol sendObjectProtocol <NSObject>
+
+- (NSNumber *) addToViewObject: (NSDictionary *) data;
+- (void) editObject: (NSDictionary *) data id:(NSNumber *)id;
+- (void) sendSelf: (SimulatorViewController *) c;
 
 @end
 

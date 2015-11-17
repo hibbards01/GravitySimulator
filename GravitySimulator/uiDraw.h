@@ -46,6 +46,13 @@ void drawRect(const Position & center, char width, char height, int rotation);
  *************************************************************************/
 void drawCircle(const Position & center, char radius, int points, int rotation);
 
+/******************************************************************
+ * drawArrow
+ *  This will draw an arrow. This will help indicate the direction
+ *      and magnitude of the vector.
+ *****************************************************************/
+void drawArrow(const Position & center, float dx, float dy, int angle);
+
 /*****************************************************************
  * drawBrackets
  *  This will allow the user to know that the object has been

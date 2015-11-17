@@ -37,8 +37,8 @@ Simulator::Simulator()
     
 //    objects.push_back(new Planet(200, 0, random(-5, 5), random(-5, 5), 5000, 20, 5));
 //    objects.push_back(new Planet(-200, 0, random(-10, 10), random(-10, 10), 500, 10, -10));
-//    objects.push_back(new Planet(-75, 0, 0, -1.2, EARTH, 30, 5, "Earth1"));
-//    objects.push_back(new Planet(75, 0, 0, 1.2, EARTH, 30, 5, "Earth2"));
+//    objects.push_back(new Planet(-75, 0, 0, -1.2, EARTH, 30, 30, 5, "Earth1"));
+//    objects.push_back(new Planet(75, 0, 0, 1.2, EARTH, 30, 30, 5, "Earth2"));
 //    objects.push_back(new Planet(0, 80, -2.3, 0, MOON, 10, -10));
 //    objects.push_back(new Planet(0, 0, 0, 0, EARTH, 30, 5));
 //    objects.push_back(new Planet(0, 0, 0, 0, JUPITER, 50, 0));
@@ -84,7 +84,7 @@ void Simulator::run(bool movingObjects)
     {
         move();
     }
-    
+
     // Now draw them.
     draw();
     
@@ -134,7 +134,7 @@ bool Simulator::clickedObject(float x, float y, int & id)
             float dist = sqrtf((xDist * xDist) + (yDist * yDist));
             
             // Now see if that is within the radius
-            if (dist < (*it)->getSize())
+            if (dist < (*it)->getDrawSize())
             {
                 // Make clicked equal true
                 clicked = true;
@@ -226,7 +226,7 @@ void Simulator::calculateAccerlation()
             // Find the displacement between the objects
             double xDistance = (*obj2)->getPoint().getX() - (*obj1)->getPoint().getX();
             double yDistance = (*obj2)->getPoint().getY() - (*obj1)->getPoint().getY();
-            double d =  sqrt((xDistance * xDistance) + (yDistance * yDistance)) * METERS4;
+            double d =  sqrt((xDistance * xDistance) + (yDistance * yDistance)) * getMeter();
             
             // Hurry and find their angle
             // This is in radians
@@ -254,8 +254,8 @@ void Simulator::calculateAccerlation()
             //      F
             // a = ---
             //      m
-            double a1 = (f / (*obj1)->getMass()) / METERS4;
-            double a2 = (f / (*obj2)->getMass()) / METERS4;
+            double a1 = (f / (*obj1)->getMass()) / getMeter();
+            double a2 = (f / (*obj2)->getMass()) / getMeter();
             
             //            cout << "a1 = " << a1 << endl;
             //            cout << "a2 = " << a2 << endl;

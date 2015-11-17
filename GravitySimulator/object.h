@@ -38,16 +38,18 @@ public:
     virtual void draw() = 0;                   // Pure virtual function
     void addVectors(Vector & v);               // Add two vectors together
     virtual void showHelpers(bool helper) = 0; // Show the helpers for the object?
-    virtual int getSize() = 0;                 // Get the size of the object
+    virtual double getSize() = 0;              // Get the size of the object
+    virtual int getDrawSize() = 0;             // Get the draw size of the object
     
     //
     // Getters
     //
-    Vector getVector()   const { return vector;            }
-    float getMass()      const { return mass;              }
-    Position getPoint()  const { return vector.getPoint(); }
-    Vector & getVector()       { return vector;            }
-    int getId()          const { return id;                }
+    Vector getVector()    const { return vector;            }
+    float getMass()       const { return mass;              }
+    Position getPoint()   const { return vector.getPoint(); }
+    Vector & getVector()        { return vector;            }
+    int getId()           const { return id;                }
+    std::string getName() const { return name;              }
     
     //
     // Setters
@@ -74,7 +76,7 @@ public:
     // Constructors
     //
     Planet() : Object(), radius(0), rotationSpeed(0), brackets(false) {}
-    Planet(float x, float y, float dx, float dy, double m, int r, int s, std::string n) : radius(r), Object(x, y, dx, dy, m, n), rotationSpeed(s), brackets(true) {}
+    Planet(float x, float y, float dx, float dy, double m, int drawR, double r, int s, std::string n) : radius(r), Object(x, y, dx, dy, m, n), rotationSpeed(s), brackets(true), drawRadius(drawR) {}
     
     //
     // Methods
@@ -82,16 +84,18 @@ public:
     void draw();
     void rotate();
     void showHelpers(bool helper) { brackets = helper; }
-    int getSize()                 { return radius;     }
+    double getSize()              { return radius;     }
+    int getDrawSize()             { return drawRadius; }
     
     //
     // Setters
     //
     void setRotationSpeed(int s) { rotationSpeed = s; }
 private:
-    int radius;           // This is the radius of the planet.
-    int rotationSpeed;    // This will rotate the planet.
-    bool brackets;        // Do we draw brackets or not?
+    double radius;      // This is the radius of the planet.
+    int drawRadius;     // The draw radius for OpenGl.
+    int rotationSpeed;  // This will rotate the planet.
+    bool brackets;      // Do we draw brackets or not?
 };
 
 /*********************************
@@ -112,7 +116,8 @@ public:
     //
     void draw();
     void showHelpers(bool helper) { brackets = helper; }
-    int getSize()                 { return 0;          }
+    double getSize()              { return 0;          }
+    int getDrawSize()             { return 0;          }
 private:
     bool brackets; // Show the brackets for the ship/
 };

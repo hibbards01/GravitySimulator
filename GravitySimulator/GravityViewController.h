@@ -15,6 +15,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "sim.h"
+#import "SimulatorViewController.h"
 
 /****************************
  * GravityViewController
@@ -22,10 +23,11 @@
  ***************************/
 @interface GravityViewController : NSOpenGLView
 {
-    NSTimer * renderTimer; // This helps with the drawing
-    Simulator * sim;       // This is to add objects to the simulator
-    BOOL dragging;         // Allow the user to drag an object
-    int id;                // Current clicked object
+    NSTimer * renderTimer;               // This helps with the drawing
+    Simulator * sim;                     // This is to add objects to the simulator
+    BOOL dragging;                       // Allow the user to drag an object
+    int id;                              // Current clicked object
+    SimulatorViewController *controller; // Tell it when to change the edit form
 }
 
 - (void) drawRect: (NSRect) bounds;
