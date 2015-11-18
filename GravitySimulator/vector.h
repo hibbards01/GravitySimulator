@@ -11,6 +11,9 @@
 #define vector_h
 
 #include "point.h"
+#include <map>
+#include <string>
+#include <stdexcept>
 
 /***************************
  * Vector
@@ -24,46 +27,96 @@ public:
     //
     // Constructor
     //
-    Vector() : dx(0.0), dy(0.0), angle(0), position() {}
-    Vector(float x, float y, float dx, float dy) : position(x, y), dx(dx), dy(dy), angle(0.0) {}
-    Vector(float x, float y, float dx, float dy, float a) : position(x, y), dx(dx), dy(dy), angle(a) {}
+    Vector() : dx(0.0), dy(0.0), angles(), position(), mags() {}
+    Vector(float x, float y, float dx, float dy) : position(x, y), dx(dx), dy(dy), angles(), mags() {}
+    Vector(float x, float y, float dx, float dy, float a) : position(x, y), dx(dx), dy(dy), angles(), mags() {}
     Vector(const Vector & v);
     
     //
     // Methods
     //
-    void changePosition();                           // This will change the point
-    void addVectors(const Vector & v);               // This will add two vectors
-    void addVectors(const float dx, const float dy);
-    Vector & operator = (const Vector & v);          // Assingment operator
-    void rotate(int rotate)                  { angle += rotate; }
+    void changePosition();                                          // This will change the point
+    void addVector(const float mag, const int angle, const int id, const std::string name); // Add another vector
+    void addVector(const float x, const float y);                   // Add the dx and dy
+    void deleteVector(const int id);                                // Remove a vector
+    Vector & operator = (const Vector & v);                         // Assingment operator
+    void drawArrows();                                              // Draw the arrows
+//    void rotate(int rotate)                  { angle += rotate; }
     
     //
     // Getters
     //
-    float getDx()       const { return dx;       }
-    float getDy()       const { return dy;       }
-    int   getAngle()    const { return angle;    }
-    Position getPoint() const { return position; }
+    float getDx()               const { return dx;           }
+    float getDy()               const { return dy;           }
+    Position getPoint()         const { return position;     }
+    int getAngle(int id) const
+    {
+        int angle;
+        
+        try
+        {
+            angle = angles.at(id);
+        }
+        catch(const std::out_of_range & oos)
+        {
+            angle = -1;
+        }
+        
+        return angle;
+    }
+    float getMag(int id) const
+    {
+        float mag;
+        
+        try
+        {
+            mag = mags.at(id);
+        }
+        catch (const std::out_of_range & oos)
+        {
+            mag = -1;
+        }
+        
+        return mag;
+    }
+    std::string getName(int id) const
+    {
+        std::string name;
+        
+        try
+        {
+            name = names.at(id);
+        }
+        catch (const std::out_of_range & oos)
+        {
+            name = "none";
+        }
+        
+        return name;
+    }
     
     //
     // Setters
     //
-    void setDx(float dx)            { this->dx = dx;          }
-    void setDy(float dy)            { this->dy = dy;          }
-    void setAngle(float a)          { this->angle = a;        }
-    void setPosition(Position & pt) { this->position = pt;    }
+    void setDx(float dx)                 { this->dx = dx;          }
+    void setDy(float dy)                 { this->dy = dy;          }
+    void setPosition(Position & pt)      { this->position = pt;    }
     void setPosition(float x, float y)
     {
         position.setX(x);
         position.setY(y);
     }
-    void setWrap(bool wrap)         { position.setWrap(wrap); }
+    void setWrap(bool wrap)                     { position.setWrap(wrap); }
+    void setAngle(std::pair<int, int> a)        { angles.insert(a);       }
+    void setMag(std::pair<int, int> m)          { mags.insert(m);         }
+    void setName(std::pair<int, std::string> n) { names.insert(n);        }
 private:
-    float dx;
-    float dy;
-    int angle;
-    Position position;
+    float dx;                         // The direction for the object in the x
+    float dy;                         // Same thing as dx but for the y
+    Position position;                // The position of the object
+    std::map<int, int> angles;        // The angle of the vectors
+    std::map<int, float> mags;        // The magnitude of the vector
+    std::map<int, std::string> names; // The names of the vector
 };
 
 #endif /* vector_h */

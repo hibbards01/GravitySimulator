@@ -84,12 +84,21 @@ float Position::yMin = -375;
         
         // Grab the id
         id = object->getId();
-        newID = [NSNumber numberWithInt: id];
     }
     else
     {
         // Create new vector
+        float mag        = [[data objectForKey: @"mag"] floatValue];
+        int angle        = [[data objectForKey: @"angle"] intValue];
+        std::string name = [[data objectForKey: @"name"] UTF8String];
+        int objId        = [[data objectForKey: @"objName"] intValue];
+        
+        // Give the data to the sim
+        sim->addVector(objId, mag, angle, name, id);
     }
+    
+    // Give back the newID
+    newID = [NSNumber numberWithInt: id];
     
     // Redraw the view
     [self setNeedsDisplay:YES];
@@ -115,7 +124,7 @@ float Position::yMin = -375;
                              @"mass"    : [NSNumber numberWithDouble: obj->getMass()],
                              @"objName" : @"none"
                              };
-    
+
     return editObj;
 }
 

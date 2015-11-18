@@ -8,6 +8,9 @@
 *     all the other classes that inherit from Objects.
 *************************************************************/
 
+#ifndef objects_h
+#define objects_h
+
 #include "vector.h"
 #include <string>
 
@@ -40,6 +43,12 @@ public:
     virtual void showHelpers(bool helper) = 0; // Show the helpers for the object?
     virtual double getSize() = 0;              // Get the size of the object
     virtual int getDrawSize() = 0;             // Get the draw size of the object
+    int addVector(float angle, float mag, std::string name)
+    {
+        getVector().addVector(mag, angle, identifier, name);
+        return identifier++;
+    }
+    void deleteVector(int id)                                { getVector().deleteVector(id);                          }
     
     //
     // Getters
@@ -50,7 +59,7 @@ public:
     Vector & getVector()        { return vector;            }
     int getId()           const { return id;                }
     std::string getName() const { return name;              }
-    
+
     //
     // Setters
     //
@@ -83,9 +92,9 @@ public:
     //
     void draw();
     void rotate();
-    void showHelpers(bool helper) { brackets = helper; }
-    double getSize()              { return radius;     }
-    int getDrawSize()             { return drawRadius; }
+    void showHelpers(bool helper)          { brackets = helper;                               }
+    double getSize()                       { return radius;                                   }
+    int getDrawSize()                      { return drawRadius;                               }
     
     //
     // Setters
@@ -96,6 +105,7 @@ private:
     int drawRadius;     // The draw radius for OpenGl.
     int rotationSpeed;  // This will rotate the planet.
     bool brackets;      // Do we draw brackets or not?
+    
 };
 
 /*********************************
@@ -119,5 +129,7 @@ public:
     double getSize()              { return 0;          }
     int getDrawSize()             { return 0;          }
 private:
-    bool brackets; // Show the brackets for the ship/
+    bool brackets; // Show the brackets for the ship
 };
+
+#endif // objects_h

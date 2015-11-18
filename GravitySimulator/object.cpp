@@ -38,24 +38,22 @@ void Object::move()
 void Planet::draw()
 {
     // Rotate the planet
-    getVector().rotate(rotationSpeed);
+//    getVector().rotate(rotationSpeed);
     
     // Draw the planet!
-    drawCircle(getPoint(), drawRadius, 8, getVector().getAngle());
+    drawCircle(getPoint(), drawRadius, 8, rotationSpeed);
     
     // Show the brackets if needed
     if (brackets)
     {
         drawBrackets(getPoint(), drawRadius);
+        
+        // Also the arrows if there are vectors
+        getVector().drawArrows();
     }
     
     return;
 }
-
-/*********************************
- * getArea
- *  How much area does it cover?
- ********************************/
 
 /***********************************************************
  ************************** Ship ***************************
@@ -68,7 +66,7 @@ void Planet::draw()
 void Ship::draw()
 {
     // Draw the ship!
-    drawShip(getPoint(), getVector().getAngle());
+    drawShip(getPoint(), 0);
     return;
 }
 

@@ -9,8 +9,12 @@
 *       the gravity between objects.
 ***************************************************************/
 
+#ifndef sim_h
+#define sim_h
+
 #include <list>
 #include "object.h"
+#include <string>
 
 #define MILLMETERS 1000000
 #define METERS5    100000
@@ -33,7 +37,9 @@ public:
     static void deleteInstance();
     void run(bool movingObjects);
     void addObject(Object * object, int id);
+    void addVector(int objId, float mag, float angle, std::string name, int & id);
     void removeObject(int id);
+    void removeVector(int vectorId);
     bool clickedObject(float x, float y, int & id);
     void moveObject(float x, float y, int id);
     Object * grabObject(int id);                        // This will grab the object
@@ -79,3 +85,5 @@ private:
     static double gravitationalConstant; // This will hold the gravitational constant
     static int indexMeters;              // This is set by gravity to 1 for METERS4, unless it is changed
 };
+
+#endif // sim_h

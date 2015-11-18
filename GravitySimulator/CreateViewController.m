@@ -138,13 +138,22 @@
     NSString *name        = self.nameInput.stringValue;
     NSString *diamOrMag   = self.diamOrMagInput.stringValue;
     NSString *massOrAngle = self.massOrAngleInput.stringValue;
-    NSString *objName = @"none";
+    NSNumber *objName = [NSNumber numberWithInt:-1];
     
     // See if vector was selected
     if ([obj isEqualToString:@"Vector"])
     {
         // If so then grab the objName
-        objName = [[self.objBtn selectedItem] title];
+        NSString *name = [[_objBtn selectedItem] title];
+        
+        // Find the index from the array of names
+        for (int i = 0; i < [names count]; ++i)
+        {
+            if ([names[i] isEqualToString: name])
+            {
+                objName = [NSNumber numberWithInt: [ids[i] intValue]];
+            }
+        }
     }
     
     // Check the data

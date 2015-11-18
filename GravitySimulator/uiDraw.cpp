@@ -273,15 +273,20 @@ void drawArrow(const Position & center, float dx, float dy, int angle)
     
     // Create the points
     Position point(dx, dy);
+    Position c(center);
     
     // Change line width
     glLineWidth(5.0);
     
     // Now draw it
+    c.setPercent(true);
+    point.setPercent(true);
     glBegin(GL_LINE_STRIP);
-    glVertex2f(center.getX(), center.getY());
+    glVertex2f(c.getX(), c.getY());
     glVertex2f(point.getX(), point.getY());
     glEnd();
+    
+    point.setPercent(false);
     
     // Change the line width back to normal
     glLineWidth(1.0);
@@ -297,6 +302,10 @@ void drawArrow(const Position & center, float dx, float dy, int angle)
     rotate(leftTip, point, angle);
     
     // Now draw the triangle
+    tip.setPercent(true);
+    rightTip.setPercent(true);
+    leftTip.setPercent(true);
+    point.setPercent(true);
     glBegin(GL_TRIANGLES);
     glVertex2f(tip.getX(), tip.getY());
     glVertex2f(rightTip.getX(), rightTip.getY());

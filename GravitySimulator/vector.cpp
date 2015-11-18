@@ -8,6 +8,8 @@
 ***************************************************/
 
 #include "vector.h"
+#include <math.h>
+#include "uiDraw.h"
 using namespace std;
 
 /*********************************
@@ -28,7 +30,8 @@ Vector & Vector::operator = (const Vector & v)
     this->dx = v.dx;
     this->dy = v.dy;
     this->position = v.position;
-    this->angle = v.angle;
+    this->angles = v.angles;
+    this->mags = v.mags;
     
     // Finally return this
     return *this;
@@ -48,12 +51,83 @@ void Vector::changePosition()
 
 /*********************************
  * addVectors
+ *  This will add the vector to itself.
+ ********************************/
+void Vector::addVector(const float mag, const int angle, const int id, const string name)
+{
+    // Calculate x and y
+    float a = deg2rad(angle);
+    float x = mag * cos(a);
+    float y = mag * sin(a);
+    
+    // Add them to the maps
+    this->angles[id] = angle;
+    this->mags[id] = mag;
+    this->names[id] = name;
+
+    // Now add the x and y to the values dx and dy
+    dx += x;
+    dy += y;
+    
+    return;
+}
+
+/*********************************
+ * deleteVector
+ *  Delete from the vector.
+ ********************************/
+void Vector::deleteVector(int id)
+{
+    // Grab the mag and angle
+    float m = mags[id];
+    float a = angles[id];
+    
+    // Calculate their individual x and y
+    float x = m * cos(deg2rad(a));
+    float y = m * sin(deg2rad(a));
+    
+    // Now minus it from dx and dy
+    dx -= x;
+    dy -= y;
+    
+    // Erase from the maps
+    mags.erase(id);
+    angles.erase(id);
+    
+    return;
+}
+
+/*********************************
+ * addVectors
  *  This will add the vector to itself
  ********************************/
-void Vector::addVectors(const float dx, const float dy)
+void Vector::addVector(const float x, const float y)
 {
     // Add the vectors!
-    this->dx += dx;
-    this->dy += dy;
+    this->dx += x;
+    this->dy += y;
+    
     return;
+}
+
+/********************************
+ * drawArrows
+ *  This will draw the arrows when
+ *      the planet is clicked upon.
+ *******************************/
+void Vector::drawArrows()
+{
+    // Draw all the arrows
+    for (map<int, float> :: iterator it = mags.begin(); it != mags.end(); ++it)
+    {
+        // Grab the angle
+        float angle = angles[it->first];
+        
+        // Now calculate dx and dy
+        float dx = it->second * cos(deg2rad(angle));
+        float dy = it->second * sin(deg2rad(angle));
+        
+        // Now draw it
+        drawArrow(position, dx, dy, angle);
+    }
 }

@@ -10,6 +10,7 @@
 #include "sim.h"
 #include <openGL/gl.h>    // Main OpenGL library
 #include <math.h>
+#include <stdexcept>
 using namespace std;
 
 // Set the gravitational constant
@@ -109,6 +110,34 @@ void Simulator::addObject(Object * object, int id)
     
     // Add to the list
     objects.push_back(object);
+}
+
+/*************************************
+ * addVector
+ *  This will add a vector to the object
+ *      with the objId.
+ ************************************/
+void Simulator::addVector(int objId, float mag, float angle, string name, int & id)
+{
+    // Grab the object and add the vector
+    id = grabObject(objId)->addVector(angle, mag, name);
+}
+
+/*************************************
+ * removeVector
+ *  This will remove the vector from
+ *      the object.
+ ************************************/
+void Simulator::removeVector(int vectorId)
+{
+    // Loop through the objects and remove the vector
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        if ((*it)->getVector().getAngle(vectorId) != -1)
+        {
+            (*it)->deleteVector(vectorId);
+        }
+    }
 }
 
 /*************************************
@@ -262,7 +291,7 @@ void Simulator::calculateAccerlation()
             
             // Now convert it back to dx and dy
             // Do the first object
-            (*obj1)->getVector().addVectors(a1 * cos(angle), a1 * sin(angle));
+            (*obj1)->getVector().addVector(a1 * cos(angle), a1 * sin(angle));
             
             //            float dx = a1 * cos(angle);
             //            float dy = a1 * sin(angle);
@@ -281,7 +310,7 @@ void Simulator::calculateAccerlation()
             }
             
             // Finally add the vectors
-            (*obj2)->getVector().addVectors(a2 * cos(angle), a2 * sin(angle));
+            (*obj2)->getVector().addVector(a2 * cos(angle), a2 * sin(angle));
             
             //            dx = a2 * cos(angle);
             //            dy = a2 * sin(angle);
