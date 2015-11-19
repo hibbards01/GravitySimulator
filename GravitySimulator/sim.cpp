@@ -28,6 +28,9 @@ int Simulator::indexMeters = 0;
 // Make the instance null
 Simulator * Simulator::sim = NULL;
 
+// Set the identifier
+int Object::identifier = 1;
+
 /********************************
  * Constructor
  *******************************/
@@ -154,6 +157,19 @@ bool Simulator::clickedObject(float x, float y, int & id)
     // Now run through all the objects
     for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
     {
+        // See if the arrow was clicked on
+        if (!clicked)
+        {
+            clicked = (*it)->getVector().clicked(x, y, id);
+            
+            // If true then don't show the brackets
+            if (clicked)
+            {
+                (*it)->showHelpers(false);
+            }
+        }
+       
+        // See if object was clicked
         if (!clicked)
         {
             // Grab the distance between them
@@ -171,7 +187,14 @@ bool Simulator::clickedObject(float x, float y, int & id)
                 // Take away the helpers for the other object
                 if (id != -1)
                 {
-                    this->grabObject(id)->showHelpers(false);
+                    Object * obj = this->grabObject(id);
+                    
+                    // See if it is null. If so then it was a vector
+                    // that was clicked on. So no need to turn off brackets
+                    if (obj != NULL)
+                    {
+                        obj->showHelpers(false);
+                    }
                 }
                 
                 // Grab the id!
@@ -212,7 +235,51 @@ Object * Simulator::grabObject(int id)
 void Simulator::moveObject(float x, float y, int id)
 {
     // Find the object to move
-    this->grabObject(id)->getVector().setPosition(x, y);
+    // See if it is a planet
+    Object * obj = this->grabObject(id);
+    
+    // If not then we need to move a vector
+    if (obj == NULL)
+    {
+        for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+        {
+            int angle = (*it)->getVector().getAngle(id);
+            
+            // See if we got something
+            if (angle != -1)
+            {
+                // Grab distance of x and y from center point
+                float cx = (*it)->getPoint().getX();
+                float cy = (*it)->getPoint().getY();
+                float xDist = x - cx;
+                float yDist = y - cy;
+                
+                // Now find the newMag
+                float newMag = sqrtf((xDist * xDist) + (yDist * yDist)) / 20;
+                
+                // Find the new angle based off of the x and y
+                int newAngle = rad2deg(atan(yDist / xDist));
+                
+                // See if we need to adjust the angle
+                if (x < cx && (y > cy || y < cy))
+                {
+                    newAngle += 180;
+                }
+                else if (x > cx && y < cy)
+                {
+                    newAngle += 360;
+                }
+                
+                // Now save it!
+                (*it)->getVector().setAngle(id, newAngle);
+                (*it)->getVector().setMag(id, newMag);
+            }
+        }
+    }
+    else
+    {
+        obj->getVector().setPosition(x, y);
+    }
 }
 
 /******************************

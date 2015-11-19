@@ -41,6 +41,7 @@ public:
     void deleteVector(const int id);                                // Remove a vector
     Vector & operator = (const Vector & v);                         // Assingment operator
     void drawArrows();                                              // Draw the arrows
+    bool clicked(float x, float y, int & id);                       // See if any of the arrows was clicked on
 //    void rotate(int rotate)                  { angle += rotate; }
     
     //
@@ -106,10 +107,12 @@ public:
         position.setX(x);
         position.setY(y);
     }
-    void setWrap(bool wrap)                     { position.setWrap(wrap); }
-    void setAngle(std::pair<int, int> a)        { angles.insert(a);       }
-    void setMag(std::pair<int, int> m)          { mags.insert(m);         }
-    void setName(std::pair<int, std::string> n) { names.insert(n);        }
+    void setWrap(bool wrap)                        { position.setWrap(wrap); }
+    void insertAngle(std::pair<int, int> a)        { angles.insert(a);       }
+    void insertMag(std::pair<int, int> m)          { mags.insert(m);         }
+    void insertName(std::pair<int, std::string> n) { names.insert(n);        }
+    void setMag(int id, float mag)                 { mags[id] = mag;         }
+    void setAngle(int id, int angle)               { angles[id] = angle;     }
 private:
     float dx;                         // The direction for the object in the x
     float dy;                         // Same thing as dx but for the y

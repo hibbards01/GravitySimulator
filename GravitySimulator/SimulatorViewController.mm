@@ -52,8 +52,13 @@
     // Send the data to the GravityViewController and grab the id
     // Save the name
     NSNumber *currentID = [self.delegate addToViewObject:data];
-    [ids addObject:currentID];
-    [names addObject:[data objectForKey:@"name"]];
+
+    // Only add to the list if it is a planet
+    if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
+    {
+        [ids addObject:currentID];
+        [names addObject:[data objectForKey:@"name"]];
+    }
     
     // Now change the edit form
     [self addValuesToEditForm: data selectedID:[currentID intValue]];
@@ -69,7 +74,6 @@
     if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
     {
         // Change the form labels
-        [[_editTitle cell] setTitle: [data objectForKey:@"name"]];
         [[_formLabel1 cell] setTitle:@"Radius (m)"];
         [[_formLabel2 cell] setTitle:@"Mass (kg)"];
         
@@ -85,6 +89,9 @@
     {
         
     }
+    
+    // Change the edit form label
+    [[_editTitle cell] setTitle: [data objectForKey:@"name"]];
     
     // Set the id that is selected
     currentlySelected = id;

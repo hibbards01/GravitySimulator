@@ -110,6 +110,44 @@ void Vector::addVector(const float x, const float y)
     return;
 }
 
+/*********************************
+ * clicked
+ *  See if the arrow was clicked.
+ ********************************/
+bool Vector::clicked(float x, float y, int & id)
+{
+    bool clicked = false;
+    
+    for (map<int, float> :: iterator it = mags.begin(); it != mags.end(); ++it)
+    {
+        // Grab the angle
+        float angle = angles[it->first];
+        
+        // Now calculate dx and dy
+        float dx = position.getX() + ((it->second * cos(deg2rad(angle))) * 20);
+        float dy = position.getY() + ((it->second * sin(deg2rad(angle))) * 20);
+        
+        // Now calculate the distance
+        // Grab the distance between them
+        float xDist = x - dx;
+        float yDist = y - dy;
+        
+        float dist = sqrtf((xDist * xDist) + (yDist * yDist));
+        
+        // Now see if the distance is less then the size
+        if (dist < 9.5)
+        {
+            // Set the id
+            id = it->first;
+            
+            // Now make clicked equal true
+            clicked = true;
+        }
+    }
+    
+    return clicked;
+}
+
 /********************************
  * drawArrows
  *  This will draw the arrows when

@@ -107,11 +107,11 @@ float Position::yMin = -375;
 }
 
 /*************************************
- * grabData
+ * grabObject
  *  This will grab the data and convert
  *      it to NSDictionary form.
  ************************************/
-- (NSDictionary *) grabData
+- (NSDictionary *) grabObject
 {
     // Grab the object!
     Object *obj = sim->grabObject(id);
@@ -127,6 +127,16 @@ float Position::yMin = -375;
 
     return editObj;
 }
+
+/*************************************
+ * grabVector
+ *  This will grab the data and convert
+ *      it to NSDictionary form.
+ ************************************/
+//- (NSDictionary *) grabVector
+//{
+//    
+//}
 
 /*************************************
  * mouseDown
@@ -149,7 +159,7 @@ float Position::yMin = -375;
         dragging = YES;
         
         // Tell the main view to change it's edit form
-        [controller addValuesToEditForm: [self grabData] selectedID:id]; 
+//        [controller addValuesToEditForm: [self grabObject] selectedID:id];
         
         // Draw the brackets!
         [self setNeedsDisplay:YES];

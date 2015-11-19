@@ -47,8 +47,11 @@ void Planet::draw()
     if (brackets)
     {
         drawBrackets(getPoint(), drawRadius);
-        
-        // Also the arrows if there are vectors
+    }
+    
+    // Also the arrows if there are vectors
+    if (arrows)
+    {
         getVector().drawArrows();
     }
     

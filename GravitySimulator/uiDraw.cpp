@@ -272,7 +272,7 @@ void drawArrow(const Position & center, float dx, float dy, int angle)
     glColor3f(1.0, 0.0, 0.0);
     
     // Create the points
-    Position point(dx, dy);
+    Position point(center.getX() + dx, center.getY() + dy);
     Position c(center);
     
     // Change line width
