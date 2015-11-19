@@ -39,6 +39,10 @@
     _formLabel3.hidden = YES;
     _formSelectBtn.hidden = YES;
     
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    [_formInputTextField1 setFormatter:f];
+    
     // Send self to GravityViewControlller
     [self.delegate sendSelf:self];
 }
@@ -78,8 +82,8 @@
         [[_formLabel2 cell] setTitle:@"Mass (kg)"];
         
         // Now the input fields
-        [[_formInputTextField1 cell] setTitle: [data objectForKey:@"radius"]];
-        [[_formInputTextField2 cell] setTitle: [data objectForKey:@"mass"]];
+        [[_formInputTextField1 cell] setDoubleValue: [[data objectForKey:@"radius"] doubleValue]];
+        [[_formInputTextField2 cell] setDoubleValue: [[data objectForKey:@"mass"] doubleValue]];
         
         // Make the last question disappear
         _formLabel3.hidden = YES;
@@ -92,8 +96,8 @@
         [[_formLabel2 cell] setTitle:@"Angle (°)"];
         
         // Put the values into the input fields
-        [[_formInputTextField1 cell] setTitle: [data objectForKey:@"mag"]];
-        [[_formInputTextField2 cell] setTitle: [data objectForKey:@"angle"]];
+        [[_formInputTextField1 cell] setFloatValue: [[data objectForKey:@"mag"] floatValue]];
+        [[_formInputTextField2 cell] setIntValue: [[data objectForKey:@"angle"] intValue]];
         
         // Delete what is currently in the formSelectBtn
         [_formSelectBtn removeAllItems];
@@ -124,7 +128,77 @@
     currentlySelected = id;
 }
 
+/*************************************
+ * input1Action
+ *  This will grab the <enter> event
+ *      and when the input is out of
+ *      focus.
+ *************************************/
+- (IBAction)input1Action:(id)sender
+{
+    NSNumber *newNumber;
+    
+    // See which label this is
+    // Grab the value
+    if ([_formLabel1.cell.stringValue isEqualToString:@"Radius (m)"])
+    {
+        newNumber = [NSNumber numberWithDouble: _formInputTextField1.doubleValue];
+    }
+    else
+    {
+        newNumber = [NSNumber numberWithFloat: _formInputTextField1.floatValue];
+    }
+    
+    // Now tell the GravityController of the change
+    [_delegate editObject:currentlySelected number:newNumber edit:@"radiusOrMag"];
+}
 
+/*************************************
+ * input2Action
+ *  Same actions as input1Action.
+ *************************************/
+- (IBAction)input2Action:(id)sender
+{
+    NSNumber *newNumber;
+    
+    // See which label it is
+    // Grab the values
+    if ([_formLabel2.cell.stringValue isEqualToString:@"Mass (kg)"])
+    {
+        newNumber = [NSNumber numberWithDouble: _formInputTextField2.doubleValue];
+    }
+    else
+    {
+        newNumber = [NSNumber numberWithInt: _formInputTextField2.intValue];
+    }
+    
+    // Now tell the GravityController of the change
+    [_delegate editObject:currentlySelected number:newNumber edit:@"massOrAngle"];
+}
+
+/*************************************
+ * selectBtnAction
+ *  This is when the user selects 
+ *      a different option.
+ *************************************/
+- (IBAction)selectBtnAction:(id)sender
+{
+    // Find the change
+    int newObject = -1;
+    
+    for (int i = 0; i < [names count]; ++i)
+    {
+        // Find the item
+        if ([[names objectAtIndex:i] isEqualToString: [[_formSelectBtn selectedItem] title]])
+        {
+            // Grab the id!
+            newObject = [[ids objectAtIndex:i] intValue];
+        }
+    }
+    
+    // Now tell the Gravity Simulator
+    [_delegate changeVector:currentlySelected object:newObject];
+}
 
 /*************************************
  * clickedRun

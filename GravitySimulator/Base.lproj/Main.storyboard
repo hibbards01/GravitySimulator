@@ -737,15 +737,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Zm-KN-7UL">
-                                <rect key="frame" x="20" y="599" width="210" height="22"/>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="y4m-gX-zEs">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Idt-Cm-Lrz">
                                 <rect key="frame" x="18" y="629" width="115" height="21"/>
                                 <animations/>
@@ -762,15 +753,6 @@
                                     <font key="font" size="15" name="ArialMT"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="69V-E5-BrQ">
-                                <rect key="frame" x="20" y="540" width="210" height="22"/>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="CLd-W9-ujq">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KUE-Xm-XMk">
@@ -790,6 +772,9 @@
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="bz4-vT-NCM"/>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="selectBtnAction:" target="XfG-lQ-9wD" id="smt-z0-sgB"/>
+                                </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bow-of-4tl">
                                 <rect key="frame" x="167" y="701" width="81" height="32"/>
@@ -838,6 +823,32 @@
                                     <action selector="clickedRun:" target="XfG-lQ-9wD" id="69x-wZ-7GP"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gU-Ns-YiF">
+                                <rect key="frame" x="20" y="599" width="210" height="22"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="zXi-B7-bCm">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="m7w-AB-G9O"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="input1Action:" target="XfG-lQ-9wD" id="qn0-tz-Bpm"/>
+                                </connections>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YpP-j9-AsL">
+                                <rect key="frame" x="20" y="540" width="210" height="22"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="9JA-6p-Lkg">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="9ia-lu-0ex"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="input2Action:" target="XfG-lQ-9wD" id="0vD-de-3HL"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="g6v-a5-pe5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="250" id="dBw-y8-wrx"/>
@@ -849,8 +860,8 @@
                         <outlet property="clear" destination="Z3D-iS-xxB" id="wMG-vG-h3D"/>
                         <outlet property="deleteBtn" destination="TdI-gY-eOf" id="fHU-xq-GKh"/>
                         <outlet property="editTitle" destination="geo-tC-FNc" id="jmg-at-3YQ"/>
-                        <outlet property="formInputTextField1" destination="7Zm-KN-7UL" id="Y5e-YO-EaB"/>
-                        <outlet property="formInputTextField2" destination="69V-E5-BrQ" id="6Yr-Ls-c5f"/>
+                        <outlet property="formInputTextField1" destination="6gU-Ns-YiF" id="1lH-mY-6Qw"/>
+                        <outlet property="formInputTextField2" destination="YpP-j9-AsL" id="6mg-jm-LC6"/>
                         <outlet property="formLabel1" destination="Idt-Cm-Lrz" id="w6K-zS-ijg"/>
                         <outlet property="formLabel2" destination="wYO-Lu-37W" id="CyX-nl-aCT"/>
                         <outlet property="formLabel3" destination="KUE-Xm-XMk" id="ZLd-Ol-Lgb"/>

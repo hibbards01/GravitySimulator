@@ -90,11 +90,11 @@ float Position::yMin = -375;
         // Create new vector
         float mag        = [[data objectForKey: @"mag"] floatValue];
         int angle        = [[data objectForKey: @"angle"] intValue];
-//        std::string name = [[data objectForKey: @"name"] UTF8String];
+        std::string name = [[data objectForKey: @"name"] UTF8String];
         int objId        = [[data objectForKey: @"objName"] intValue];
         
         // Give the data to the sim
-        sim->addVector(objId, mag, angle, [[data objectForKey: @"name"] UTF8String], id);
+        sim->addVector(objId, mag, angle, name, id);
     }
     
     // Give back the newID
@@ -148,16 +148,6 @@ float Position::yMin = -375;
 }
 
 /*************************************
- * grabVector
- *  This will grab the data and convert
- *      it to NSDictionary form.
- ************************************/
-//- (NSDictionary *) grabVector
-//{
-//    
-//}
-
-/*************************************
  * mouseDown
  *  This will check if the user can
  *      can drag the element.
@@ -209,6 +199,13 @@ float Position::yMin = -375;
         // Move the object to that point
         sim->moveObject(x, y, id);
         
+        // See if we are moving a vector
+        if (sim->editingVector(id))
+        {
+            // Then update the edit form
+            [controller addValuesToEditForm: [self grabObject] selectedID:id];
+        }
+        
         // Now redraw the picture
         [self setNeedsDisplay:YES];
     }
@@ -236,11 +233,28 @@ float Position::yMin = -375;
 
 /*************************************
  * editObject
- *  Edit an object.
+ *  Edit an object. This could be a
+ *      the plaent or vector.
  *************************************/
-- (void) editObject: (NSDictionary *) data id:(NSNumber *)id
+- (void) editObject: (int) editId number:(NSNumber *) number edit: (NSString *) edit
 {
+    // Tell the sim
+    sim->editObject(editId, [edit UTF8String], [number doubleValue]);
     
+    [self setNeedsDisplay:YES];
+}
+
+/*************************************
+ * changeVector
+ *  This will change the vector to a
+ *      different object
+ *************************************/
+- (void) changeVector: (int) vectorId object: (int) newObject
+{
+    // Tell the sim
+    sim->changeVector(vectorId, newObject);
+    
+    [self setNeedsDisplay:YES];
 }
 
 /*************************************

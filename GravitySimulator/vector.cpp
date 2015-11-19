@@ -56,19 +56,13 @@ void Vector::changePosition()
  ********************************/
 void Vector::addVector(const float mag, const int angle, const int id, const string name)
 {
-    // Calculate x and y
-    float a = deg2rad(angle);
-    float x = mag * cos(a);
-    float y = mag * sin(a);
+    // Add to dx and dy
+    addDxDy(mag, angle);
     
     // Add them to the maps
     this->angles[id] = angle;
     this->mags[id] = mag;
     this->names[id] = name;
-
-    // Now add the x and y to the values dx and dy
-    dx += x;
-    dy += y;
     
     return;
 }
@@ -78,6 +72,38 @@ void Vector::addVector(const float mag, const int angle, const int id, const str
  *  Delete from the vector.
  ********************************/
 void Vector::deleteVector(int id)
+{
+    // Delete from the dx and dy
+    minusDxDy(id);
+    
+    // Erase from the maps
+    mags.erase(id);
+    angles.erase(id);
+    
+    return;
+}
+
+/*********************************
+ * addDxDy
+ *  This will add to the dx and dy.
+ *********************************/
+void Vector::addDxDy(float mag, float angle)
+{
+    // Calculate x and y
+    float a = deg2rad(angle);
+    float x = mag * cos(a);
+    float y = mag * sin(a);
+    
+    // Now add the x and y to the values dx and dy
+    dx += x;
+    dy += y;
+}
+
+/*********************************
+ * minusDxDy
+ *  This will minus to the dx and dy.
+ *********************************/
+void Vector::minusDxDy(int id)
 {
     // Grab the mag and angle
     float m = mags[id];
@@ -90,12 +116,36 @@ void Vector::deleteVector(int id)
     // Now minus it from dx and dy
     dx -= x;
     dy -= y;
+}
+
+/*********************************
+ * setMag
+ *********************************/
+void Vector::setMag(int id, float mag)
+{
+    // Minus the dx and dy
+    minusDxDy(id);
     
-    // Erase from the maps
-    mags.erase(id);
-    angles.erase(id);
+    // Now add to it again
+    addDxDy(mag, angles[id]);
     
-    return;
+    // Set the value
+    mags[id] = mag;
+}
+
+/*********************************
+ * setAngle
+ *********************************/
+void Vector::setAngle(int id, int angle)
+{
+    // Minus dx and dy
+    minusDxDy(id);
+    
+    // Add it again
+    addDxDy(mags[id], angle);
+    
+    // Set the value
+    angles[id] = angle;
 }
 
 /*********************************

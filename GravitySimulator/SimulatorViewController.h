@@ -55,7 +55,8 @@
 @protocol sendObjectProtocol <NSObject>
 
 - (NSNumber *) addToViewObject: (NSDictionary *) data;
-- (void) editObject: (NSDictionary *) data id:(NSNumber *)id;
+- (void) editObject: (int) editId number:(NSNumber *) number edit: (NSString *) edit;
+- (void) changeVector: (int) vectorId object: (int) newObject;
 - (void) sendSelf: (SimulatorViewController *) c;
 
 @end

@@ -47,7 +47,13 @@ public:
         getVector().addVector(mag, angle, identifier, name);
         return identifier++;
     }
-    void deleteVector(int id)   { getVector().deleteVector(id); }
+    void addVector(float angle, float mag, std::string name, float id) // Add a vector already with a current id
+    {
+        getVector().addVector(mag, angle, id, name);
+    }
+    void deleteVector(int id)          { getVector().deleteVector(id); }
+    virtual void setSize(double size)  {}
+    virtual void setDrawSize(int size) {}
     
     //
     // Getters
@@ -109,6 +115,8 @@ public:
     // Setters
     //
     void setRotationSpeed(int s) { rotationSpeed = s; }
+    void setSize(double size)    { radius = size;     }
+    void setDrawSize(int size)   { drawRadius = size; }
 private:
     double radius;      // This is the radius of the planet.
     int drawRadius;     // The draw radius for OpenGl.

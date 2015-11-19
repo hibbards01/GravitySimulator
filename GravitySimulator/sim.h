@@ -42,8 +42,11 @@ public:
     void removeVector(int vectorId);
     bool clickedObject(float x, float y, int & id);
     void moveObject(float x, float y, int id);
-    Object * grabObject(int id);                        // This will grab the object
+    Object * grabObject(int id);                                // This will grab the object
     Vector grabVector(int id, Object * &obj);
+    void editObject(int id, std::string edit, double newValue); // Edit the vector or object
+    void changeVector(int id, int newObjId);                    // Edit the vector
+    bool editingVector(int id);                                 // Are we editing a vector?
     
     //
     // Getters

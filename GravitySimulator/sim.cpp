@@ -104,15 +104,81 @@ void Simulator::run(bool movingObjects)
  ************************************/
 void Simulator::addObject(Object * object, int id)
 {
-    // See if this is the first one
-    if (id != -1)
+    // Then deselect all planets
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
     {
-        // Then deselect it
-        this->grabObject(id)->showHelpers(false);
+        (*it)->showHelpers(false);
     }
     
     // Add to the list
     objects.push_back(object);
+}
+
+/*************************************
+ * editObject
+ *  This will edit either the vector
+ *      or planet.
+ ************************************/
+void Simulator::editObject(int id, string edit, double newValue)
+{
+    // Grab the object
+    Object * obj = this->grabObject(id);
+    
+    // If it is null then we need to edit the vector
+    if (obj == NULL)
+    {
+        // What are we editing?
+        for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+        {
+            if ((*it)->getVector().getAngle(id) != -1)
+            {
+                if (edit == string("radiusOrMag"))
+                {
+                    (*it)->getVector().setMag(id, newValue);
+                }
+                else
+                {
+                    (*it)->getVector().setAngle(id, newValue);
+                }
+            }
+        }
+    }
+    else
+    {
+        // What are we editing?
+        if (edit == string("radiusOrMag"))
+        {
+            obj->setSize(newValue);
+            obj->setDrawSize(newValue / getMeter());
+        }
+        else
+        {
+            obj->setMass(newValue);
+        }
+    }
+}
+
+/*************************************
+ * changeVector
+ *  This will change the vector to the 
+ *      new object.
+ ************************************/
+void Simulator::changeVector(int id, int newObjId)
+{
+    Object *obj;
+    
+    // Grab the current object with the vector
+    // Copy it
+    Vector v = grabVector(id, obj);
+    float mag = v.getMag(id);
+    float angle = v.getAngle(id);
+    string name = v.getName(id);
+    
+    // Now delete it
+    removeVector(id);
+    
+    // Now add it to the object
+    grabObject(newObjId)->addVector(angle, mag, name, id);
 }
 
 /*************************************
@@ -248,6 +314,29 @@ Vector Simulator::grabVector(int id, Object * &obj)
     }
     
     return vector;
+}
+
+/***********************************
+ * editingVector
+ *  This will tell the GravityController
+ *      to update the form if it is a
+ *      vector
+ ***********************************/
+bool Simulator::editingVector(int id)
+{
+    bool isVector = false;
+    
+    // See if there is a vector
+    Object *o;
+    Vector v = grabVector(id, o);
+    
+    // Now see if it is empty
+    if (v.getAngle(id) != -1)
+    {
+        isVector = true;
+    }
+    
+    return isVector;
 }
 
 /***********************************

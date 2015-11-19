@@ -111,15 +111,18 @@ public:
     void insertAngle(std::pair<int, int> a)        { angles.insert(a);       }
     void insertMag(std::pair<int, int> m)          { mags.insert(m);         }
     void insertName(std::pair<int, std::string> n) { names.insert(n);        }
-    void setMag(int id, float mag)                 { mags[id] = mag;         }
-    void setAngle(int id, int angle)               { angles[id] = angle;     }
+    void setMag(int id, float mag);
+    void setAngle(int id, int angle);
 private:
-    float dx;                         // The direction for the object in the x
-    float dy;                         // Same thing as dx but for the y
-    Position position;                // The position of the object
-    std::map<int, int> angles;        // The angle of the vectors
-    std::map<int, float> mags;        // The magnitude of the vector
-    std::map<int, std::string> names; // The names of the vector
+    float dx;                             // The direction for the object in the x
+    float dy;                             // Same thing as dx but for the y
+    Position position;                    // The position of the object
+    std::map<int, int> angles;            // The angle of the vectors
+    std::map<int, float> mags;            // The magnitude of the vector
+    std::map<int, std::string> names;     // The names of the vector
+    
+    void minusDxDy(int id);               // This will minus the dx and dy
+    void addDxDy(float mag, float angle); // This will add to dx and dy
 };
 
 #endif /* vector_h */
