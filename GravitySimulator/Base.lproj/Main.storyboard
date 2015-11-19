@@ -747,7 +747,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Idt-Cm-Lrz">
-                                <rect key="frame" x="18" y="629" width="108" height="21"/>
+                                <rect key="frame" x="18" y="629" width="115" height="21"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Radius (m)" id="GSx-S5-jPd">
                                     <font key="font" size="15" name="ArialMT"/>

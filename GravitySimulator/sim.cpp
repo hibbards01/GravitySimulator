@@ -228,6 +228,29 @@ Object * Simulator::grabObject(int id)
 }
 
 /***********************************
+ * grabVector
+ *  This will grab the vector with
+ *      the id.
+ ***********************************/
+Vector Simulator::grabVector(int id, Object * &obj)
+{
+    Vector vector;
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        // See if we can grab an angle
+        int angle = (*it)->getVector().getAngle(id);
+        
+        if (angle != -1)
+        {
+            vector = (*it)->getVector();
+            obj = *it;
+        }
+    }
+    
+    return vector;
+}
+
+/***********************************
  * moveObject
  *  This will move the object if being
  *      dragged by the user.

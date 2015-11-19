@@ -87,7 +87,34 @@
     }
     else
     {
+        // Change the form lables
+        [[_formLabel1 cell] setTitle:@"Magnitude (m/s)"];
+        [[_formLabel2 cell] setTitle:@"Angle (°)"];
         
+        // Put the values into the input fields
+        [[_formInputTextField1 cell] setTitle: [data objectForKey:@"mag"]];
+        [[_formInputTextField2 cell] setTitle: [data objectForKey:@"angle"]];
+        
+        // Delete what is currently in the formSelectBtn
+        [_formSelectBtn removeAllItems];
+        
+        // Add the object name to the formSelectBtn
+        for (int i = 0; i < [names count]; ++i)
+        {
+            // Add to the btn
+            [_formSelectBtn addItemWithTitle: [names objectAtIndex: i]];
+            
+            // See if it is the one that has to be selected
+            if ([[ids objectAtIndex: i] intValue] == [[data objectForKey:@"objName"] intValue])
+            {
+                // Now select the current object
+                [_formSelectBtn selectItemAtIndex: i];
+            }
+        }
+        
+        // Also make them not hidden
+        _formLabel3.hidden = NO;
+        _formSelectBtn.hidden = NO;
     }
     
     // Change the edit form label

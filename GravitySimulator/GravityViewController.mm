@@ -90,11 +90,11 @@ float Position::yMin = -375;
         // Create new vector
         float mag        = [[data objectForKey: @"mag"] floatValue];
         int angle        = [[data objectForKey: @"angle"] intValue];
-        std::string name = [[data objectForKey: @"name"] UTF8String];
+//        std::string name = [[data objectForKey: @"name"] UTF8String];
         int objId        = [[data objectForKey: @"objName"] intValue];
         
         // Give the data to the sim
-        sim->addVector(objId, mag, angle, name, id);
+        sim->addVector(objId, mag, angle, [[data objectForKey: @"name"] UTF8String], id);
     }
     
     // Give back the newID
@@ -113,17 +113,36 @@ float Position::yMin = -375;
  ************************************/
 - (NSDictionary *) grabObject
 {
+    NSDictionary *editObj;
+    
     // Grab the object!
     Object *obj = sim->grabObject(id);
     
-    // Now grab the data
-    NSDictionary *editObj = @{
-                             @"object"  : @"Planet",
-                             @"name"    : [NSString stringWithUTF8String:obj->getName().c_str()],
-                             @"radius"  : [NSNumber numberWithDouble: obj->getSize()],
-                             @"mass"    : [NSNumber numberWithDouble: obj->getMass()],
-                             @"objName" : @"none"
-                             };
+    // If it is null then grab the vector
+    if (obj == NULL)
+    {
+        Vector v = sim->grabVector(id, obj);
+        
+        // Now grab the data
+        editObj = @{
+                    @"object"  : @"Vector",
+                    @"name"    : [NSString stringWithUTF8String: v.getName(id).c_str()],
+                    @"mag"     : [NSNumber numberWithDouble: v.getMag(id)],
+                    @"angle"   : [NSNumber numberWithDouble: v.getAngle(id)],
+                    @"objName" : [NSNumber numberWithInt: obj->getId()]
+                    };
+    }
+    else
+    {
+        // Now grab the data
+        editObj = @{
+                     @"object"  : @"Planet",
+                     @"name"    : [NSString stringWithUTF8String:obj->getName().c_str()],
+                     @"radius"  : [NSNumber numberWithDouble: obj->getSize()],
+                     @"mass"    : [NSNumber numberWithDouble: obj->getMass()],
+                     @"objName" : @"none"
+                     };
+    }
 
     return editObj;
 }
@@ -159,7 +178,7 @@ float Position::yMin = -375;
         dragging = YES;
         
         // Tell the main view to change it's edit form
-//        [controller addValuesToEditForm: [self grabObject] selectedID:id];
+        [controller addValuesToEditForm: [self grabObject] selectedID:id];
         
         // Draw the brackets!
         [self setNeedsDisplay:YES];

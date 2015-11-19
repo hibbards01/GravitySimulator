@@ -32,6 +32,7 @@ Vector & Vector::operator = (const Vector & v)
     this->position = v.position;
     this->angles = v.angles;
     this->mags = v.mags;
+    this->names = v.names;
     
     // Finally return this
     return *this;

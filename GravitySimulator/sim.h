@@ -43,6 +43,7 @@ public:
     bool clickedObject(float x, float y, int & id);
     void moveObject(float x, float y, int id);
     Object * grabObject(int id);                        // This will grab the object
+    Vector grabVector(int id, Object * &obj);
     
     //
     // Getters
