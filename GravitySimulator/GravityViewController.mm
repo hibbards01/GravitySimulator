@@ -49,6 +49,7 @@ float Position::yMin = -375;
     dragging = NO;
     id = -1;
     run = NO;
+    [self createTrackingArea];
 }
 
 /*************************************
@@ -157,26 +158,79 @@ float Position::yMin = -375;
 {
     // See if this event is over an object
     // Grab where the mouse was clicked on.
-    NSPoint event_location = event.locationInWindow;
-    NSPoint location = [self convertPoint:event_location fromView:nil];
-    float x = [self changeX: location.x];
-    float y = [self changeY: location.y];
-    
-    // Now see if an object was clicked on
-    if (sim->clickedObject(x, y, id))
+    if (dragging)
     {
-        // If so then we need to allow dragging.
-        dragging = YES;
+        // Allow to move it!
+        clicked = YES;
         
-        // Tell the main view to change it's edit form
+        // Show the form!
         [controller addValuesToEditForm: [self grabObject] selectedID:id];
         
         // Draw the brackets!
         [self setNeedsDisplay:YES];
     }
-    else
+}
+
+/*************************************
+ * mouseUp
+ *  This will mainly change the value
+ *      clicked.
+ ************************************/
+- (void) mouseUp: (NSEvent *) event
+{
+    clicked = NO;
+}
+
+/*************************************
+ * createTrackingArea
+ *  This will keep track of the mouse
+ ************************************/
+- (void) createTrackingArea
+{
+    int options = (NSTrackingMouseMoved | NSTrackingActiveAlways);
+    _trackingArea = [[NSTrackingArea alloc] initWithRect:[self bounds]
+                                                 options:options
+                                                   owner:self
+                                                userInfo:NULL];
+    
+    // Now add it
+    [self addTrackingArea:_trackingArea];
+}
+
+/*************************************
+ * mouseMoved
+ *  Show a hover affect on the planets
+ *      and arrows.
+ ************************************/
+- (void) mouseMoved: (NSEvent *) event
+{
+    // If the sumlations is running then don't do anything
+    if (!run && !clicked)
     {
-        dragging = NO;
+        // See if the mouse is over the planet or vector
+        NSPoint event_location = event.locationInWindow;
+        NSPoint location = [self convertPoint:event_location fromView:nil];
+        float x = [self changeX: location.x];
+        float y = [self changeY: location.y];
+        
+        // Now see if an object was hovered over
+        if (sim->clickedObject(x, y, id))
+        {
+            // If so then we need to allow dragging.
+            dragging = YES;
+            
+            // Then change the cursor
+            [[NSCursor crosshairCursor] set];
+        }
+        else
+        {
+            dragging = NO;
+            [[NSCursor arrowCursor] set];
+        }
+    }
+    else if (!clicked)
+    {
+        [[NSCursor arrowCursor] set];
     }
 }
 
@@ -188,7 +242,7 @@ float Position::yMin = -375;
 - (void) mouseDragged: (NSEvent *) event
 {
     // Make sure an object was clicked on
-    if (dragging)
+    if (dragging && clicked)
     {
         // Now move the object
         // Grab the points
@@ -206,6 +260,9 @@ float Position::yMin = -375;
             // Then update the edit form
             [controller addValuesToEditForm: [self grabObject] selectedID:id];
         }
+        
+        // Keep the same cursor
+        [[NSCursor crosshairCursor] set];
         
         // Now redraw the picture
         [self setNeedsDisplay:YES];

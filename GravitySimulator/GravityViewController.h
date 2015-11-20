@@ -27,11 +27,14 @@
     Simulator * sim;                     // This is to add objects to the simulator
     BOOL dragging;                       // Allow the user to drag an object
     BOOL run;                            // When to run the simulation
+    BOOL clicked;                        // Did we click the object?
     int id;                              // Current clicked object
     SimulatorViewController *controller; // Tell it when to change the edit form
 }
 
 - (void) drawRect: (NSRect) bounds;
+
+@property (nonatomic, retain) NSTrackingArea *trackingArea;
 
 @end
 
