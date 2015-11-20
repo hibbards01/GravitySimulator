@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/GravityViewController.mm"
-            timestampString = "469515680.200455"
+            timestampString = "469729352.299464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-addToViewObject:"
             landmarkType = "5">
          </BreakpointContent>
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/GravityViewController.mm"
-            timestampString = "469515680.200455"
+            timestampString = "469729352.299464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-addToViewObject:"
             landmarkType = "5">
          </BreakpointContent>
@@ -184,11 +184,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/sim.cpp"
-            timestampString = "469666726.011241"
+            timestampString = "469733420.38227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "313"
+            endingLineNumber = "313">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GravitySimulator/sim.cpp"
+            timestampString = "469733420.38227"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "Simulator::clickedObject(float x, float y, int &amp; id)"
             landmarkType = "5">
          </BreakpointContent>
@@ -200,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/sim.cpp"
-            timestampString = "469666726.011241"
+            timestampString = "469733420.38227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "Simulator::clickedObject(float x, float y, int &amp; id)"
             landmarkType = "5">
          </BreakpointContent>
@@ -216,12 +230,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/sim.cpp"
-            timestampString = "469666726.011241"
+            timestampString = "469733420.38227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "Simulator::clickedObject(float x, float y, int &amp; id)"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "Simulator::editingVector(int id)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -232,29 +246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/sim.cpp"
-            timestampString = "469666726.011241"
+            timestampString = "469733420.38227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
-            landmarkName = "Simulator::moveObject(float x, float y, int id)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GravitySimulator/sim.cpp"
-            timestampString = "469666726.011241"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
-            landmarkName = "Simulator::clickedObject(float x, float y, int &amp; id)"
-            landmarkType = "5">
+            startingLineNumber = "307"
+            endingLineNumber = "307">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -296,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/GravityViewController.mm"
-            timestampString = "469645176.816247"
+            timestampString = "469729352.299464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "-grabObject"
             landmarkType = "5">
          </BreakpointContent>
@@ -312,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/GravityViewController.mm"
-            timestampString = "469665044.347914"
+            timestampString = "469729352.299464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "-editObject:number:edit:"
             landmarkType = "5">
          </BreakpointContent>
@@ -328,12 +324,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GravitySimulator/sim.cpp"
-            timestampString = "469666726.011241"
+            timestampString = "469733420.38227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "Simulator::editObject(int id, string edit, double newValue)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GravitySimulator/GravityViewController.mm"
+            timestampString = "469733754.315363"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

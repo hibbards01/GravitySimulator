@@ -54,6 +54,7 @@ public:
     void deleteVector(int id)          { getVector().deleteVector(id); }
     virtual void setSize(double size)  {}
     virtual void setDrawSize(int size) {}
+    void enableWrapping(bool enable);
     
     //
     // Getters

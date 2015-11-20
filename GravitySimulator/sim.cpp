@@ -34,7 +34,7 @@ int Object::identifier = 1;
 /********************************
  * Constructor
  *******************************/
-Simulator::Simulator()
+Simulator::Simulator() : firstTime(true)
 {
     // Lets create two objects!
 //    list<Object *> objects;
@@ -84,8 +84,19 @@ void Simulator::run(bool movingObjects)
 {
     // First move the objects.
     // Only move them if running the simulation
-    if (!movingObjects)
+    if (movingObjects)
     {
+        // Is this the first time? Then save the original positions, dxs, and dys
+        if (firstTime)
+        {
+            for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+            {
+                origin.addOrigin((*it)->getPoint(), (*it)->getVector().getDx(), (*it)->getVector().getDy(), (*it)->getId());
+            }
+            
+            firstTime = false;
+        }
+        
         move();
     }
 
@@ -93,6 +104,70 @@ void Simulator::run(bool movingObjects)
     draw();
     
     return;
+}
+
+/********************************
+ * reset
+ *  Reset to the original points.
+ *******************************/
+void Simulator::reset()
+{
+    firstTime = true;
+    
+    // Reset the positions and vectors
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        try
+        {
+            (*it)->getVector().setPosition(origin.getPosition((*it)->getId()));
+            (*it)->getVector().setDx(origin.getDx((*it)->getId()));
+            (*it)->getVector().setDy(origin.getDy((*it)->getId()));
+        }
+        catch (out_of_range & oos)
+        {
+            // Nothing to reset to
+        }
+    }
+    
+    // Clear everything!
+    origin.clear();
+}
+
+/********************************
+ * removeHelpers
+ *  This will remove the brackets
+ *      and arrows during simulation.
+ *      It will also enable the arrows
+ *      if simulation is over.
+ *******************************/
+void Simulator::enableHelpers(bool enable)
+{
+    // Remove all bracktes and arrows
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        // Only disable the brackets for the planets
+        // At run time
+        if (!enable)
+        {
+            (*it)->showHelpers(enable);
+        }
+
+        (*it)->showVectors(enable);
+    }
+}
+
+/********************************
+ * enableWrapping
+ *  This will allow wrapping on the
+ *      screen if the user wants it.
+ *******************************/
+void Simulator::enableWrapping(bool wrapping)
+{
+    // Enable wrapping
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        (*it)->enableWrapping(wrapping);
+    }
 }
 
 /*************************************
@@ -190,6 +265,27 @@ void Simulator::addVector(int objId, float mag, float angle, string name, int & 
 {
     // Grab the object and add the vector
     id = grabObject(objId)->addVector(angle, mag, name);
+}
+
+/*************************************
+ * removeObject
+ *  Delete the object.
+ *************************************/
+void Simulator::removeObject(int id)
+{
+    // Check if it is an object
+    Object * obj = grabObject(id);
+    
+    // If not delete the vector
+    if (obj == NULL)
+    {
+        removeVector(id);
+    }
+    else
+    {
+        // Remove the object from the list
+        objects.remove(obj);
+    }
 }
 
 /*************************************

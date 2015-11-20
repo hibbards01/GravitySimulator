@@ -207,7 +207,39 @@
  *************************************/
 - (IBAction)clickedRun: (id)sender
 {
+    // Show the arrows?
+    BOOL enable = YES;
     
+    // See what label it is
+    if ([[_run title] isEqualToString:@"Run"])
+    {
+        // Disable all buttons and textfields
+        _formInputTextField1.enabled = NO;
+        _formInputTextField2.enabled = NO;
+        _deleteBtn.enabled = NO;
+        _clear.enabled = NO;
+        _reset.enabled = NO;
+        _formSelectBtn.enabled = NO;
+        
+        // Change the label
+        [[_run cell] setTitle:@"Stop"];
+        enable = NO;
+    }
+    else
+    {
+        // Enable all buttons and textfields
+        _formInputTextField1.enabled = YES;
+        _formInputTextField2.enabled = YES;
+        _deleteBtn.enabled = YES;
+        _clear.enabled = YES;
+        _reset.enabled = YES;
+        _formSelectBtn.enabled = YES;
+        
+        // Change button title
+        [[_run cell] setTitle:@"Run"];
+    }
+    
+    [_delegate runSimulation:enable];
 }
 
 /*************************************
@@ -216,7 +248,7 @@
  *************************************/
 - (IBAction)clickedReset: (id)sender
 {
-    
+    [_delegate resetObjects];
 }
 
 /*************************************
@@ -225,7 +257,11 @@
  *************************************/
 - (IBAction)clickedClear: (id)sender
 {
+    // Delete all objects
+    [_delegate deleteObject:0 type:@"all"];
     
+    // Remove text
+    [self removeText];
 }
 
 /*************************************
@@ -234,10 +270,26 @@
  *************************************/
 - (IBAction)clickedDelete: (id)sender
 {
+    // Delete the one object
+    [_delegate deleteObject:currentlySelected type:@"one"];
     
+    // Remove text
+    [self removeText];
 }
 
-
+/*************************************
+ * removeText
+ *  Remove the text.
+ ************************************/
+- (void) removeText
+{
+    [[_editTitle cell] setTitle:@""];
+    [[_formLabel1 cell] setTitle:@"Radius (m)"];
+    [[_formLabel2 cell] setTitle:@"Mass (kg)"];
+    [[_formInputTextField1 cell] setTitle:@""];
+    [[_formInputTextField2 cell] setTitle:@""];
+    _formSelectBtn.hidden = YES;
+}
 
 /*************************************
  * clickedNew

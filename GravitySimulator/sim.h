@@ -22,6 +22,50 @@
 #define KILOMETERS 1000
 
 /**********************************
+ * SaveOrigin
+ *  This will save the original
+ *      positions and vectors when
+ *      the simulation is run so that
+ *      the user can reset it.
+ *********************************/
+class SaveOrigin
+{
+public:
+    //
+    // Constructors
+    //
+    SaveOrigin() {}
+    
+    //
+    // GETTERS
+    //
+    Position & getPosition(int id) { return positions[id]; }
+    float getDx(int id)            { return vectorDxs[id]; }
+    float getDy(int id)            { return vectorDys[id]; }
+    
+    //
+    // Methods
+    //
+    void addOrigin(Position pt, float dx, float dy, int id)
+    {
+        positions[id] = pt;
+        vectorDxs[id] = dx;
+        vectorDys[id] = dy;
+    }
+    void clear()
+    {
+        positions.clear();
+        vectorDxs.clear();
+        vectorDys.clear();
+    }
+private:
+    std::map<int, Position> positions; // This will save all the original positions
+    std::map<int, float> vectorDxs;    // Save all the original dxs
+    std::map<int, float> vectorDys;    // and dys
+};
+
+
+/**********************************
  * Simulator
  *  This class will be the one that
  *      that will tell the objects
@@ -40,6 +84,7 @@ public:
     void addVector(int objId, float mag, float angle, std::string name, int & id);
     void removeObject(int id);
     void removeVector(int vectorId);
+    void removeAll()                                            { objects.clear();        }
     bool clickedObject(float x, float y, int & id);
     void moveObject(float x, float y, int id);
     Object * grabObject(int id);                                // This will grab the object
@@ -47,6 +92,9 @@ public:
     void editObject(int id, std::string edit, double newValue); // Edit the vector or object
     void changeVector(int id, int newObjId);                    // Edit the vector
     bool editingVector(int id);                                 // Are we editing a vector?
+    void enableHelpers(bool enable);
+    void enableWrapping(bool enable);
+    void reset();
     
     //
     // Getters
@@ -76,7 +124,7 @@ private:
     // Constructors
     //
     Simulator();
-    Simulator(std::list<Object *> & objects) : objects(objects) {}
+    Simulator(std::list<Object *> & objects) : objects(objects), firstTime(true) {}
     static Simulator * sim; // This creates our singleton.
     
     // Private methods
@@ -88,6 +136,8 @@ private:
     std::list<Object *> objects;         // This will hold all the objects.
     static double gravitationalConstant; // This will hold the gravitational constant
     static int indexMeters;              // This is set by gravity to 1 for METERS4, unless it is changed
+    bool firstTime;                      // First time running the simulation?
+    SaveOrigin origin;                   // Save the original positions, dxs, and dys
 };
 
 #endif // sim_h

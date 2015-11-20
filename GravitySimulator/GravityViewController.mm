@@ -48,6 +48,7 @@ float Position::yMin = -375;
     renderTimer = nil;
     dragging = NO;
     id = -1;
+    run = NO;
 }
 
 /*************************************
@@ -258,6 +259,71 @@ float Position::yMin = -375;
 }
 
 /*************************************
+ * deleteObject
+ *  This will delete an object
+ *************************************/
+- (void) deleteObject: (int) objId type: (NSString *) type
+{
+    // See if we are deleting one or all
+    if ([type isEqualToString:@"one"])
+    {
+        // Delete the one item!
+        sim->removeObject(objId);
+    }
+    else
+    {
+        // Delete everything!
+        sim->removeAll();
+    }
+    
+    [self setNeedsDisplay:YES];
+}
+
+/*************************************
+ * runSimulation
+ *  Run the simulation!
+ *************************************/
+- (void) runSimulation: (BOOL) enable
+{
+    // Enable or disable the arrows
+    sim->enableHelpers(enable);
+    
+    // Stop the timer if enabled
+    if (enable)
+    {
+        run = NO;
+        [self stopTimer];
+        
+        // Disable wrapping always
+        sim->enableWrapping(false);
+        
+        // Draw the arrows
+        [self setNeedsDisplay:YES];
+    }
+    else
+    {
+        // Else run the timer
+        [self runTimer];
+        run = YES;
+        
+        // Enable wrapping for now
+        sim->enableWrapping(true);
+    }
+}
+
+/*************************************
+ * resetObjects
+ *  Reset the objects to their original
+ *      points.
+ ************************************/
+- (void) resetObjects
+{
+    sim->reset();
+    
+    [self setNeedsDisplay:YES];
+}
+
+/*************************************
  * runTimer
  *  This will start the timer and 
  *      redraw the view every 60 frames
@@ -312,7 +378,7 @@ float Position::yMin = -375;
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Now draw everything!
-    sim->run(dragging);
+    sim->run(run);
     
     // Draws the content provided by your routine to the view
     glFlush();

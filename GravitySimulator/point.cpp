@@ -24,7 +24,7 @@ Position::Position(float x, float y) : x(0.0), y(0.0), checkNum(false), dead(fal
 /*******************************************
  * CONSTRUCTOR with x, y, percentage
  ******************************************/
-Position::Position(float x, float y, bool percentage, bool check)
+Position::Position(float x, float y, bool percentage, bool check) : dead(false), wrap(false)
 {
     setX(x);
     setY(y);
