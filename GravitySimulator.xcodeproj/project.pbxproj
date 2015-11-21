@@ -11,6 +11,8 @@
 		66329A751BEC403E0058DE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66329A731BEC403E0058DE77 /* Main.storyboard */; };
 		66329A801BEC403E0058DE77 /* GravitySimulatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A7F1BEC403E0058DE77 /* GravitySimulatorTests.m */; };
 		66329A8B1BEC403E0058DE77 /* GravitySimulatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A8A1BEC403E0058DE77 /* GravitySimulatorUITests.m */; };
+		66813A5F1BFFF94E00BBDE1C /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 66813A5D1BFFF94E00BBDE1C /* green.png */; };
+		66813A601BFFF94E00BBDE1C /* green_push.png in Resources */ = {isa = PBXBuildFile; fileRef = 66813A5E1BFFF94E00BBDE1C /* green_push.png */; };
 		668DB9EB1BED353C0060E395 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668DB9EA1BED353C0060E395 /* OpenGL.framework */; };
 		66DE11871BF2B086009D514B /* GravityViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66584B5F1BEC4A3B002D19C8 /* GravityViewController.mm */; };
 		66DE11891BF2B086009D514B /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66DE116C1BF2AEA2009D514B /* object.cpp */; };
@@ -22,6 +24,7 @@
 		66DE118F1BF2B0B7009D514B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A691BEC403E0058DE77 /* AppDelegate.m */; };
 		66DE11901BF2B0B7009D514B /* SimulatorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 668DB9F01BED581F0060E395 /* SimulatorViewController.mm */; };
 		66DE11911BF2B0B7009D514B /* CreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666710011BF11A6B006753D4 /* CreateViewController.m */; };
+		66FDD3F21BFFD4B400A3C2CA /* GreenButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FDD3F11BFFD4B400A3C2CA /* GreenButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,8 @@
 		66584B611BEC4A4A002D19C8 /* GravityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GravityViewController.h; sourceTree = "<group>"; };
 		666710001BF11A19006753D4 /* CreateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateViewController.h; sourceTree = "<group>"; };
 		666710011BF11A6B006753D4 /* CreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateViewController.m; sourceTree = "<group>"; };
+		66813A5D1BFFF94E00BBDE1C /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		66813A5E1BFFF94E00BBDE1C /* green_push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_push.png; sourceTree = "<group>"; };
 		668DB9EA1BED353C0060E395 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		668DB9F01BED581F0060E395 /* SimulatorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimulatorViewController.mm; sourceTree = "<group>"; };
 		668DB9F21BED58350060E395 /* SimulatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatorViewController.h; sourceTree = "<group>"; };
@@ -72,6 +77,8 @@
 		66DE11731BF2AEA2009D514B /* uiDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiDraw.h; sourceTree = "<group>"; };
 		66DE11741BF2AEA2009D514B /* vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector.cpp; sourceTree = "<group>"; };
 		66DE11751BF2AEA2009D514B /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
+		66FDD3F01BFFD4B400A3C2CA /* GreenButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreenButton.h; sourceTree = "<group>"; };
+		66FDD3F11BFFD4B400A3C2CA /* GreenButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreenButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +144,9 @@
 				66329A761BEC403E0058DE77 /* Info.plist */,
 				66DE11691BF2AE76009D514B /* Backend */,
 				66329A6B1BEC403E0058DE77 /* Supporting Files */,
+				66FDD3F01BFFD4B400A3C2CA /* GreenButton.h */,
+				66FDD3F11BFFD4B400A3C2CA /* GreenButton.m */,
+				66813A611BFFF95300BBDE1C /* img */,
 			);
 			path = GravitySimulator;
 			sourceTree = "<group>";
@@ -165,6 +175,15 @@
 				66329A8C1BEC403E0058DE77 /* Info.plist */,
 			);
 			path = GravitySimulatorUITests;
+			sourceTree = "<group>";
+		};
+		66813A611BFFF95300BBDE1C /* img */ = {
+			isa = PBXGroup;
+			children = (
+				66813A5D1BFFF94E00BBDE1C /* green.png */,
+				66813A5E1BFFF94E00BBDE1C /* green_push.png */,
+			);
+			name = img;
 			sourceTree = "<group>";
 		};
 		66DE11691BF2AE76009D514B /* Backend */ = {
@@ -287,6 +306,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66813A5F1BFFF94E00BBDE1C /* green.png in Resources */,
+				66813A601BFFF94E00BBDE1C /* green_push.png in Resources */,
 				66329A721BEC403E0058DE77 /* Assets.xcassets in Resources */,
 				66329A751BEC403E0058DE77 /* Main.storyboard in Resources */,
 			);
@@ -319,6 +340,7 @@
 				66DE118B1BF2B086009D514B /* sim.cpp in Sources */,
 				66DE118C1BF2B086009D514B /* uiDraw.cpp in Sources */,
 				66DE118D1BF2B086009D514B /* vector.cpp in Sources */,
+				66FDD3F21BFFD4B400A3C2CA /* GreenButton.m in Sources */,
 				66DE118F1BF2B0B7009D514B /* AppDelegate.m in Sources */,
 				66DE11901BF2B0B7009D514B /* SimulatorViewController.mm in Sources */,
 				66DE11911BF2B0B7009D514B /* CreateViewController.m in Sources */,

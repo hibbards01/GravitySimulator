@@ -669,7 +669,7 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="SimulatorView" storyboardIdentifier="SimulatorView" id="XfG-lQ-9wD" customClass="SimulatorViewController" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="750"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -812,12 +812,12 @@
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2px-sl-ZEa">
-                                <rect key="frame" x="14" y="58" width="234" height="32"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2px-sl-ZEa" customClass="GreenButton">
+                                <rect key="frame" x="14" y="59" width="234" height="32"/>
                                 <animations/>
-                                <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="t7X-qk-xtn">
+                                <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="t7X-qk-xtn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" size="15" name="ArialMT"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clickedRun:" target="XfG-lQ-9wD" id="TlY-kT-YkX"/>
@@ -881,7 +881,7 @@
                 <viewController storyboardIdentifier="CreateView" id="MJp-Qw-McP" customClass="CreateViewController" sceneMemberID="viewController">
                     <string key="title">Create
 </string>
-                    <view key="view" id="Zaq-tz-BDt">
+                    <view key="view" wantsLayer="YES" id="Zaq-tz-BDt">
                         <rect key="frame" x="0.0" y="0.0" width="245" height="407"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1003,12 +1003,12 @@ Gw
                                     <action selector="clickedCancel:" target="MJp-Qw-McP" id="2Lw-WZ-VC8"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oF4-rz-Ml2">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oF4-rz-Ml2" customClass="GreenButton">
                                 <rect key="frame" x="150" y="13" width="81" height="32"/>
                                 <animations/>
                                 <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CkZ-co-RbF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" size="15" name="ArialMT"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clickedCreate:" target="MJp-Qw-McP" id="N6Q-dp-ZOK"/>

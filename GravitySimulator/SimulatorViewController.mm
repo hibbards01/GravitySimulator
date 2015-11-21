@@ -39,12 +39,12 @@
     _formLabel3.hidden = YES;
     _formSelectBtn.hidden = YES;
     
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    [_formInputTextField1 setFormatter:f];
-    
     // Send self to GravityViewControlller
     [self.delegate sendSelf:self];
+    
+    // Change the button colors
+//    NSBackgroundStyle *style = [NSBackgroundStyle [NSColor redColor];
+//    [[_run cell] setBackgroundStyle:;]
 }
 
 /*************************************

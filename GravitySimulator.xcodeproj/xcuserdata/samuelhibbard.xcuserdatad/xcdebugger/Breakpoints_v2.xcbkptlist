@@ -313,7 +313,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "327"
             endingLineNumber = "327"
-            landmarkName = "-editObject:number:edit:"
+            landmarkName = "-deleteObject:type:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -345,8 +345,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "465"
             endingLineNumber = "465"
-            landmarkName = "-drawRect:"
-            landmarkType = "5">
+            landmarkName = "@implementation GravityViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
