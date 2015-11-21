@@ -1,17 +1,17 @@
 /****************************************************
  * Program:
- *  GreenButton.m
+ *  BlueButton.m
  * Author:
  *   Samuel Hibbard
  * Summary:
- *  Customize the Green button.
+ *  Customize the Blue button.
  *
- *  Created by Samuel Hibbard on 11/20/15.
+ *  Created by Samuel Hibbard on 11/21/15.
  *  Copyright © 2015 samIAm. All rights reserved.
  ****************************************************/
-#import "GreenButton.h"
+#import "BlueButton.h"
 
-@implementation GreenButton
+@implementation BlueButton
 
 /**************************
  * wantsUpdateLayer
@@ -31,7 +31,7 @@
 {
     // Customize it
     _layer.cornerRadius = 7;
-    _layer.borderColor = CGColorCreateGenericRGB(0.27734f, 0.6289f, 0.27734f, 1.0f);
+    _layer.borderColor = CGColorCreateGenericRGB(0.20313f, 0.48047f, 0.71875f, 1.0f);
     _layer.contentsCenter = CGRectMake(0, 0, 1 , 1);
     
     // Set the text color
@@ -43,12 +43,12 @@
     
     if ([_cell isHighlighted])
     {
-        _layer.contents = [NSImage imageNamed:@"green_push.png"];
+        _layer.contents = [NSImage imageNamed:@"blue_push.png"];
         _layer.borderWidth = 1;
     }
     else
     {
-        _layer.contents = [NSImage imageNamed:@"green.png"];
+        _layer.contents = [NSImage imageNamed:@"blue.png"];
         _layer.borderWidth = 2;
     }
 }

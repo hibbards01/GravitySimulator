@@ -16,6 +16,8 @@
 #import "CreateViewController.h"
 #include <OpenGL/gl.h>
 #import "GravityViewController.h"
+#import "RedButton.h"
+#import "GreenButton.h"
 
 @implementation SimulatorViewController
 
@@ -211,7 +213,7 @@
     BOOL enable = YES;
     
     // See what label it is
-    if ([[_run title] isEqualToString:@"Run"])
+    if ([[sender title] isEqualToString:@"Run"])
     {
         // Disable all buttons and textfields
         _formInputTextField1.enabled = NO;
@@ -221,9 +223,12 @@
         _reset.enabled = NO;
         _formSelectBtn.enabled = NO;
         
-        // Change the label
-        [[_run cell] setTitle:@"Stop"];
+        // Hide the run button
+        _run.hidden = YES;
         enable = NO;
+        
+        // Show the red color
+        _stop.hidden = NO;
     }
     else
     {
@@ -235,8 +240,11 @@
         _reset.enabled = YES;
         _formSelectBtn.enabled = YES;
         
-        // Change button title
-        [[_run cell] setTitle:@"Run"];
+        // Hide the stop button
+        _stop.hidden = YES;
+        
+        // Show the red button
+        _run.hidden = NO;
     }
     
     [_delegate runSimulation:enable];

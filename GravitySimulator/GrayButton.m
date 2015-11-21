@@ -1,17 +1,17 @@
 /****************************************************
  * Program:
- *  GreenButton.m
+ *  GrayButton.m
  * Author:
  *   Samuel Hibbard
  * Summary:
- *  Customize the Green button.
+ *  Customize the Gray button.
  *
- *  Created by Samuel Hibbard on 11/20/15.
+ *  Created by Samuel Hibbard on 11/21/15.
  *  Copyright © 2015 samIAm. All rights reserved.
  ****************************************************/
-#import "GreenButton.h"
+#import "GrayButton.h"
 
-@implementation GreenButton
+@implementation GrayButton
 
 /**************************
  * wantsUpdateLayer
@@ -31,11 +31,11 @@
 {
     // Customize it
     _layer.cornerRadius = 7;
-    _layer.borderColor = CGColorCreateGenericRGB(0.27734f, 0.6289f, 0.27734f, 1.0f);
+    _layer.borderColor = CGColorCreateGenericRGB(0.65234f, 0.65234f, 0.65234f, 1.0f);
     _layer.contentsCenter = CGRectMake(0, 0, 1 , 1);
     
     // Set the text color
-    NSColor *color = [NSColor whiteColor];
+    NSColor *color = [NSColor blackColor];
     NSMutableAttributedString *colorTitle = [[NSMutableAttributedString alloc] initWithAttributedString:[self attributedTitle]];
     NSRange titleRange = NSMakeRange(0, [colorTitle length]);
     [colorTitle addAttribute:NSForegroundColorAttributeName value:color range:titleRange];
@@ -43,12 +43,12 @@
     
     if ([_cell isHighlighted])
     {
-        _layer.contents = [NSImage imageNamed:@"green_push.png"];
+        _layer.contents = [NSImage imageNamed:@"gray_push.png"];
         _layer.borderWidth = 1;
     }
     else
     {
-        _layer.contents = [NSImage imageNamed:@"green.png"];
+        _layer.contents = [NSImage imageNamed:@"gray.png"];
         _layer.borderWidth = 2;
     }
 }

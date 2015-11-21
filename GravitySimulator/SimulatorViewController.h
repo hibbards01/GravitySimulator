@@ -43,6 +43,7 @@
 @property (weak) IBOutlet NSButton *reset;
 @property (weak) IBOutlet NSButton *run;
 @property (weak) IBOutlet NSOpenGLView *simulator;
+@property (weak) IBOutlet NSButton *stop;
 
 // This will hold the delegate
 @property(nonatomic,assign) id delegate;

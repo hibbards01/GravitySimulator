@@ -1,17 +1,17 @@
 /****************************************************
  * Program:
- *  GreenButton.m
+ *  OrangeButton.m
  * Author:
  *   Samuel Hibbard
  * Summary:
- *  Customize the Green button.
+ *  Customize the Orange button.
  *
- *  Created by Samuel Hibbard on 11/20/15.
+ *  Created by Samuel Hibbard on 11/21/15.
  *  Copyright © 2015 samIAm. All rights reserved.
  ****************************************************/
-#import "GreenButton.h"
+#import "OrangeButton.h"
 
-@implementation GreenButton
+@implementation OrangeButton
 
 /**************************
  * wantsUpdateLayer
@@ -31,7 +31,7 @@
 {
     // Customize it
     _layer.cornerRadius = 7;
-    _layer.borderColor = CGColorCreateGenericRGB(0.27734f, 0.6289f, 0.27734f, 1.0f);
+    _layer.borderColor = CGColorCreateGenericRGB(0.92188f, 0.57422f, 0.08203f, 1.0f);
     _layer.contentsCenter = CGRectMake(0, 0, 1 , 1);
     
     // Set the text color
@@ -43,12 +43,12 @@
     
     if ([_cell isHighlighted])
     {
-        _layer.contents = [NSImage imageNamed:@"green_push.png"];
+        _layer.contents = [NSImage imageNamed:@"orange_push.png"];
         _layer.borderWidth = 1;
     }
     else
     {
-        _layer.contents = [NSImage imageNamed:@"green.png"];
+        _layer.contents = [NSImage imageNamed:@"orange.png"];
         _layer.borderWidth = 2;
     }
 }

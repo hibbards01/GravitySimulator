@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6615C9B61C00F3890008C352 /* RedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615C9B51C00F3890008C352 /* RedButton.m */; };
+		6615C9B91C00F71C0008C352 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 6615C9B71C00F71C0008C352 /* red.png */; };
+		6615C9BA1C00F71C0008C352 /* red_push.png in Resources */ = {isa = PBXBuildFile; fileRef = 6615C9B81C00F71C0008C352 /* red_push.png */; };
+		6615C9BD1C0116870008C352 /* BlueButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615C9BC1C0116870008C352 /* BlueButton.m */; };
+		6615C9C01C01171F0008C352 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 6615C9BE1C01171F0008C352 /* blue.png */; };
+		6615C9C11C01171F0008C352 /* blue_push.png in Resources */ = {isa = PBXBuildFile; fileRef = 6615C9BF1C01171F0008C352 /* blue_push.png */; };
+		6615C9C61C0118E30008C352 /* gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 6615C9C21C0118E30008C352 /* gray.png */; };
+		6615C9C71C0118E30008C352 /* gray_push.png in Resources */ = {isa = PBXBuildFile; fileRef = 6615C9C31C0118E30008C352 /* gray_push.png */; };
+		6615C9C81C0118E30008C352 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 6615C9C41C0118E30008C352 /* orange.png */; };
+		6615C9C91C0118E30008C352 /* orange_push.png in Resources */ = {isa = PBXBuildFile; fileRef = 6615C9C51C0118E30008C352 /* orange_push.png */; };
+		6615C9CC1C0118F90008C352 /* OrangeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615C9CB1C0118F90008C352 /* OrangeButton.m */; };
+		6615C9CF1C0119040008C352 /* GrayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615C9CE1C0119040008C352 /* GrayButton.m */; };
 		66329A721BEC403E0058DE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66329A711BEC403E0058DE77 /* Assets.xcassets */; };
 		66329A751BEC403E0058DE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66329A731BEC403E0058DE77 /* Main.storyboard */; };
 		66329A801BEC403E0058DE77 /* GravitySimulatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66329A7F1BEC403E0058DE77 /* GravitySimulatorTests.m */; };
@@ -45,6 +57,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6615C9B41C00F3890008C352 /* RedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedButton.h; sourceTree = "<group>"; };
+		6615C9B51C00F3890008C352 /* RedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedButton.m; sourceTree = "<group>"; };
+		6615C9B71C00F71C0008C352 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
+		6615C9B81C00F71C0008C352 /* red_push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_push.png; sourceTree = "<group>"; };
+		6615C9BB1C0116870008C352 /* BlueButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueButton.h; sourceTree = "<group>"; };
+		6615C9BC1C0116870008C352 /* BlueButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueButton.m; sourceTree = "<group>"; };
+		6615C9BE1C01171F0008C352 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
+		6615C9BF1C01171F0008C352 /* blue_push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_push.png; sourceTree = "<group>"; };
+		6615C9C21C0118E30008C352 /* gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray.png; sourceTree = "<group>"; };
+		6615C9C31C0118E30008C352 /* gray_push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_push.png; sourceTree = "<group>"; };
+		6615C9C41C0118E30008C352 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+		6615C9C51C0118E30008C352 /* orange_push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_push.png; sourceTree = "<group>"; };
+		6615C9CA1C0118F90008C352 /* OrangeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeButton.h; sourceTree = "<group>"; };
+		6615C9CB1C0118F90008C352 /* OrangeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrangeButton.m; sourceTree = "<group>"; };
+		6615C9CD1C0119040008C352 /* GrayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrayButton.h; sourceTree = "<group>"; };
+		6615C9CE1C0119040008C352 /* GrayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrayButton.m; sourceTree = "<group>"; };
 		66329A651BEC403E0058DE77 /* GravitySimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GravitySimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66329A681BEC403E0058DE77 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		66329A691BEC403E0058DE77 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -144,8 +172,6 @@
 				66329A761BEC403E0058DE77 /* Info.plist */,
 				66DE11691BF2AE76009D514B /* Backend */,
 				66329A6B1BEC403E0058DE77 /* Supporting Files */,
-				66FDD3F01BFFD4B400A3C2CA /* GreenButton.h */,
-				66FDD3F11BFFD4B400A3C2CA /* GreenButton.m */,
 				66813A611BFFF95300BBDE1C /* img */,
 			);
 			path = GravitySimulator;
@@ -155,6 +181,16 @@
 			isa = PBXGroup;
 			children = (
 				66329A6C1BEC403E0058DE77 /* main.m */,
+				66FDD3F01BFFD4B400A3C2CA /* GreenButton.h */,
+				66FDD3F11BFFD4B400A3C2CA /* GreenButton.m */,
+				6615C9B41C00F3890008C352 /* RedButton.h */,
+				6615C9B51C00F3890008C352 /* RedButton.m */,
+				6615C9BB1C0116870008C352 /* BlueButton.h */,
+				6615C9BC1C0116870008C352 /* BlueButton.m */,
+				6615C9CA1C0118F90008C352 /* OrangeButton.h */,
+				6615C9CB1C0118F90008C352 /* OrangeButton.m */,
+				6615C9CD1C0119040008C352 /* GrayButton.h */,
+				6615C9CE1C0119040008C352 /* GrayButton.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -180,6 +216,14 @@
 		66813A611BFFF95300BBDE1C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				6615C9C21C0118E30008C352 /* gray.png */,
+				6615C9C31C0118E30008C352 /* gray_push.png */,
+				6615C9C41C0118E30008C352 /* orange.png */,
+				6615C9C51C0118E30008C352 /* orange_push.png */,
+				6615C9BE1C01171F0008C352 /* blue.png */,
+				6615C9BF1C01171F0008C352 /* blue_push.png */,
+				6615C9B71C00F71C0008C352 /* red.png */,
+				6615C9B81C00F71C0008C352 /* red_push.png */,
 				66813A5D1BFFF94E00BBDE1C /* green.png */,
 				66813A5E1BFFF94E00BBDE1C /* green_push.png */,
 			);
@@ -306,10 +350,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6615C9BA1C00F71C0008C352 /* red_push.png in Resources */,
+				6615C9C91C0118E30008C352 /* orange_push.png in Resources */,
+				6615C9C81C0118E30008C352 /* orange.png in Resources */,
 				66813A5F1BFFF94E00BBDE1C /* green.png in Resources */,
+				6615C9C61C0118E30008C352 /* gray.png in Resources */,
 				66813A601BFFF94E00BBDE1C /* green_push.png in Resources */,
+				6615C9C71C0118E30008C352 /* gray_push.png in Resources */,
 				66329A721BEC403E0058DE77 /* Assets.xcassets in Resources */,
+				6615C9B91C00F71C0008C352 /* red.png in Resources */,
+				6615C9C01C01171F0008C352 /* blue.png in Resources */,
 				66329A751BEC403E0058DE77 /* Main.storyboard in Resources */,
+				6615C9C11C01171F0008C352 /* blue_push.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,15 +387,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				66DE118E1BF2B086009D514B /* main.m in Sources */,
+				6615C9CF1C0119040008C352 /* GrayButton.m in Sources */,
+				6615C9CC1C0118F90008C352 /* OrangeButton.m in Sources */,
 				66DE11891BF2B086009D514B /* object.cpp in Sources */,
 				66DE118A1BF2B086009D514B /* point.cpp in Sources */,
 				66DE118B1BF2B086009D514B /* sim.cpp in Sources */,
 				66DE118C1BF2B086009D514B /* uiDraw.cpp in Sources */,
+				6615C9B61C00F3890008C352 /* RedButton.m in Sources */,
 				66DE118D1BF2B086009D514B /* vector.cpp in Sources */,
 				66FDD3F21BFFD4B400A3C2CA /* GreenButton.m in Sources */,
 				66DE118F1BF2B0B7009D514B /* AppDelegate.m in Sources */,
 				66DE11901BF2B0B7009D514B /* SimulatorViewController.mm in Sources */,
 				66DE11911BF2B0B7009D514B /* CreateViewController.m in Sources */,
+				6615C9BD1C0116870008C352 /* BlueButton.m in Sources */,
 				66DE11871BF2B086009D514B /* GravityViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
