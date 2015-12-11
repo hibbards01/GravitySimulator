@@ -41,10 +41,10 @@ Simulator::Simulator() : firstTime(true)
     
 //    objects.push_back(new Planet(200, 0, random(-5, 5), random(-5, 5), 5000, 20, 5));
 //    objects.push_back(new Planet(-200, 0, random(-10, 10), random(-10, 10), 500, 10, -10));
-//    objects.push_back(new Planet(-75, 0, 0, -1.2, EARTH, 30, 30, 5, "Earth1"));
-//    objects.push_back(new Planet(75, 0, 0, 1.2, EARTH, 30, 30, 5, "Earth2"));
-//    objects.push_back(new Planet(0, 80, -2.3, 0, MOON, 10, -10));
-//    objects.push_back(new Planet(0, 0, 0, 0, EARTH, 30, 5));
+    objects.push_back(new Planet(-75, 0, 0, -1.2, EARTH, 30, 30, 5, "Earth1"));
+    objects.push_back(new Planet(75, 0, 0, 1.2, EARTH, 30, 30, 5, "Earth2"));
+//    objects.push_back(new Planet(0, 80, -2.3, 0, MOON, 10, -10, 10,"Moon"));
+//    objects.push_back(new Planet(0, 0, 0, 0, EARTH, 30, 5, 10, "Earth"));
 //    objects.push_back(new Planet(0, 0, 0, 0, JUPITER, 50, 0));
 //    objects.push_back(new Planet(0, 250, 0.75, 0, EARTH, 8, 0));
 //    objects.push_back(new Planet(0, 265, 0.905, 0, MOON, 2, 0));

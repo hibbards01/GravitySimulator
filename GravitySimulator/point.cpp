@@ -144,7 +144,7 @@ void Position::wrapAround()
         y += (yMax - yMin);
     }
     
-    assert(x <= xMax);  //everything should be now correct!
+    assert(x <= xMax);  // everything should be now correct!
     assert(x >= xMin);
     assert(y <= yMax);
     assert(y > yMin);

@@ -50,7 +50,7 @@ void Planet::draw()
 //    getVector().rotate(rotationSpeed);
     
     // Draw the planet!
-    drawCircle(getPoint(), drawRadius, 8, rotationSpeed);
+    drawCircle(getPoint(), drawRadius, 20, rotationSpeed);
     
     // Show the brackets if needed
     if (brackets)
