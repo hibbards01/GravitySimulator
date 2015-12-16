@@ -30,8 +30,10 @@
     self.delegate = self.simulator;
     
     // This will save all the ids
-    ids = [[NSMutableArray alloc] init];
-    names = [[NSMutableArray alloc] init];
+    planetIDs = [[NSMutableArray alloc] init];
+    planetNames = [[NSMutableArray alloc] init];
+    vectorIDs = [[NSMutableArray alloc] init];
+    vectorNames = [[NSMutableArray alloc] init];
     
     // Customize the button
     [_run setFont:[NSFont fontWithName:@"Arial" size:15]];
@@ -44,18 +46,15 @@
     // Send self to GravityViewControlller
     [self.delegate sendSelf:self];
     
-    // Change the button colors
-//    NSBackgroundStyle *style = [NSBackgroundStyle [NSColor redColor];
-//    [[_run cell] setBackgroundStyle:;]
-    
     // Add a moon and earth
-    NSNumber *moon = [NSNumber numberWithInt:1];
-    NSNumber *earth = [NSNumber numberWithInt:3];
-    [ids addObject:moon];
-    [ids addObject:earth];
+    [planetIDs addObject:[NSNumber numberWithInt:1]];
+    [planetIDs addObject:[NSNumber numberWithInt:3]];
     
-    [names addObject:@"Moon"];
-    [names addObject:@"Earth"];
+    [planetNames addObject:@"Moon"];
+    [planetNames addObject:@"Earth"];
+    
+    [vectorIDs addObject:[NSNumber numberWithInt:2]];
+    [vectorNames addObject:@"Moon's Velocity"];
 }
 
 /*************************************
@@ -71,8 +70,14 @@
     // Only add to the list if it is a planet
     if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
     {
-        [ids addObject:currentID];
-        [names addObject:[data objectForKey:@"name"]];
+        [planetIDs addObject:currentID];
+        [planetNames addObject:[data objectForKey:@"name"]];
+    }
+    else
+    {
+        // Add to the list of vectors
+        [vectorIDs addObject:currentID];
+        [vectorNames addObject:[data objectForKey:@"name"]];
     }
     
     // Now change the edit form
@@ -114,13 +119,13 @@
         [_formSelectBtn removeAllItems];
         
         // Add the object name to the formSelectBtn
-        for (int i = 0; i < [names count]; ++i)
+        for (int i = 0; i < [planetNames count]; ++i)
         {
             // Add to the btn
-            [_formSelectBtn addItemWithTitle: [names objectAtIndex: i]];
+            [_formSelectBtn addItemWithTitle: [planetNames objectAtIndex: i]];
             
             // See if it is the one that has to be selected
-            if ([[ids objectAtIndex: i] intValue] == [[data objectForKey:@"objName"] intValue])
+            if ([[planetIDs objectAtIndex: i] intValue] == [[data objectForKey:@"objName"] intValue])
             {
                 // Now select the current object
                 [_formSelectBtn selectItemAtIndex: i];
@@ -197,13 +202,13 @@
     // Find the change
     int newObject = -1;
     
-    for (int i = 0; i < [names count]; ++i)
+    for (int i = 0; i < [planetNames count]; ++i)
     {
         // Find the item
-        if ([[names objectAtIndex:i] isEqualToString: [[_formSelectBtn selectedItem] title]])
+        if ([[planetNames objectAtIndex:i] isEqualToString: [[_formSelectBtn selectedItem] title]])
         {
             // Grab the id!
-            newObject = [[ids objectAtIndex:i] intValue];
+            newObject = [[planetIDs objectAtIndex:i] intValue];
         }
     }
     
@@ -324,7 +329,7 @@
     [self presentViewControllerAsSheet: view];
     
     // Send it some data.
-    [view sendObjects: ids names: names];
+    [view sendObjects: planetIDs names: planetNames];
 }
 
 @end

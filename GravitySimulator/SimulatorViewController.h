@@ -25,9 +25,11 @@
  *************************************/
 @interface SimulatorViewController : NSViewController
 {
-    NSMutableArray *ids;   // These are the ids of the objects
-    NSMutableArray *names; // Save the names for the list
-    int currentlySelected; // Current selected item
+    NSMutableArray *planetIDs;   // These are the ids of the objects
+    NSMutableArray *planetNames; // Save the names for the list
+    NSMutableArray *vectorIDs;   // Vector ids
+    NSMutableArray *vectorNames; // Vector names
+    int currentlySelected;       // Current selected item
 }
 
 // Here are all the actions that are needed to be controlled.
