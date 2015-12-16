@@ -140,6 +140,9 @@ void Simulator::reset()
     
     // Clear everything!
     origin.clear();
+    
+    // Disable helpers
+    enableHelpers(false);
 }
 
 /********************************
@@ -155,7 +158,7 @@ void Simulator::enableHelpers(bool enable)
     for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
     {
         // Only disable the brackets for the planets
-        // At run time
+        // at run time.
         if (!enable)
         {
             (*it)->showHelpers(enable);
@@ -332,12 +335,6 @@ bool Simulator::clickedObject(float x, float y, int & id)
         if (!clicked)
         {
             clicked = (*it)->getVector().clicked(x, y, id);
-            
-            // If true then don't show the brackets
-            if (clicked)
-            {
-                (*it)->showHelpers(false);
-            }
         }
        
         // See if object was clicked
@@ -355,24 +352,24 @@ bool Simulator::clickedObject(float x, float y, int & id)
                 // Make clicked equal true
                 clicked = true;
                 
-                // Take away the helpers for the other object
-                if (id != -1)
-                {
-                    Object * obj = this->grabObject(id);
-                    
-                    // See if it is null. If so then it was a vector
-                    // that was clicked on. So no need to turn off brackets
-                    if (obj != NULL)
-                    {
-                        obj->showHelpers(false);
-                    }
-                }
-                
                 // Grab the id!
                 id = (*it)->getId();
                 
                 // Show the helpers for it!
                 (*it)->showHelpers(true);
+            }
+        }
+    }
+    
+    // See if it was clicked. If so then deslect everything!
+    if (clicked)
+    {
+        for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+        {
+            // Expect for the id
+            if (id != (*it)->getId())
+            {
+                (*it)->showHelpers(false);
             }
         }
     }
