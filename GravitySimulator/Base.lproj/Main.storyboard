@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -186,6 +187,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="clickedNew:" target="XfG-lQ-9wD" id="B7Z-Ng-wQz"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j04-Rg-l5w">
                                 <rect key="frame" x="18" y="710" width="39" height="20"/>
@@ -256,33 +260,17 @@
                     <string key="title">Create
 </string>
                     <view key="view" wantsLayer="YES" id="Zaq-tz-BDt">
-                        <rect key="frame" x="0.0" y="0.0" width="245" height="407"/>
+                        <rect key="frame" x="0.0" y="0.0" width="245" height="357"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFW-QY-8px">
-                                <rect key="frame" x="37" y="364" width="170" height="23"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="New Object/Vector" id="UP3-Qq-1CI">
-                                    <font key="font" size="20" name="ArialMT"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="UjS-HL-i7u">
-                                <rect key="frame" x="20" y="353" width="205" height="5"/>
+                                <rect key="frame" x="20" y="303" width="205" height="5"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nC2-2c-Jwj">
-                                <rect key="frame" x="18" y="321" width="99" height="21"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Which object?" id="CXx-Ty-21B">
-                                    <font key="font" size="15" name="ArialMT"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOs-xO-nUR">
-                                <rect key="frame" x="18" y="277" width="45" height="21"/>
+                                <rect key="frame" x="18" y="276" width="45" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="qLJ-WO-Jps">
                                     <font key="font" size="15" name="ArialMT"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -290,7 +278,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1h-rD-8o4">
-                                <rect key="frame" x="18" y="218" width="134" height="21"/>
+                                <rect key="frame" x="18" y="217" width="209" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Radius (kilometers)" id="4uu-yt-mtz">
                                     <font key="font" size="15" name="ArialMT"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -298,7 +286,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OqP-BQ-Oay">
-                                <rect key="frame" x="18" y="159" width="119" height="21"/>
+                                <rect key="frame" x="18" y="158" width="119" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mass (kilograms)" id="kmQ-0y-Y0z">
                                     <font key="font" size="15" name="ArialMT"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -306,21 +294,15 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KT5-Gz-GLf">
-                                <rect key="frame" x="18" y="100" width="48" height="21"/>
+                                <rect key="frame" x="18" y="99" width="48" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Object" id="pit-n4-VQ6">
                                     <font key="font" size="15" name="ArialMT"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="BFm-KE-Fwm">
-                                <rect key="frame" x="20" y="304" width="205" height="5"/>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <font key="titleFont" metaFont="system"/>
-                            </box>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PaE-Vu-rhR">
-                                <rect key="frame" x="20" y="247" width="205" height="22"/>
+                                <rect key="frame" x="20" y="246" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="itW-el-QCs">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -328,7 +310,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O1e-v0-2jb">
-                                <rect key="frame" x="20" y="188" width="205" height="22"/>
+                                <rect key="frame" x="20" y="187" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Rt3-9F-WGQ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -336,7 +318,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N50-tX-V9Z">
-                                <rect key="frame" x="20" y="129" width="205" height="22"/>
+                                <rect key="frame" x="20" y="128" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="doU-Gb-6wK">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -344,7 +326,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqJ-u4-Ecv">
-                                <rect key="frame" x="18" y="68" width="76" height="26"/>
+                                <rect key="frame" x="18" y="67" width="76" height="26"/>
                                 <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="8Jb-Qk-6Hk">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -364,22 +346,25 @@ Gw
                                     <action selector="clickedCancel:" target="MJp-Qw-McP" id="2Lw-WZ-VC8"/>
                                 </connections>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRj-pQ-Ltv">
-                                <rect key="frame" x="152" y="318" width="76" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="t6y-Wm-wiO">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="XS3-SI-lfm">
-                                        <items>
-                                            <menuItem title="Planet" id="DNZ-0n-kfJ"/>
-                                            <menuItem title="Vector" id="ZeY-Ho-Edt"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="clickedWhichObj:" target="MJp-Qw-McP" id="vwe-87-Vs9"/>
-                                </connections>
-                            </popUpButton>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H3y-jI-By8">
+                                <rect key="frame" x="71" y="314" width="103" height="23"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eFW-QY-8px">
+                                        <rect key="frame" x="-2" y="0.0" width="107" height="23"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="New Planet" id="UP3-Qq-1CI">
+                                            <font key="font" size="20" name="ArialMT"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oF4-rz-Ml2" customClass="GreenButton">
                                 <rect key="frame" x="144" y="19" width="81" height="23"/>
                                 <buttonCell key="cell" type="smallSquare" title="Create" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CkZ-co-RbF">
@@ -398,16 +383,16 @@ Gw
                         <outlet property="diamOrMagInput" destination="O1e-v0-2jb" id="gMK-SY-hZl"/>
                         <outlet property="label2" destination="e1h-rD-8o4" id="SLI-qK-EKC"/>
                         <outlet property="label3" destination="OqP-BQ-Oay" id="7Z7-ow-Bk2"/>
+                        <outlet property="mainTitle" destination="eFW-QY-8px" id="Hsg-KJ-eDw"/>
                         <outlet property="massOrAngleInput" destination="N50-tX-V9Z" id="XR8-Ay-JUu"/>
                         <outlet property="nameInput" destination="PaE-Vu-rhR" id="1Ls-4m-Fiu"/>
                         <outlet property="objBtn" destination="HqJ-u4-Ecv" id="n1E-b6-043"/>
                         <outlet property="objectLabel" destination="KT5-Gz-GLf" id="4y3-nZ-Ogr"/>
-                        <outlet property="whichObjectBtn" destination="hRj-pQ-Ltv" id="kUE-Mo-9xa"/>
                     </connections>
                 </viewController>
                 <customObject id="pOj-1B-ZIR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-296.5" y="1664.5"/>
+            <point key="canvasLocation" x="-296.5" y="1639.5"/>
         </scene>
     </scenes>
 </document>

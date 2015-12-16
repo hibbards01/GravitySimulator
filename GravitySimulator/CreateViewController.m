@@ -36,7 +36,7 @@
  *      sent to this controller from
  *      the SimulatorViewController.
  ************************************/
-- (void) sendObjects: (NSMutableArray *) sentIds names: (NSMutableArray *) sentNames
+- (void) sendObjects: (NSMutableArray *) sentIds names: (NSMutableArray *) sentNames whichObject: (BOOL)planet
 {
     // Grab the values
     ids = sentIds;
@@ -50,28 +50,19 @@
     {
         [_objBtn addItemWithTitle: [names objectAtIndex:i]];
     }
-}
-
-/*************************************
- * clickedWhichObj
- *  This is the pop up button. This will
- *      change the other labels, depending
- *      on what was clicked.
- *************************************/
-- (IBAction)clickedWhichObj:(id)sender
-{
-    // Grab which object was clicked
-    NSString *obj = [[self.whichObjectBtn selectedItem] title];
     
-    // Now see what was clicked on
-    if ([obj isEqualToString:@"Planet"])
+    // Also show which view that we want
+    if (planet)
     {
+        // Change the title
+        self.mainTitle.cell.title = @"New Planet";
+        
         // Hide the label and button
         [self enableDisableForm:YES hide:YES];
         
         // Change the label
-        self.label2.cell.title = @"Radius (m)";
-        self.label3.cell.title = @"Mass (kg)";
+        self.label2.cell.title = @"Radius (kilometers)";
+        self.label3.cell.title = @"Mass (kilograms)";
     }
     else
     {
@@ -87,8 +78,11 @@
         }
         
         // Change two of the labels
-        self.label2.cell.title = @"Magnitude (m/s)";
+        self.label2.cell.title = @"Velocity (meters/second)";
         self.label3.cell.title = @"Angle (°)";
+        
+        // Change the title
+        self.mainTitle.cell.title = @"New Velocity";
     }
 }
 

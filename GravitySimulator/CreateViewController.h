@@ -43,11 +43,12 @@
 @property (weak) IBOutlet NSTextField *objectLabel;
 @property (weak) IBOutlet NSTextField *label2;
 @property (weak) IBOutlet NSTextField *label3;
+@property (weak) IBOutlet NSTextField *mainTitle;
 
 // This will hold the delegate
 @property(nonatomic,assign) id delegate;
 
-- (void) sendObjects: (NSMutableArray *) sentIds names: (NSMutableArray *) sentNames;
+- (void) sendObjects: (NSMutableArray *) sentIds names: (NSMutableArray *) sentNames whichObject: (BOOL)planet;
 
 @end
 

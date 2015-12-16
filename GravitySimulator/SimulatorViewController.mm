@@ -319,6 +319,14 @@
  *************************************/
 - (IBAction)clickedNew: (id)sender
 {
+    // See which button clicked this
+    BOOL planet = true;
+    
+    if ([[sender title] isEqualToString:@"Add Velocity"])
+    {
+        planet = false;
+    }
+    
     // Grab the controller
     CreateViewController *view = (CreateViewController *) [self.storyboard instantiateControllerWithIdentifier:@"CreateView"];
     
@@ -329,7 +337,7 @@
     [self presentViewControllerAsSheet: view];
     
     // Send it some data.
-    [view sendObjects: planetIDs names: planetNames];
+    [view sendObjects: planetIDs names: planetNames whichObject:planet];
 }
 
 @end
