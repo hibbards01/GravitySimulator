@@ -44,7 +44,7 @@ void drawRect(const Position & center, char width, char height, int rotation);
  * DRAW CIRCLE
  * Draw a circle from a given location (center) of a given size (radius).
  *************************************************************************/
-void drawCircle(const Position & center, char radius, int points, int rotation);
+void drawCircle(const Position & center, int radius, int points, int rotation);
 
 /******************************************************************
  * drawArrow
@@ -58,7 +58,7 @@ void drawArrow(const Position & center, float dx, float dy, int angle);
  *  This will allow the user to know that the object has been
  *      selected by the user.
  ****************************************************************/
-void drawBrackets(const Position & center, char radius);
+void drawBrackets(const Position & center, int radius);
 
 /************************************************************************
  * DRAW LINE

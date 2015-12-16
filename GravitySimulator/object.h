@@ -94,6 +94,8 @@ public:
     Planet() : Object(), radius(0), rotationSpeed(0), brackets(false) {}
     Planet(float x, float y, float dx, float dy, double m, int drawR, double r, int s, std::string n) : radius(r), Object(x, y, dx, dy, m, n), rotationSpeed(s), brackets(true), drawRadius(drawR), arrows(true) {}
     
+    // This constructor is for when the application starts
+    Planet(float x, float y, float dx, float dy, double m, int drawR, double r, int s, std::string n, bool brackets) : radius(r), Object(x, y, dx, dy, m, n), rotationSpeed(s), brackets(brackets), drawRadius(drawR), arrows(true) {}
     //
     // Methods
     //

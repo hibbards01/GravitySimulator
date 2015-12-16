@@ -234,7 +234,7 @@ void drawRect(const Position & center, char width, char height, int rotation)
  *          rotation True circles are rotation independent.  However, if you
  *                   are drawing a 3-sided circle (triangle), this matters!
  *************************************************************************/
-void drawCircle(const Position & center, char radius, int points, int rotation)
+void drawCircle(const Position & center, int radius, int points, int rotation)
 {
    // begin drawing
    glBegin(GL_LINE_LOOP);
@@ -244,8 +244,8 @@ void drawCircle(const Position & center, char radius, int points, int rotation)
    for (double i = 0; i < 2 * M_PI; i += (2 * M_PI) / points)
    {
       Position temp(false /*check*/, false /*percentage*/);
-      temp.setX(center.getX() + static_cast<int>(radius * cos(i)));
-      temp.setY(center.getY() + static_cast<int>(radius * sin(i)));
+      temp.setX(center.getX() + (radius * cos(i)));
+      temp.setY(center.getY() + (radius * sin(i)));
       rotate(temp, center, rotation);
        
       // Now change it to percentage
@@ -321,14 +321,14 @@ void drawArrow(const Position & center, float dx, float dy, int angle)
  *  This will allow the user to know that the object has been 
  *      selected by the user.
  ****************************************************************/
-void drawBrackets(const Position & center, char radius)
+void drawBrackets(const Position & center, int radius)
 {
     // Change the color
     glColor3f(0.5373, 0.5373, 0.3608);
     
     // Grab the points
-    int x = center.getX() + static_cast<int>(radius) + 10;
-    int y = center.getY() + static_cast<int>(radius) + 10;
+    int x = center.getX() + radius + 10;
+    int y = center.getY() + radius + 10;
     
     // Start the points in the top right corner
     Position tR(x, y, true, true);

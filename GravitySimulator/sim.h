@@ -16,10 +16,7 @@
 #include "object.h"
 #include <string>
 
-#define MILLMETERS 1000000
-#define METERS5    100000
-#define METERS4    10000
-#define KILOMETERS 1000
+#define drawMeter 100
 
 /**********************************
  * SaveOrigin
@@ -108,17 +105,9 @@ public:
     void setWrap(bool wrap);
     
     // Static functions
-    static double getMeter()
-    {
-        double meter[4];
-        meter[0] = METERS4;
-        meter[1] = METERS5;
-        meter[2] = MILLMETERS;
-        meter[3] = KILOMETERS;
-        
-        return meter[indexMeters];
-    }
-    static void setMeter(int i) { indexMeters = i; }
+    static double getMeter()     { return meters[indexMeters]; }
+    static double getDrawMeter() { return drawMeter;           }
+    static void setMeter(int i)  { indexMeters = i;            }
 private:
     //
     // Constructors
@@ -136,6 +125,7 @@ private:
     std::list<Object *> objects;         // This will hold all the objects.
     static double gravitationalConstant; // This will hold the gravitational constant
     static int indexMeters;              // This is set by gravity to 1 for METERS4, unless it is changed
+    static double meters[4];                    // This will hold the values of meters that will be used
     bool firstTime;                      // First time running the simulation?
     SaveOrigin origin;                   // Save the original positions, dxs, and dys
 };

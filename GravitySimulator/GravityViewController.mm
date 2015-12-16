@@ -74,7 +74,7 @@ float Position::yMin = -375;
     {
         // Change the radius to what it should be for the view
         double radius = [[data objectForKey:@"radius"] doubleValue];
-        int drawRadius = radius / sim->getMeter();
+        int drawRadius = radius / sim->getDrawMeter();
         double mass = [[data objectForKey:@"mass"] doubleValue];
         std::string name = [[data objectForKey:@"name"] UTF8String];
         

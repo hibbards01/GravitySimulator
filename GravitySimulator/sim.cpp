@@ -13,10 +13,6 @@
 #include <stdexcept>
 using namespace std;
 
-// Set the gravitational constant
-double Simulator::gravitationalConstant = .0000000000667;
-int Simulator::indexMeters = 0;
-
 // Set some #defines
 #define EARTH (5.98 * pow(10, 24))
 #define MOON  (7.34 * pow(10, 22))
@@ -24,6 +20,15 @@ int Simulator::indexMeters = 0;
 #define deg2rad(value) ((M_PI / 180) * (value))
 #define PI 3.14159265
 #define rad2deg(value) (value * 180 / PI)
+#define MILLMETERS 1000000
+#define METERS5    100000
+#define METERS4    10000
+#define KILOMETERS 1000
+
+// Set the gravitational constant
+double Simulator::gravitationalConstant = .0000000000667;
+int Simulator::indexMeters = 0;
+double Simulator::meters[4] = {METERS4, METERS5, MILLMETERS, KILOMETERS};
 
 // Make the instance null
 Simulator * Simulator::sim = NULL;
@@ -36,20 +41,18 @@ int Object::identifier = 1;
  *******************************/
 Simulator::Simulator() : firstTime(true)
 {
+//    objects.push_back(new Planet(0, 280, 1.2, 0, MOON, 17, 1736, 10,"Moon"));
+//    objects.push_back(new Planet(0, 0, 0, 0, EARTH, 63, 6371, 10, "Earth"));
+
     // Lets create two objects!
-//    list<Object *> objects;
+    Object * moon = new Planet(0, 280, 0, 0, MOON, 17, 1736, 10,"Moon", false);
     
-//    objects.push_back(new Planet(200, 0, random(-5, 5), random(-5, 5), 5000, 20, 5));
-//    objects.push_back(new Planet(-200, 0, random(-10, 10), random(-10, 10), 500, 10, -10));
-    objects.push_back(new Planet(-75, 0, 0, -1.2, EARTH, 30, 30, 5, "Earth1"));
-    objects.push_back(new Planet(75, 0, 0, 1.2, EARTH, 30, 30, 5, "Earth2"));
-//    objects.push_back(new Planet(0, 80, -2.3, 0, MOON, 10, -10, 10,"Moon"));
-//    objects.push_back(new Planet(0, 0, 0, 0, EARTH, 30, 5, 10, "Earth"));
-//    objects.push_back(new Planet(0, 0, 0, 0, JUPITER, 50, 0));
-//    objects.push_back(new Planet(0, 250, 0.75, 0, EARTH, 8, 0));
-//    objects.push_back(new Planet(0, 265, 0.905, 0, MOON, 2, 0));
+    // Now set the velocity of the moon
+    moon->addVector(0, 1.2, "Moon's Velocity");
     
-    // Now create the gravity with the objects
+    // Add to the list
+    objects.push_back(moon);
+    objects.push_back(new Planet(0, 0, 0, 0, EARTH, 63, 6371, 10, "Earth", false));
 }
 
 /*************************************
@@ -126,6 +129,7 @@ void Simulator::reset()
         catch (out_of_range & oos)
         {
             // Nothing to reset to
+            cerr << "ERROR: Unable to reset objects";
         }
     }
     
