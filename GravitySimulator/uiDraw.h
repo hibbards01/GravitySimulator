@@ -51,7 +51,7 @@ void drawCircle(const Position & center, int radius, int points, int rotation);
  *  This will draw an arrow. This will help indicate the direction
  *      and magnitude of the vector.
  *****************************************************************/
-void drawArrow(const Position & center, float dx, float dy, int angle);
+void drawArrow(const Position & center, float dx, float dy, int angle, bool brackets);
 
 /*****************************************************************
  * drawBrackets

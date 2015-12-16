@@ -40,7 +40,7 @@ public:
     void addVector(const float x, const float y);                   // Add the dx and dy
     void deleteVector(const int id);                                // Remove a vector
     Vector & operator = (const Vector & v);                         // Assingment operator
-    void drawArrows();                                              // Draw the arrows
+    void drawArrows(int id);                                        // Draw the arrows
     bool clicked(float x, float y, int & id);                       // See if any of the arrows was clicked on
 //    void rotate(int rotate)                  { angle += rotate; }
     void combineVectors();                                          // This will combine the vectors if runned

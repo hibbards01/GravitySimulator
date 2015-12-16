@@ -50,7 +50,7 @@
     
     // Add a moon and earth
     NSNumber *moon = [NSNumber numberWithInt:1];
-    NSNumber *earth = [NSNumber numberWithInt:2];
+    NSNumber *earth = [NSNumber numberWithInt:3];
     [ids addObject:moon];
     [ids addObject:earth];
     

@@ -206,7 +206,7 @@ bool Vector::clicked(float x, float y, int & id)
  *  This will draw the arrows when
  *      the planet is clicked upon.
  *******************************/
-void Vector::drawArrows()
+void Vector::drawArrows(int id)
 {
     // Draw all the arrows
     for (map<int, float> :: iterator it = mags.begin(); it != mags.end(); ++it)
@@ -218,8 +218,15 @@ void Vector::drawArrows()
         float dx = it->second * cos(deg2rad(angle));
         float dy = it->second * sin(deg2rad(angle));
         
+        // If the id is not -1 then draw brackets
+        bool brackets = false;
+        if (id == it->first && id != -1)
+        {
+            brackets = true;
+        }
+        
         // Now draw it
-        drawArrow(position, dx, dy, angle);
+        drawArrow(position, dx, dy, angle, brackets);
     }
 }
 

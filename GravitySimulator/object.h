@@ -27,7 +27,7 @@ public:
     //
     Object() : vector(), mass(0.0) {}
     Object(float x, float y, float dx, float dy, double m, std::string n) : vector(x, y, dx, dy),
-    mass(m), name(n)
+    mass(m), name(n), bracketsForArrow(-1)
     {
         id = identifier++;
     }
@@ -40,6 +40,7 @@ public:
     void addVectors(Vector & v);               // Add two vectors together
     virtual void showHelpers(bool helper) = 0; // Show the helpers for the object?
     virtual void showVectors(bool vector) = 0; // When to show the vectors
+    void showBracketsForVector(int id);
     virtual double getSize() = 0;              // Get the size of the object
     virtual int getDrawSize() = 0;             // Get the draw size of the object
     int addVector(float angle, float mag, std::string name)
@@ -59,12 +60,13 @@ public:
     //
     // Getters
     //
-    Vector getVector()    const { return vector;                }
-    float getMass()       const { return mass;                  }
-    Position getPoint()   const { return vector.getPoint();     }
-    Vector & getVector()        { return vector;                }
-    int getId()           const { return id;                    }
-    std::string getName() const { return name;                  }
+    Vector getVector()        const { return vector;                }
+    float getMass()           const { return mass;                  }
+    Position getPoint()       const { return vector.getPoint();     }
+    Vector & getVector()            { return vector;                }
+    int getId()               const { return id;                    }
+    std::string getName()     const { return name;                  }
+    int getBracketsForArrow() const { return bracketsForArrow;      }
 
     //
     // Setters
@@ -74,6 +76,7 @@ public:
     void setWrap(bool wrap)    { vector.setWrap(wrap); }
 private:
     Vector vector;         // This will allow the object to move!
+    int bracketsForArrow;  // Do we draw the brackets for the arrows?
     double mass;           // This will hold the mass of the object!
     int id;                // This will help identify it!
     std::string name;      // This is the name of the object.
@@ -117,15 +120,15 @@ public:
     //
     // Setters
     //
-    void setRotationSpeed(int s) { rotationSpeed = s; }
-    void setSize(double size)    { radius = size;     }
-    void setDrawSize(int size)   { drawRadius = size; }
+    void setRotationSpeed(int s)     { rotationSpeed = s;     }
+    void setSize(double size)        { radius = size;         }
+    void setDrawSize(int size)       { drawRadius = size;     }
 private:
-    double radius;      // This is the radius of the planet.
-    int drawRadius;     // The draw radius for OpenGl.
-    int rotationSpeed;  // This will rotate the planet.
-    bool brackets;      // Do we draw brackets or not?
-    bool arrows;        // Show the vectors?
+    double radius;          // This is the radius of the planet.
+    int drawRadius;         // The draw radius for OpenGl.
+    int rotationSpeed;      // This will rotate the planet.
+    bool brackets;          // Do we draw brackets or not?
+    bool arrows;            // Show the vectors?
 };
 
 /*********************************

@@ -262,18 +262,24 @@ void drawCircle(const Position & center, int radius, int points, int rotation)
  *  This will draw an arrow. This will help indicate the direction
  *      and magnitude of the vector.
  *****************************************************************/
-void drawArrow(const Position & center, float dx, float dy, int angle)
+void drawArrow(const Position & center, float dx, float dy, int angle, bool brackets)
 {
     // Amplify the mag
     dx *= 20;
     dy *= 20;
     
-    // Make the arrow red
-    glColor3f(1.0, 0.0, 0.0);
-    
     // Create the points
     Position point(center.getX() + dx, center.getY() + dy);
     Position c(center);
+    
+    // Draw the Brackets if needed
+    if (brackets)
+    {
+        drawBrackets(point, 10);
+    }
+    
+    // Make the arrow red
+    glColor3f(1.0, 0.0, 0.0);
     
     // Change line width
     glLineWidth(5.0);

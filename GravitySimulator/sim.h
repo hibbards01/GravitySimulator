@@ -87,6 +87,7 @@ public:
     void enableHelpers(bool enable);
     void enableWrapping(bool enable);
     void reset();
+    void deselectObjects(int id);
     
     //
     // Getters

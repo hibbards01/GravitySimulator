@@ -36,6 +36,15 @@ void Object::enableWrapping(bool enable)
     vector.setWrap(enable);
 }
 
+/*********************************
+ * showBracketsForArrow
+ *  Show the vector that is selected.
+ ********************************/
+void Object::showBracketsForVector(int id)
+{
+    bracketsForArrow = id;
+}
+
 /***********************************************************
  ************************* Planet **************************
  **********************************************************/
@@ -61,7 +70,7 @@ void Planet::draw()
     // Also the arrows if there are vectors
     if (arrows)
     {
-        getVector().drawArrows();
+        getVector().drawArrows(getBracketsForArrow());
     }
     
     return;

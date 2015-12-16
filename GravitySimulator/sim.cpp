@@ -236,7 +236,7 @@ void Simulator::editObject(int id, string edit, double newValue)
         if (edit == string("radiusOrMag"))
         {
             obj->setSize(newValue);
-            obj->setDrawSize(newValue / getMeter());
+            obj->setDrawSize(newValue / getDrawMeter());
         }
         else
         {
@@ -277,6 +277,37 @@ void Simulator::addVector(int objId, float mag, float angle, string name, int & 
 {
     // Grab the object and add the vector
     id = grabObject(objId)->addVector(angle, mag, name);
+    
+    // Also make it the selected one
+    grabObject(objId)->showBracketsForVector(id);
+    
+    // Deselect everything else
+    deselectObjects(id);
+}
+
+/*************************************
+ * deselectObjects
+ *  This will deselect everything but
+ *      the object with the id.
+ *************************************/
+void Simulator::deselectObjects(int id)
+{
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        // Expect for the id
+        if (id != (*it)->getId())
+        {
+            (*it)->showHelpers(false);
+        }
+        
+        // See if we have selected a vector
+        int angle = (*it)->getVector().getAngle(id);
+        
+        if (angle == -1)
+        {
+            (*it)->showBracketsForVector(-1);
+        }
+    }
 }
 
 /*************************************
@@ -335,6 +366,9 @@ bool Simulator::clickedObject(float x, float y, int & id)
         if (!clicked)
         {
             clicked = (*it)->getVector().clicked(x, y, id);
+            
+            // Show the brackets for the arrows
+            (*it)->showBracketsForVector(id);
         }
        
         // See if object was clicked
@@ -364,14 +398,7 @@ bool Simulator::clickedObject(float x, float y, int & id)
     // See if it was clicked. If so then deslect everything!
     if (clicked)
     {
-        for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
-        {
-            // Expect for the id
-            if (id != (*it)->getId())
-            {
-                (*it)->showHelpers(false);
-            }
-        }
+        deselectObjects(id);
     }
     
     return clicked;
