@@ -12,6 +12,8 @@
 #include "uiDraw.h"
 using namespace std;
 
+#define rad2deg(value) ((180 / M_PI) * (value))
+
 /*********************************
  * Copy Constructor
  ********************************/
@@ -218,5 +220,62 @@ void Vector::drawArrows()
         
         // Now draw it
         drawArrow(position, dx, dy, angle);
+    }
+}
+
+/********************************
+ * combineVectors
+ *  This will combine the vectors
+ *      if the game is passed and
+ *      that they don't reset the 
+ *      values.
+ *******************************/
+void Vector::combineVectors()
+{
+    // Loop through all the vectors
+    // and combine them. Use the first key as the id
+    if (!names.empty())
+    {
+        map<int, string> :: iterator it = names.begin();
+        
+        int id = it->first;
+        string newName = it->second;
+        
+        // Grab all the names and combine them
+        // Only do this if the size is greater
+        if (names.size() > 1)
+        {
+            // Iterate once
+            ++it;
+            
+            for (; it != names.end(); ++it)
+            {
+                newName = newName + "&" + it->second;
+            }
+        }
+        
+        // Clear all the lists
+        names.clear();
+        mags.clear();
+        angles.clear();
+        
+        // Now save it
+        names[id] = newName;
+        
+        // Also save the new angle and magnitude
+        float degrees = rad2deg(atan(dy / dx));
+        
+        // Adjust the angle
+        if ((dy < 0 && dx < 0) || (dy > 0 && dx < 0))
+        {
+            degrees += 180;
+        }
+        else if (dy < 0 && dx > 0)
+        {
+            degrees += 360;
+        }
+        
+        angles[id] = degrees;
+        mags[id] = sqrt((dx * dx) + (dy * dy));
     }
 }

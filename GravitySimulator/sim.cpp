@@ -94,13 +94,19 @@ void Simulator::run(bool movingObjects)
         {
             for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
             {
-                origin.addOrigin((*it)->getPoint(), (*it)->getVector().getDx(), (*it)->getVector().getDy(), (*it)->getId());
+                origin.addOrigin((*it)->getPoint(), (*it)->getVector(), (*it)->getId());
             }
             
             firstTime = false;
         }
         
         move();
+        
+        // Change the vectors
+        for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+        {
+            (*it)->getVector().combineVectors();
+        }
     }
 
     // Now draw them.
@@ -123,8 +129,7 @@ void Simulator::reset()
         try
         {
             (*it)->getVector().setPosition(origin.getPosition((*it)->getId()));
-            (*it)->getVector().setDx(origin.getDx((*it)->getId()));
-            (*it)->getVector().setDy(origin.getDy((*it)->getId()));
+            (*it)->getVector() = origin.getVector((*it)->getId());
         }
         catch (out_of_range & oos)
         {

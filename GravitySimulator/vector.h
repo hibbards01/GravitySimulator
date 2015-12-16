@@ -43,6 +43,8 @@ public:
     void drawArrows();                                              // Draw the arrows
     bool clicked(float x, float y, int & id);                       // See if any of the arrows was clicked on
 //    void rotate(int rotate)                  { angle += rotate; }
+    void combineVectors();                                          // This will combine the vectors if runned
+                                                                    // not the first time.
     
     //
     // Getters

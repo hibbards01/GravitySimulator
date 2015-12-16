@@ -47,6 +47,15 @@
     // Change the button colors
 //    NSBackgroundStyle *style = [NSBackgroundStyle [NSColor redColor];
 //    [[_run cell] setBackgroundStyle:;]
+    
+    // Add a moon and earth
+    NSNumber *moon = [NSNumber numberWithInt:1];
+    NSNumber *earth = [NSNumber numberWithInt:2];
+    [ids addObject:moon];
+    [ids addObject:earth];
+    
+    [names addObject:@"Moon"];
+    [names addObject:@"Earth"];
 }
 
 /*************************************

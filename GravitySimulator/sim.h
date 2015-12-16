@@ -37,28 +37,23 @@ public:
     // GETTERS
     //
     Position & getPosition(int id) { return positions[id]; }
-    float getDx(int id)            { return vectorDxs[id]; }
-    float getDy(int id)            { return vectorDys[id]; }
+    Vector & getVector(int id)     { return vectors[id];   }
     
     //
     // Methods
     //
-    void addOrigin(Position pt, float dx, float dy, int id)
+    void addOrigin(Position pt, Vector & v, int id)
     {
         positions[id] = pt;
-        vectorDxs[id] = dx;
-        vectorDys[id] = dy;
+        vectors[id] = v;
     }
     void clear()
     {
         positions.clear();
-        vectorDxs.clear();
-        vectorDys.clear();
     }
 private:
     std::map<int, Position> positions; // This will save all the original positions
-    std::map<int, float> vectorDxs;    // Save all the original dxs
-    std::map<int, float> vectorDys;    // and dys
+    std::map<int, Vector> vectors;    // Save the vector
 };
 
 
@@ -125,7 +120,7 @@ private:
     std::list<Object *> objects;         // This will hold all the objects.
     static double gravitationalConstant; // This will hold the gravitational constant
     static int indexMeters;              // This is set by gravity to 1 for METERS4, unless it is changed
-    static double meters[4];                    // This will hold the values of meters that will be used
+    static double meters[4];             // This will hold the values of meters that will be used
     bool firstTime;                      // First time running the simulation?
     SaveOrigin origin;                   // Save the original positions, dxs, and dys
 };
