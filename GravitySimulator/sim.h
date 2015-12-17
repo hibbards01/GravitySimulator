@@ -90,6 +90,7 @@ public:
     void deselectObjects(int id);
     void selectObject(int id);
     void getVectorIdsAndNames(std::list<int> & ids, std::list<std::string> & names);
+    void grabAllObjects(std::list<int> & newPlanetIDs, std::list<std::string> & newPlanetNames, std::list<int> & ids, std::list<std::string> & names);
     
     //
     // Getters

@@ -115,11 +115,14 @@
     // Grab the value
     int objId = (int)[[self.editItem selectedItem] tag];
     
-    // Now grab the data from the GravityViewController
-    NSDictionary *data = [self.delegate selectObject:objId];
-    
-    // Update the form
-    [self addValuesToEditForm:data selectedID:objId];
+    if (objId != -1)
+    {
+        // Now grab the data from the GravityViewController
+        NSDictionary *data = [self.delegate selectObject:objId];
+        
+        // Update the form
+        [self addValuesToEditForm:data selectedID:objId];
+    }
 }
 
 /*************************************
@@ -158,6 +161,22 @@
  *************************************/
 - (void) updateEditItem: (NSMutableArray *) ids vectorNames: (NSMutableArray *) names
 {
+    vectorIDs = ids;
+    vectorNames = names;
+    
+    [self populateButton];
+}
+
+/*************************************
+ * updateEverything
+ *  This will update everything on the
+ *      button.
+ *************************************/
+- (void) updateEverything: (NSMutableArray *) planetids planetNames: (NSMutableArray *) planetnames vectorIDs:(NSMutableArray *) ids vectorNames: (NSMutableArray *) names
+{
+    planetIDs = planetids;
+    planetNames = planetnames;
+    
     vectorIDs = ids;
     vectorNames = names;
     

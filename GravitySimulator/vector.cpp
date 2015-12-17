@@ -81,6 +81,7 @@ void Vector::deleteVector(int id)
     // Erase from the maps
     mags.erase(id);
     angles.erase(id);
+    names.erase(id);
     
     return;
 }

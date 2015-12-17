@@ -129,6 +129,22 @@ void Simulator::getVectorIdsAndNames(list<int> & ids, list<string> & names)
 }
 
 /********************************
+ * grabAllObjects
+ *  This will grab all the ids and 
+ *      names.
+ ********************************/
+void Simulator::grabAllObjects(std::list<int> & newPlanetIDs, std::list<std::string> & newPlanetNames, std::list<int> & ids, std::list<std::string> & names)
+{
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        newPlanetIDs.push_back((*it)->getId());
+        newPlanetNames.push_back((*it)->getName());
+    }
+    
+    getVectorIdsAndNames(ids, names);
+}
+
+/********************************
  * reset
  *  Reset to the original points.
  *******************************/

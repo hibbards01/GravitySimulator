@@ -355,6 +355,8 @@ float Position::yMin = -375;
         sim->removeAll();
     }
     
+    [self updateListForView];
+    
     [self setNeedsDisplay:YES];
 }
 
@@ -413,6 +415,48 @@ float Position::yMin = -375;
 }
 
 /*************************************
+ * updateListForView
+ *************************************/
+- (void) updateListForView
+{
+    NSMutableArray *planetids = [[NSMutableArray alloc] init];
+    NSMutableArray *planetnames = [[NSMutableArray alloc] init];
+    NSMutableArray *ids = [[NSMutableArray alloc] init];
+    NSMutableArray *names = [[NSMutableArray alloc] init];
+    
+    std::list<int> vectorIds;
+    std::list<std::string> vectorNames;
+    std::list<int> planetIDs;
+    std::list<std::string> planetNames;
+    
+    sim->grabAllObjects(planetIDs, planetNames, vectorIds, vectorNames);
+    
+    // Now loop through each of them.
+    for (std::list<int> :: iterator it = planetIDs.begin(); it != planetIDs.end(); ++it)
+    {
+        [planetids addObject:[NSNumber numberWithInt:*it]];
+    }
+    
+    for (std::list<std::string> :: iterator it = planetNames.begin(); it != planetNames.end(); ++it)
+    {
+        [planetnames addObject:[NSString stringWithUTF8String:(*it).c_str()]];
+    }
+    
+    for (std::list<int> :: iterator it = vectorIds.begin(); it != vectorIds.end(); ++it)
+    {
+        [ids addObject:[NSNumber numberWithInt:*it]];
+    }
+    
+    for (std::list<std::string> :: iterator it = vectorNames.begin(); it != vectorNames.end(); ++it)
+    {
+        [names addObject:[NSString stringWithUTF8String:(*it).c_str()]];
+    }
+    
+    // Now update the controller
+    [controller updateEverything:planetids planetNames:planetnames vectorIDs:ids vectorNames:names];
+}
+
+/*************************************
  * resetObjects
  *  Reset the objects to their original
  *      points.
@@ -422,6 +466,9 @@ float Position::yMin = -375;
     sim->reset();
     
     sim->enableHelpers(true);
+    
+    // Update the view
+    [self updateListForView];
     
     [self setNeedsDisplay:YES];
 }

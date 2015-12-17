@@ -209,16 +209,6 @@
                                     <action selector="input1Action:" target="XfG-lQ-9wD" id="qn0-tz-Bpm"/>
                                 </connections>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdI-gY-eOf" customClass="RedButton">
-                                <rect key="frame" x="14" y="413" width="222" height="23"/>
-                                <buttonCell key="cell" type="smallSquare" title="Delete" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ofH-ko-oBS">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="clickedDelete:" target="XfG-lQ-9wD" id="0aV-gS-tDr"/>
-                                </connections>
-                            </button>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8SN-us-lNt">
                                 <rect key="frame" x="67" y="641" width="172" height="26"/>
                                 <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="bQc-Jt-fOM">
@@ -230,6 +220,16 @@
                                     <action selector="clickedEditBtn:" target="XfG-lQ-9wD" id="bYq-Wx-Uva"/>
                                 </connections>
                             </popUpButton>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdI-gY-eOf" customClass="RedButton">
+                                <rect key="frame" x="14" y="413" width="222" height="23"/>
+                                <buttonCell key="cell" type="smallSquare" title="Delete" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ofH-ko-oBS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clickedDelete:" target="XfG-lQ-9wD" id="0aV-gS-tDr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="g6v-a5-pe5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="250" id="dBw-y8-wrx"/>
