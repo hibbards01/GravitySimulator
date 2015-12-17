@@ -52,6 +52,7 @@
 
 // Member methods
 - (void) addValuesToEditForm: (NSDictionary *) data selectedID: (int) id;
+- (void) updateEditItem: (NSMutableArray *) ids vectorNames: (NSMutableArray *) names;
 
 @end
 

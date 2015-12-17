@@ -116,6 +116,19 @@ void Simulator::run(bool movingObjects)
 }
 
 /********************************
+ * getVectorIdsAndNames
+ *  This will grab all the vector ids
+ *      and names.
+ ********************************/
+void Simulator::getVectorIdsAndNames(list<int> & ids, list<string> & names)
+{
+    for (list<Object *> :: iterator it = objects.begin(); it != objects.end(); ++it)
+    {
+        (*it)->getVector().getIDsAndNames(ids, names);
+    }
+}
+
+/********************************
  * reset
  *  Reset to the original points.
  *******************************/

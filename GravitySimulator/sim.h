@@ -89,6 +89,7 @@ public:
     void reset();
     void deselectObjects(int id);
     void selectObject(int id);
+    void getVectorIdsAndNames(std::list<int> & ids, std::list<std::string> & names);
     
     //
     // Getters

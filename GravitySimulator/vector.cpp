@@ -164,6 +164,18 @@ void Vector::addVector(const float x, const float y)
 }
 
 /*********************************
+ * getIDsAndNames
+ ********************************/
+void Vector::getIDsAndNames(list<int> & ids, list<string> & n)
+{
+    for (map<int, string> :: iterator it = names.begin(); it != names.end(); ++it)
+    {
+        ids.push_back(it->first);
+        n.push_back(it->second);
+    }
+}
+
+/*********************************
  * clicked
  *  See if the arrow was clicked.
  ********************************/

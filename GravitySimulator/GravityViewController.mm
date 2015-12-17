@@ -373,6 +373,28 @@ float Position::yMin = -375;
         run = NO;
         [self stopTimer];
         
+        // Update the vectors
+        std::list<int> ids;
+        std::list<std::string> names;
+        sim->getVectorIdsAndNames(ids, names);
+        
+        // Now convert it to NSMutableArray
+        NSMutableArray *newIDs = [[NSMutableArray alloc] init];
+        NSMutableArray *newNames = [[NSMutableArray alloc] init];
+        
+        for (std::list<int> :: iterator it = ids.begin(); it != ids.end(); ++it)
+        {
+            [newIDs addObject:[NSNumber numberWithInt:*it]];
+        }
+        
+        for (std::list<std::string> :: iterator it = names.begin(); it != names.end(); ++it)
+        {
+            [newNames addObject:[NSString stringWithUTF8String:(*it).c_str()]];
+        }
+        
+        // Now tell SimulatorViewController
+        [controller updateEditItem:newIDs vectorNames:newNames];
+        
         // Disable wrapping always
         sim->enableWrapping(false);
         

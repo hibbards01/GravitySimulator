@@ -153,6 +153,18 @@
 }
 
 /*************************************
+ * updateEditItem
+ *  This will update it after a run.
+ *************************************/
+- (void) updateEditItem: (NSMutableArray *) ids vectorNames: (NSMutableArray *) names
+{
+    vectorIDs = ids;
+    vectorNames = names;
+    
+    [self populateButton];
+}
+
+/*************************************
  * addValuesToEditForm
  *  This will add the values to the form.
  ************************************/

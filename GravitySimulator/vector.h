@@ -14,6 +14,7 @@
 #include <map>
 #include <string>
 #include <stdexcept>
+#include <list>
 
 /***************************
  * Vector
@@ -50,6 +51,7 @@ public:
     // Getters
     //
     float getDx()               const { return dx;           }
+    void getIDsAndNames(std::list<int> & ids, std::list<std::string> & n);
     float getDy()               const { return dy;           }
     Position getPoint()         const { return position;     }
     int getAngle(int id) const
