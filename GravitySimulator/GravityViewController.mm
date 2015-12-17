@@ -409,8 +409,8 @@ float Position::yMin = -375;
         [self runTimer];
         run = YES;
         
-        // Enable wrapping for now
-        sim->enableWrapping(true);
+        // Disable wrapping for now
+        sim->enableWrapping(false);
     }
 }
 
