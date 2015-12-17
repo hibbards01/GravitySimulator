@@ -70,7 +70,7 @@ float Position::yMin = -375;
     NSNumber *newID; // Grab the object id or vector id.
     
     // See which object that we should make
-    if ([[data objectForKey:@"object"] isEqualToString:@"Planet"])
+    if ([[data objectForKey:@"object"] isEqualToString:@"New Planet"])
     {
         // Change the radius to what it should be for the view
         double radius = [[data objectForKey:@"radius"] doubleValue];
@@ -147,6 +147,28 @@ float Position::yMin = -375;
     }
 
     return editObj;
+}
+
+/*************************************
+ * selectObject
+ *  Grab the data so that the gui has
+ *      selected that object.
+ ************************************/
+- (NSDictionary *) selectObject: (int) selectedId
+{
+    // Change the id
+    id = selectedId;
+    
+    // Select that object!
+    sim->selectObject(id);
+    
+    // Grab the data
+    NSDictionary *grabObject = [self grabObject];
+    
+    // Update the view
+    [self setNeedsDisplay:YES];
+    
+    return grabObject;
 }
 
 /*************************************
@@ -376,6 +398,8 @@ float Position::yMin = -375;
 - (void) resetObjects
 {
     sim->reset();
+    
+    sim->enableHelpers(true);
     
     [self setNeedsDisplay:YES];
 }

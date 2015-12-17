@@ -78,11 +78,14 @@
         }
         
         // Change two of the labels
-        self.label2.cell.title = @"Velocity (meters/second)";
+        self.label2.cell.title = @"Speed";
         self.label3.cell.title = @"Angle (°)";
         
         // Change the title
         self.mainTitle.cell.title = @"New Velocity";
+        
+        // Show hint
+        self.hintWindow.hidden = NO;
     }
 }
 
@@ -128,14 +131,14 @@
     int valid = 0;
     
     // Grab the data
-    NSString *obj         = [[self.whichObjectBtn selectedItem] title];
+    NSString *obj         = self.mainTitle.stringValue;
     NSString *name        = self.nameInput.stringValue;
     NSString *diamOrMag   = self.diamOrMagInput.stringValue;
     NSString *massOrAngle = self.massOrAngleInput.stringValue;
     NSNumber *objName = [NSNumber numberWithInt:-1];
     
     // See if vector was selected
-    if ([obj isEqualToString:@"Vector"])
+    if ([obj isEqualToString:@"New Velocity"])
     {
         // If so then grab the objName
         NSString *name = [[_objBtn selectedItem] title];
@@ -160,8 +163,8 @@
     if (valid == 0)
     {
         // Create the keys
-        NSString *diamOrMagKey = ([obj isEqualToString:@"Planet"]) ? @"radius" : @"mag";
-        NSString *massOrAngleKey  = ([obj isEqualToString:@"Planet"]) ? @"mass" : @"angle";
+        NSString *diamOrMagKey = ([obj isEqualToString:@"New Planet"]) ? @"radius" : @"mag";
+        NSString *massOrAngleKey  = ([obj isEqualToString:@"New Planet"]) ? @"mass" : @"angle";
         
         // Now save the values and keys into newObj
         NSDictionary *newObj = @{

@@ -33,7 +33,6 @@
 }
 
 // Here are all the actions that are needed to be controlled.
-@property (weak) IBOutlet NSTextField *editTitle;
 @property (weak) IBOutlet NSTextField *formLabel1;
 @property (weak) IBOutlet NSTextField *formLabel2;
 @property (weak) IBOutlet NSTextField *formLabel3;
@@ -46,6 +45,7 @@
 @property (weak) IBOutlet NSButton *run;
 @property (weak) IBOutlet NSOpenGLView *simulator;
 @property (weak) IBOutlet NSButton *stop;
+@property (weak) IBOutlet NSPopUpButton *editItem;
 
 // This will hold the delegate
 @property(nonatomic,assign) id delegate;
@@ -64,6 +64,7 @@
 - (void) deleteObject: (int) objId type: (NSString *) type;
 - (void) runSimulation: (BOOL) enable;
 - (void) resetObjects;
+- (NSDictionary *) selectObject: (int) selectedId;
 
 @end
 

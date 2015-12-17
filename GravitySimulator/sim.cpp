@@ -349,6 +349,33 @@ void Simulator::removeVector(int vectorId)
 }
 
 /*************************************
+ * selectObject
+ *  This will select the object.
+ *************************************/
+void Simulator::selectObject(int id)
+{
+    // See if it is a planet
+    Object *obj = grabObject(id);
+    
+    // If null then grab the vector
+    if (obj == NULL)
+    {
+        Vector v = grabVector(id, obj);
+        
+        // Now select it!
+        obj->showBracketsForVector(id);
+    }
+    else
+    {
+        // Now select it!
+        obj->showHelpers(true);
+    }
+    
+    // Deselect everything
+    deselectObjects(id);
+}
+
+/*************************************
  * clickedObject
  *  This will check if the object
  *      was clicked on. It will fill

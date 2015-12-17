@@ -88,6 +88,7 @@ public:
     void enableWrapping(bool enable);
     void reset();
     void deselectObjects(int id);
+    void selectObject(int id);
     
     //
     // Getters

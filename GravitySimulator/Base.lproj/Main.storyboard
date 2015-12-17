@@ -88,14 +88,6 @@
                                     <action selector="clickedClear:" target="XfG-lQ-9wD" id="9q2-mw-E96"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geo-tC-FNc">
-                                <rect key="frame" x="55" y="644" width="183" height="20"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" placeholderString="" id="jmt-FT-aVk">
-                                    <font key="font" size="15" name="ArialMT"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9a-Js-9A1">
                                 <rect key="frame" x="18" y="644" width="39" height="20"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Edit:" id="Id6-aw-yhT">
@@ -218,7 +210,7 @@
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdI-gY-eOf" customClass="RedButton">
-                                <rect key="frame" x="14" y="426" width="222" height="23"/>
+                                <rect key="frame" x="14" y="413" width="222" height="23"/>
                                 <buttonCell key="cell" type="smallSquare" title="Delete" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ofH-ko-oBS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -227,6 +219,17 @@
                                     <action selector="clickedDelete:" target="XfG-lQ-9wD" id="0aV-gS-tDr"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8SN-us-lNt">
+                                <rect key="frame" x="67" y="641" width="172" height="26"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="bQc-Jt-fOM">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="RVU-9R-CLC"/>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="clickedEditBtn:" target="XfG-lQ-9wD" id="bYq-Wx-Uva"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="g6v-a5-pe5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="250" id="dBw-y8-wrx"/>
@@ -236,7 +239,7 @@
                     <connections>
                         <outlet property="clear" destination="Z3D-iS-xxB" id="wMG-vG-h3D"/>
                         <outlet property="deleteBtn" destination="TdI-gY-eOf" id="fHU-xq-GKh"/>
-                        <outlet property="editTitle" destination="geo-tC-FNc" id="jmg-at-3YQ"/>
+                        <outlet property="editItem" destination="8SN-us-lNt" id="jMr-VQ-vQb"/>
                         <outlet property="formInputTextField1" destination="6gU-Ns-YiF" id="1lH-mY-6Qw"/>
                         <outlet property="formInputTextField2" destination="YpP-j9-AsL" id="6mg-jm-LC6"/>
                         <outlet property="formLabel1" destination="Idt-Cm-Lrz" id="w6K-zS-ijg"/>
@@ -278,7 +281,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1h-rD-8o4">
-                                <rect key="frame" x="18" y="217" width="209" height="21"/>
+                                <rect key="frame" x="18" y="217" width="134" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Radius (kilometers)" id="4uu-yt-mtz">
                                     <font key="font" size="15" name="ArialMT"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -375,12 +378,21 @@ Gw
                                     <action selector="clickedCreate:" target="MJp-Qw-McP" id="N6Q-dp-ZOK"/>
                                 </connections>
                             </button>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yq7-x5-fLu">
+                                <rect key="frame" x="71" y="217" width="156" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1=10,000meters/frame" id="kSI-OI-qLI">
+                                    <font key="font" size="15" name="ArialMT"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="cancel" destination="P5F-bw-Inw" id="KwY-g4-0XE"/>
                         <outlet property="create" destination="oF4-rz-Ml2" id="Ovw-OF-xdl"/>
                         <outlet property="diamOrMagInput" destination="O1e-v0-2jb" id="gMK-SY-hZl"/>
+                        <outlet property="hintWindow" destination="Yq7-x5-fLu" id="Bgr-S8-vCy"/>
                         <outlet property="label2" destination="e1h-rD-8o4" id="SLI-qK-EKC"/>
                         <outlet property="label3" destination="OqP-BQ-Oay" id="7Z7-ow-Bk2"/>
                         <outlet property="mainTitle" destination="eFW-QY-8px" id="Hsg-KJ-eDw"/>

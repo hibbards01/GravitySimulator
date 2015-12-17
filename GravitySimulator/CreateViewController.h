@@ -29,7 +29,6 @@
 }
 
 // Grab all the input tags
-@property (weak) IBOutlet NSPopUpButton *whichObjectBtn;
 @property (weak) IBOutlet NSTextField *nameInput;
 @property (weak) IBOutlet NSTextField *diamOrMagInput;
 @property (weak) IBOutlet NSTextField *massOrAngleInput;
@@ -44,6 +43,7 @@
 @property (weak) IBOutlet NSTextField *label2;
 @property (weak) IBOutlet NSTextField *label3;
 @property (weak) IBOutlet NSTextField *mainTitle;
+@property (weak) IBOutlet NSTextField *hintWindow;
 
 // This will hold the delegate
 @property(nonatomic,assign) id delegate;

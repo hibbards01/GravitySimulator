@@ -55,6 +55,71 @@
     
     [vectorIDs addObject:[NSNumber numberWithInt:2]];
     [vectorNames addObject:@"Moon's Velocity"];
+    
+    // Populate the NSPopUpButton
+    [self populateButton];
+}
+
+/*************************************
+ * populateButton
+ *  This will populate the NSPopUpButton.
+ ************************************/
+- (void) populateButton
+{
+    // Clear the menu
+    [self.editItem removeAllItems];
+    
+    // Add an empty cell
+    NSMenuItem *empty = [[NSMenuItem alloc] init];
+    [empty setTitle:@""];
+    [empty setTag:-1];
+    [self.editItem.menu addItem:empty];
+    
+    // Loop through all the planets
+    for (int i = 0; i < [planetNames count]; ++i)
+    {
+        // Create a new cell
+        NSMenuItem *cell = [[NSMenuItem alloc] init];
+        
+        // Now add the title and tag
+        [cell setTitle:[planetNames objectAtIndex:i]];
+        [cell setTag:[[planetIDs objectAtIndex:i] integerValue]];
+        
+        // Now add it
+        [self.editItem.menu addItem:cell];
+    }
+    
+    // Now the velocities
+    for (int i = 0; i < [vectorNames count]; ++i)
+    {
+        // Create a new cell
+        NSMenuItem *cell = [[NSMenuItem alloc] init];
+        
+        // Now add the title and tag
+        [cell setTitle:[vectorNames objectAtIndex:i]];
+        [cell setTag:[[vectorIDs objectAtIndex:i] integerValue]];
+        
+        // Now add it
+        [self.editItem.menu addItem:cell];
+    }
+}
+
+/*************************************
+ * clickedEditBtn
+ *  This will change the edit form
+ *      if they clicked on a different
+ *      object.
+ ************************************/
+- (IBAction)clickedEditBtn:(id)sender
+{
+    // Grab the value
+    int objId = (int)[[self.editItem selectedItem] tag];
+    
+    // Now grab the data from the GravityViewController
+    NSDictionary *data = [self.delegate selectObject:objId];
+    
+    // Update the form
+    [self addValuesToEditForm:data selectedID:objId];
 }
 
 /*************************************
@@ -82,6 +147,9 @@
     
     // Now change the edit form
     [self addValuesToEditForm: data selectedID:[currentID intValue]];
+    
+    // Repopulate the nspopbutton
+    [self populateButton];
 }
 
 /*************************************
@@ -108,7 +176,7 @@
     else
     {
         // Change the form lables
-        [[_formLabel1 cell] setTitle:@"Magnitude (m/s)"];
+        [[_formLabel1 cell] setTitle:@"Speed"];
         [[_formLabel2 cell] setTitle:@"Angle (°)"];
         
         // Put the values into the input fields
@@ -137,11 +205,11 @@
         _formSelectBtn.hidden = NO;
     }
     
-    // Change the edit form label
-    [[_editTitle cell] setTitle: [data objectForKey:@"name"]];
-    
     // Set the id that is selected
     currentlySelected = id;
+    
+    // Select the correct thing in the editItem button
+    [self.editItem selectItemWithTag:currentlySelected];
 }
 
 /*************************************
@@ -236,6 +304,7 @@
         _clear.enabled = NO;
         _reset.enabled = NO;
         _formSelectBtn.enabled = NO;
+        _editItem.enabled = NO;
         
         // Hide the run button
         _run.hidden = YES;
@@ -253,6 +322,7 @@
         _clear.enabled = YES;
         _reset.enabled = YES;
         _formSelectBtn.enabled = YES;
+        _editItem.enabled = YES;
         
         // Hide the stop button
         _stop.hidden = YES;
@@ -305,7 +375,6 @@
  ************************************/
 - (void) removeText
 {
-    [[_editTitle cell] setTitle:@""];
     [[_formLabel1 cell] setTitle:@"Radius (m)"];
     [[_formLabel2 cell] setTitle:@"Mass (kg)"];
     [[_formInputTextField1 cell] setTitle:@""];
